@@ -1,6 +1,7 @@
 #include "ArrayLinkedList.h"
 #include "stdio.h"
 
+
 ArrayLinkedList::ArrayLinkedList(bool verboseMode) : verboseMode(verboseMode), InsertIndex(0)
 {
 }
@@ -20,11 +21,16 @@ bool ArrayLinkedList::Insert(int data)
 	}
 	else
 	{
-		arrayList[InsertIndex] = data;
+		// Dynamic allocation node
+		Node *node = new Node();
+		node->data = data;
+		node->nodePos = node;
+		arrayList[InsertIndex] = *node;
 		InsertIndex++;
 	}
 	return true;
 }
+
 
 bool ArrayLinkedList::Insert(int pos, int data)
 {
@@ -41,11 +47,18 @@ bool ArrayLinkedList::Insert(int pos, int data)
 	{	// Test if insertinex and pos is overflow
 		if (InsertIndex == 5 || pos >= 5)
 		{
-			fprintf(stderr, "# Warning: Insertindex or position is overflow!");
+			if (verboseMode)
+			{
+				fprintf(stderr, "# Warning: Insertindex or position is overflow!");
+			}
 			return false;
 		}
 		else if (pos == 4)
-			arrayList[pos] = data;
+		{
+			Node *node = new Node();
+			node->data = data;
+			arrayList[pos] = *node;
+		}
 		else
 		{
 			// Sorting arraylist
@@ -53,7 +66,9 @@ bool ArrayLinkedList::Insert(int pos, int data)
 			{
 				arrayList[i] = arrayList[i - 1];
 			}
-			arrayList[pos] = data;
+			Node *node = new Node();
+			node->data = data;
+			arrayList[pos] = *node;
 		}
 		InsertIndex++;
 		return true;
@@ -63,6 +78,11 @@ bool ArrayLinkedList::Insert(int pos, int data)
 void ArrayLinkedList::RemovePosition(int pos)
 {
 	// Sorting arraylist
+	Node *temp = arrayList[pos].nodePos;
+	delete temp;
+	arrayList[pos].data = EMPTY;
+	arrayList[pos].nodePos = NULL;
+
 	for (int i = pos; i < ARRAY_SIZE - 1; i++)
 	{
 		arrayList[i] = arrayList[i + 1];
@@ -70,40 +90,18 @@ void ArrayLinkedList::RemovePosition(int pos)
 	InsertIndex--;
 	for (int i = InsertIndex; i < ARRAY_SIZE; i++)
 	{
-		arrayList[i] = EMPTY;
+		Node *temp = arrayList[i].nodePos;
+		delete temp;
+		arrayList[i].data = EMPTY;
+		arrayList[i].nodePos = NULL;
 	}
-}
-
-void ArrayLinkedList::RemoveData(int data)
-{
-	if (InsertIndex)
-	{
-		for (int i = 0; i < ARRAY_SIZE; i++)
-		{
-			// if arraylist[i] equal remove data 
-			while (arrayList[i] == data)
-			{
-				// Sorting arraylist
-				for (int j = i; j < 5; j++)
-				{
-					arrayList[j] = arrayList[j + 1];
-				}
-				InsertIndex--;
-			}
-		}
-		for (int i = InsertIndex; i < ARRAY_SIZE; i++)
-		{
-			arrayList[i] = EMPTY;
-		}
-	}
-
 }
 
 void ArrayLinkedList::TestAllArray()
 {
 	for (int i = 0; i < 5; i++)
 	{
-		fprintf(stdout, "%d \n", arrayList[i]);
+		fprintf(stdout, "%d \n", arrayList[i].data);
 	}
 	fprintf(stdout, "- - -\n");
 }
