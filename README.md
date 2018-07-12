@@ -1,19 +1,17 @@
 # Contents
 
-## Introduce
+## 1. Introduce
 
 Programming practice
 
----
 
-## Folder List
+## 2. Folder List
 
-### 1. Android_Studio
+### Android_Studio
 
 Held Project
 
-
-### 2. DataStructure_And_Algorithm_Practice
+### DataStructure_And_Algorithm_Practice
 
 Practice Data Structure and Algorithm.
 
