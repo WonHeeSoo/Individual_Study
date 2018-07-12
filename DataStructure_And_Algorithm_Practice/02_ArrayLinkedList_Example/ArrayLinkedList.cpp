@@ -1,16 +1,18 @@
 #include "ArrayLinkedList.h"
-#include "stdio.h"
 
-
-ArrayLinkedList::ArrayLinkedList(bool verboseMode) : verboseMode(verboseMode), InsertIndex(0)
+/*template<typename T>
+ArrayLinkedList<T>::ArrayLinkedList(bool verboseMode) : verboseMode(verboseMode), InsertIndex(0)
 {
-}
+}*/
 
-ArrayLinkedList::~ArrayLinkedList()
+/*template<typename T>
+ArrayLinkedList<T>::~ArrayLinkedList()
 {
-}
+}*/
 
-bool ArrayLinkedList::Insert(int data)
+
+/*
+bool ArrayLinkedList::Insert(T data)
 {
 	// Test if InsertInex is full
 	if (InsertIndex > 5)
@@ -31,8 +33,7 @@ bool ArrayLinkedList::Insert(int data)
 	return true;
 }
 
-
-bool ArrayLinkedList::Insert(int pos, int data)
+bool ArrayLinkedList::Insert(int pos, T data)
 {
 	// Test if InsertInex is full
 	if (InsertIndex > 5)
@@ -79,12 +80,14 @@ bool ArrayLinkedList::Insert(int pos, int data)
 	}
 }
 
-void ArrayLinkedList::Remove(int pos)
+
+template<typename T>
+void ArrayLinkedList<T>::Remove(int pos)
 {
 	// Sorting arraylist
 	ALNode *temp = arrayList[pos].nodePos;
 	delete temp;
-	arrayList[pos].data = EMPTY;
+	arrayList[pos].data = NULL;
 	arrayList[pos].nodePos = NULL;
 
 	// Sorting arraylist
@@ -98,16 +101,17 @@ void ArrayLinkedList::Remove(int pos)
 	{
 		ALNode *temp = arrayList[i].nodePos;
 		delete temp;
-		arrayList[i].data = EMPTY;
+		arrayList[i].data = NULL;
 		arrayList[i].nodePos = NULL;
 	}
 }
 
-void ArrayLinkedList::TestAllArray()
+template<typename T>
+void ArrayLinkedList<T>::TestAllArray()
 {
 	for (int i = 0; i < 5; i++)
 	{
 		fprintf(stdout, "%d \n", arrayList[i].data);
 	}
 	fprintf(stdout, "- - -\n");
-}
+}*/

@@ -5,7 +5,7 @@
 
 int main()
 {
-	ArrayLinkedList *list = new ArrayLinkedList(false);
+	ArrayLinkedList<int> *list = new ArrayLinkedList<int>(false);
 
 	list->Insert(3);
 	list->Insert(2);

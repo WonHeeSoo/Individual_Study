@@ -1,4 +1,5 @@
 #pragma once
+/*template <typename T>
 class ALNode
 {
 public:
@@ -6,7 +7,8 @@ public:
 	~ALNode();
 
 public:
-	int data;
+	
+	T data;
 	ALNode* nodePos;
 };
-
+*/

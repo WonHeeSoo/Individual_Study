@@ -1,12 +1,12 @@
 #include "ALNode.h"
+/*
 
-
-
-ALNode::ALNode()
+template <typename T>
+ALNode<T>::ALNode()
 {
 }
 
-
-ALNode::~ALNode()
+template <typename T>
+ALNode<T>::~ALNode()
 {
-}
+}*/

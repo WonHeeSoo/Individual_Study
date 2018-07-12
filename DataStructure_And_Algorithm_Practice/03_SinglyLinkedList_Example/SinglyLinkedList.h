@@ -1,13 +1,9 @@
 #pragma once
+#include "SLNode.h"
+
 class SinglyLinkedList
 {
-	// Sub class
 public:
-	class Node
-	{
-		int data;
-		Node *next;
-	};
 
 	// Public methods
 public:
@@ -18,7 +14,7 @@ public:
 private:
 	static const int LIST_SIZE = 5;
 
-	Node * head;
+	SLNode * head;
 
 	int InsertIndex;
 };
