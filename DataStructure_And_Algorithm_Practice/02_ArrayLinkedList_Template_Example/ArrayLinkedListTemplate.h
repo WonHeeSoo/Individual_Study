@@ -13,8 +13,8 @@ public:
 	}
 
 public:
-	T data;
-	ALNode<T>* nodePos;
+	T			data;
+	ALNode<T>	*nodePos;
 };
 
 
@@ -145,11 +145,11 @@ private:
 	static const int	ARRAY_SIZE = 5;
 
 	// Explain state
-	bool	verboseMode;
+	bool		verboseMode;
 
 	// ArrayList
 	ALNode<T>	arrayList[ARRAY_SIZE];
 
 	// Insert position
-	int		InsertIndex;
+	int			InsertIndex;
 };
