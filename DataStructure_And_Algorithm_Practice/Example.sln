@@ -9,6 +9,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "02_ArrayLinkedList_Example"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "03_SinglyLinkedList_Example", "03_SinglyLinkedList_Example\03_SinglyLinkedList_Example.vcxproj", "{5E06008E-AFDC-400D-B03A-7D41EC8DF46F}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "02_ArrayLinkedList_Template_Example", "02_ArrayLinkedList_Template_Example\02_ArrayLinkedList_Template_Example.vcxproj", "{5A35DCA4-DB3C-4EF0-98D8-6F9FF306ACAE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -41,6 +43,14 @@ Global
 		{5E06008E-AFDC-400D-B03A-7D41EC8DF46F}.Release|x64.Build.0 = Release|x64
 		{5E06008E-AFDC-400D-B03A-7D41EC8DF46F}.Release|x86.ActiveCfg = Release|Win32
 		{5E06008E-AFDC-400D-B03A-7D41EC8DF46F}.Release|x86.Build.0 = Release|Win32
+		{5A35DCA4-DB3C-4EF0-98D8-6F9FF306ACAE}.Debug|x64.ActiveCfg = Debug|x64
+		{5A35DCA4-DB3C-4EF0-98D8-6F9FF306ACAE}.Debug|x64.Build.0 = Debug|x64
+		{5A35DCA4-DB3C-4EF0-98D8-6F9FF306ACAE}.Debug|x86.ActiveCfg = Debug|Win32
+		{5A35DCA4-DB3C-4EF0-98D8-6F9FF306ACAE}.Debug|x86.Build.0 = Debug|Win32
+		{5A35DCA4-DB3C-4EF0-98D8-6F9FF306ACAE}.Release|x64.ActiveCfg = Release|x64
+		{5A35DCA4-DB3C-4EF0-98D8-6F9FF306ACAE}.Release|x64.Build.0 = Release|x64
+		{5A35DCA4-DB3C-4EF0-98D8-6F9FF306ACAE}.Release|x86.ActiveCfg = Release|Win32
+		{5A35DCA4-DB3C-4EF0-98D8-6F9FF306ACAE}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

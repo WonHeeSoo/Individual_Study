@@ -15,10 +15,10 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="ArrayLinkedList.h">
+    <ClInclude Include="ALNode.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
-    <ClInclude Include="ALNode.h">
+    <ClInclude Include="ArrayLinkedList.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
   </ItemGroup>

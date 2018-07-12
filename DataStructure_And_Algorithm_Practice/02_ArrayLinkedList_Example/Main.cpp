@@ -1,11 +1,9 @@
 #include "ArrayLinkedList.h"
 #include <iostream>
 
-
-
 int main()
 {
-	ArrayLinkedList<int> *list = new ArrayLinkedList<int>(false);
+	ArrayLinkedList *list = new ArrayLinkedList(false);
 
 	list->Insert(3);
 	list->Insert(2);
