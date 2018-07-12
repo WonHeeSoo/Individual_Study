@@ -21,7 +21,7 @@ bool ArrayLinkedList::Insert(int data)
 	}
 	else
 	{
-		// Dynamic allocation node
+		// Create Dynamic allocation node
 		Node *node = new Node();
 		node->data = data;
 		node->nodePos = node;
@@ -45,7 +45,7 @@ bool ArrayLinkedList::Insert(int pos, int data)
 	}
 	else
 	{	// Test if insertinex and pos is overflow
-		if (InsertIndex == 5 || pos >= 5)
+		if (InsertIndex == 5 || pos > 4)
 		{
 			if (verboseMode)
 			{
@@ -55,19 +55,23 @@ bool ArrayLinkedList::Insert(int pos, int data)
 		}
 		else if (pos == 4)
 		{
+			// Create Dynamic allocation node
 			Node *node = new Node();
 			node->data = data;
+			node->nodePos = node;
 			arrayList[pos] = *node;
 		}
 		else
 		{
 			// Sorting arraylist
-			for (int i = 4; i < pos; i--)
+			for (int i = 4; i > pos; i--)
 			{
 				arrayList[i] = arrayList[i - 1];
 			}
+			// Create Dynamic allocation node
 			Node *node = new Node();
 			node->data = data;
+			node->nodePos = node;
 			arrayList[pos] = *node;
 		}
 		InsertIndex++;
@@ -75,7 +79,7 @@ bool ArrayLinkedList::Insert(int pos, int data)
 	}
 }
 
-void ArrayLinkedList::RemovePosition(int pos)
+void ArrayLinkedList::Remove(int pos)
 {
 	// Sorting arraylist
 	Node *temp = arrayList[pos].nodePos;
@@ -83,11 +87,13 @@ void ArrayLinkedList::RemovePosition(int pos)
 	arrayList[pos].data = EMPTY;
 	arrayList[pos].nodePos = NULL;
 
+	// Sorting arraylist
 	for (int i = pos; i < ARRAY_SIZE - 1; i++)
 	{
 		arrayList[i] = arrayList[i + 1];
 	}
 	InsertIndex--;
+	// Arranging array behind InsertIndex
 	for (int i = InsertIndex; i < ARRAY_SIZE; i++)
 	{
 		Node *temp = arrayList[i].nodePos;

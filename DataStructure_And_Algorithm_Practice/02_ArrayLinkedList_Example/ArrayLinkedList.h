@@ -14,9 +14,9 @@ public:
 	// Insert new data
 	bool	Insert(int data);
 	// Remove list data position
-	void	RemovePosition(int pos);
+	void	Remove(int pos);
 	// Input Array
-	void TestAllArray();
+	void	TestAllArray();
 
 
 public:
@@ -28,11 +28,11 @@ private:
 	static const int	ARRAY_SIZE = 5;
 
 	// Explain state
-	bool verboseMode;
+	bool	verboseMode;
 
 	// ArrayList
 	//Node arrayList[ARRAY_SIZE] = { 0, };
-	Node arrayList[ARRAY_SIZE] = { };
+	Node	arrayList[ARRAY_SIZE] = { };
 
 	// Insert position
 	int		InsertIndex;
