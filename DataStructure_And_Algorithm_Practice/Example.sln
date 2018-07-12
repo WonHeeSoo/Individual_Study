@@ -7,6 +7,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "01_CircularQueue_Example", 
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "02_ArrayLinkedList_Example", "02_ArrayLinkedList_Example\02_ArrayLinkedList_Example.vcxproj", "{985EC0E2-31B9-4F6C-89FB-50E60784568D}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "03_SinglyLinkedList_Example", "03_SinglyLinkedList_Example\03_SinglyLinkedList_Example.vcxproj", "{5E06008E-AFDC-400D-B03A-7D41EC8DF46F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -31,6 +33,14 @@ Global
 		{985EC0E2-31B9-4F6C-89FB-50E60784568D}.Release|x64.Build.0 = Release|x64
 		{985EC0E2-31B9-4F6C-89FB-50E60784568D}.Release|x86.ActiveCfg = Release|Win32
 		{985EC0E2-31B9-4F6C-89FB-50E60784568D}.Release|x86.Build.0 = Release|Win32
+		{5E06008E-AFDC-400D-B03A-7D41EC8DF46F}.Debug|x64.ActiveCfg = Debug|x64
+		{5E06008E-AFDC-400D-B03A-7D41EC8DF46F}.Debug|x64.Build.0 = Debug|x64
+		{5E06008E-AFDC-400D-B03A-7D41EC8DF46F}.Debug|x86.ActiveCfg = Debug|Win32
+		{5E06008E-AFDC-400D-B03A-7D41EC8DF46F}.Debug|x86.Build.0 = Debug|Win32
+		{5E06008E-AFDC-400D-B03A-7D41EC8DF46F}.Release|x64.ActiveCfg = Release|x64
+		{5E06008E-AFDC-400D-B03A-7D41EC8DF46F}.Release|x64.Build.0 = Release|x64
+		{5E06008E-AFDC-400D-B03A-7D41EC8DF46F}.Release|x86.ActiveCfg = Release|Win32
+		{5E06008E-AFDC-400D-B03A-7D41EC8DF46F}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

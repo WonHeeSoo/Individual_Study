@@ -1,5 +1,5 @@
 #pragma once
-#include "Node.h"
+#include "ALNode.h"
 
 class ArrayLinkedList
 {
@@ -18,11 +18,11 @@ public:
 	// Input Array
 	void	TestAllArray();
 
-
+	// Class Constants
 public:
 	static const int	EMPTY = -1;
 
-	// private properties
+	// Private properties
 private:
 	// Maximum array size
 	static const int	ARRAY_SIZE = 5;
@@ -31,8 +31,7 @@ private:
 	bool	verboseMode;
 
 	// ArrayList
-	//Node arrayList[ARRAY_SIZE] = { 0, };
-	Node	arrayList[ARRAY_SIZE] = { };
+	ALNode	arrayList[ARRAY_SIZE] = { };
 
 	// Insert position
 	int		InsertIndex;

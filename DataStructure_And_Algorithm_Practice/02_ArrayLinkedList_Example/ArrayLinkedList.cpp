@@ -22,7 +22,7 @@ bool ArrayLinkedList::Insert(int data)
 	else
 	{
 		// Create Dynamic allocation node
-		Node *node = new Node();
+		ALNode *node = new ALNode();
 		node->data = data;
 		node->nodePos = node;
 		arrayList[InsertIndex] = *node;
@@ -56,7 +56,7 @@ bool ArrayLinkedList::Insert(int pos, int data)
 		else if (pos == 4)
 		{
 			// Create Dynamic allocation node
-			Node *node = new Node();
+			ALNode *node = new ALNode();
 			node->data = data;
 			node->nodePos = node;
 			arrayList[pos] = *node;
@@ -69,7 +69,7 @@ bool ArrayLinkedList::Insert(int pos, int data)
 				arrayList[i] = arrayList[i - 1];
 			}
 			// Create Dynamic allocation node
-			Node *node = new Node();
+			ALNode *node = new ALNode();
 			node->data = data;
 			node->nodePos = node;
 			arrayList[pos] = *node;
@@ -82,7 +82,7 @@ bool ArrayLinkedList::Insert(int pos, int data)
 void ArrayLinkedList::Remove(int pos)
 {
 	// Sorting arraylist
-	Node *temp = arrayList[pos].nodePos;
+	ALNode *temp = arrayList[pos].nodePos;
 	delete temp;
 	arrayList[pos].data = EMPTY;
 	arrayList[pos].nodePos = NULL;
@@ -96,7 +96,7 @@ void ArrayLinkedList::Remove(int pos)
 	// Arranging array behind InsertIndex
 	for (int i = InsertIndex; i < ARRAY_SIZE; i++)
 	{
-		Node *temp = arrayList[i].nodePos;
+		ALNode *temp = arrayList[i].nodePos;
 		delete temp;
 		arrayList[i].data = EMPTY;
 		arrayList[i].nodePos = NULL;
