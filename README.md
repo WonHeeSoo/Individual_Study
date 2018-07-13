@@ -13,8 +13,11 @@ Held Project
 
 ### DataStructure_And_Algorithm_Practice
 
-Practice Data Structure and Algorithm.
+Practice data structure and algorithm.
 
+Project language is C++.
+
+#### Project List
 - Array Circular Queue
 - Array Linked List
 - Array Linked List of Template
