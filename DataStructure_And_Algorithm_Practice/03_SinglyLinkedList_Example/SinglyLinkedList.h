@@ -19,10 +19,11 @@ public:
 
 	// Public methods
 public:
-	SinglyLinkedList();
+	SinglyLinkedList(bool verbose = false);
 	~SinglyLinkedList();
 
 	bool	Insert(int data);
+	bool	Remove();
 	bool	Remove(int pos);
 	void	TestAllList();
 

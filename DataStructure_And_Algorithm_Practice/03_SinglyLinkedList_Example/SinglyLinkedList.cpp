@@ -2,7 +2,7 @@
 
 
 
-SinglyLinkedList::SinglyLinkedList()
+SinglyLinkedList::SinglyLinkedList(bool verbose) : verbose(verbose)
 {
 	head = new Node();
 	head->data = NULL;
@@ -20,7 +20,7 @@ bool	SinglyLinkedList::Insert(int data)
 	{
 		if (verbose)
 		{
-			fprintf(stderr, "# Warining: insertIndex is overflow");
+			fprintf(stderr, "# Warining: insertIndex is overflow\n");
 		}
 		return false;
 	}
@@ -46,20 +46,61 @@ bool	SinglyLinkedList::Insert(int data)
 	}
 }
 
+bool	SinglyLinkedList::Remove()
+{
+	if (head->next == NULL)
+	{
+		if (verbose)
+		{
+			fprintf(stderr, "# Warining: List is empty\n");
+		}
+		return false;
+	}
+	else
+	{
+		Node *temp = head->next->next;
+		Node *del = head->next;
+		delete del;
+		head->next = temp;
+	}
+}
+
 bool	SinglyLinkedList::Remove(int pos)
 {
-	return false;
+	if (head->next == NULL)
+	{
+		if (verbose)
+		{
+			fprintf(stderr, "# Warining: List is empty\n");
+		}
+		return false;
+	}
+	else
+	{
+		Node *temp = head->next;
+		Node *prev = head;
+		Node *del = head->next;
+		// Move node position
+		for (int i = 0; i < pos; i++)
+		{
+			temp = temp->next;
+			prev = prev->next;
+			del = del->next;
+		}
+		prev->next = temp->next;
+		insertIndex--;
+		delete del;
+	}
+	
 }
 
 void	SinglyLinkedList::TestAllList()
 {
-	for (int i = 0; i < LIST_SIZE; i++)
+	Node *temp = head;
+	while (temp->next != NULL)
 	{
-		Node *temp = head;
-		while (temp->next != NULL)
-		{
-			temp = temp->next;
-			fprintf(stdout, "%d\n", temp->data);
-		}
+		temp = temp->next;
+		fprintf(stdout, "%d\n", temp->data);
 	}
+	fprintf(stdout, "----\n");
 }
