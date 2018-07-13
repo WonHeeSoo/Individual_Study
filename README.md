@@ -17,4 +17,5 @@ Practice Data Structure and Algorithm.
 
 - Array Circular Queue
 - Array Linked List
+- Array Linked List of Template
 - Singly Linked List
