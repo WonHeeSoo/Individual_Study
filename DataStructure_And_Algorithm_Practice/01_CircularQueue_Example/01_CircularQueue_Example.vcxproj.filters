@@ -23,7 +23,7 @@
     <ClCompile Include="CircularQueue.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="Main.cpp">
+    <ClCompile Include="Main01.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>
