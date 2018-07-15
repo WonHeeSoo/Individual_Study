@@ -1,19 +1,11 @@
 #pragma once
 #include "stdio.h"
 
-class ALNode
+struct ALNode
 {
-public:
-	ALNode() : data(NULL), nodePos(NULL)
-	{
-	}
-	~ALNode()
-	{
-	}
-
-public:
 	int data;
-	ALNode* nodePos;
+
+	ALNode() : data(0) {}
 };
 
 class ArrayLinkedList
@@ -24,17 +16,16 @@ public:
 	~ArrayLinkedList();
 
 	// Insert new data
-	bool	Insert(int pos, int data);
+	bool Insert(int data, int pos);
 
 	// Insert new data
-	bool	Insert(int data);
+	bool Insert(int data);
 	
-
 	// Remove list data position
-	void	Remove(int pos);
+	bool Remove(int pos);
 
 	// Input Array
-	void	TestAllArray();
+	void TestAllArray();
 
 	// Private properties
 private:
@@ -45,8 +36,8 @@ private:
 	bool	verboseMode;
 
 	// ArrayList
-	ALNode	arrayList[ARRAY_SIZE];
+	ALNode	*elemArr[ARRAY_SIZE];
 
 	// Insert position
-	int		InsertIndex;
+	int		numElem;
 };

@@ -62,6 +62,7 @@ bool	SinglyLinkedList::Remove()
 		Node *del = head->next;
 		delete del;
 		head->next = temp;
+		return true;
 	}
 }
 
@@ -90,6 +91,7 @@ bool	SinglyLinkedList::Remove(int pos)
 		prev->next = temp->next;
 		insertIndex--;
 		delete del;
+		return true;
 	}
 	
 }

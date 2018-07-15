@@ -101,27 +101,37 @@ public:
 	}
 
 	// Remove list data position
-	void	Remove(int pos)
+	bool	Remove(int pos)
 	{
-		// Sorting arraylist
-		ALNode<T> *temp = arrayList[pos].nodePos;
-		delete temp;
-		arrayList[pos].data = NULL;
-		arrayList[pos].nodePos = NULL;
-
-		// Sorting arraylist
-		for (int i = pos; i < ARRAY_SIZE - 1; i++)
+		if (InsertIndex == 0)
 		{
-			arrayList[i] = arrayList[i + 1];
+			if (verboseMode)
+				fprintf(stderr, "# Warning: List is overflow!");
+			return false;
 		}
-		InsertIndex--;
-		// Arranging array behind InsertIndex
-		for (int i = InsertIndex; i < ARRAY_SIZE; i++)
+		else
 		{
-			ALNode<T> *temp = arrayList[i].nodePos;
+			// Sorting arraylist
+			ALNode<T> *temp = arrayList[pos].nodePos;
 			delete temp;
-			arrayList[i].data = NULL;
-			arrayList[i].nodePos = NULL;
+			arrayList[pos].data = NULL;
+			arrayList[pos].nodePos = NULL;
+
+			// Sorting arraylist
+			for (int i = pos; i < ARRAY_SIZE - 1; i++)
+			{
+				arrayList[i] = arrayList[i + 1];
+			}
+			InsertIndex--;
+			// Arranging array behind InsertIndex
+			for (int i = InsertIndex; i < ARRAY_SIZE; i++)
+			{
+				ALNode<T> *temp = arrayList[i].nodePos;
+				delete temp;
+				arrayList[i].data = NULL;
+				arrayList[i].nodePos = NULL;
+			}
+			return true;
 		}
 	}
 

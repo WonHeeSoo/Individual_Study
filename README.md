@@ -17,7 +17,7 @@ Practice data structure and algorithm.
 
 Project language is C++.
 
-#### Project List
+#### :pushpin: Project List
 - Array Circular Queue
 - Array Linked List
 - Array Linked List of Template

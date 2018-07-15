@@ -16,7 +16,6 @@ class SinglyLinkedList
 {
 public:
 	
-
 	// Public methods
 public:
 	SinglyLinkedList(bool verbose = false);
