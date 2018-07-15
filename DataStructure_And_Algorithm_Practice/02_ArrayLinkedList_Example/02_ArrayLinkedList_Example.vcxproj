@@ -119,7 +119,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ArrayLinkedList.cpp" />
-    <ClCompile Include="Main02.cpp" />
+    <ClCompile Include="Main02ArrList.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

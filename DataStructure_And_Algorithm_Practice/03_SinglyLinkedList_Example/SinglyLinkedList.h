@@ -1,15 +1,12 @@
 #pragma once
 #include <stdio.h>
-class Node
-{
-public:
-	Node(){}
-	~Node(){}
 
-	// Public properties
-public:
-	int		data;
-	Node	*next;
+struct Node
+{
+	int data;
+	Node *next;
+
+	Node() : data(NULL), next(NULL) {  }
 };
 
 class SinglyLinkedList
@@ -34,6 +31,6 @@ private:
 
 	Node	*head;
 
-	int		insertIndex;
+	int		nodeCnt;
 };
 
