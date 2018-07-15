@@ -9,6 +9,15 @@ SinglyLinkedList::SinglyLinkedList(bool verbose) : verbose(verbose)
 
 SinglyLinkedList::~SinglyLinkedList()
 {
+	Node *temp = head;
+	Node *del = head;
+	while (temp != NULL)
+	{
+		del = temp;
+		temp = temp->next;
+		delete del;
+	}
+	delete head;
 }
 
 bool	SinglyLinkedList::Insert(int data)
