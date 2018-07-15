@@ -66,6 +66,15 @@ bool ArrayLinkedList::Remove(int pos, int *pdata)
 		return false;
 	}
 
+	if (pos < 0 || pos >= numElem)
+	{
+		if (verboseMode)
+		{
+			fprintf(stderr, "# Warning: Insertindex is overflow\n");
+		}
+		return false;
+	}
+
 	if (pdata != NULL)
 		*pdata = elemArr[pos]->data;
 

@@ -1,165 +1,151 @@
 #pragma once
-#include "stdio.h"
+#include <stdio.h>
+#include <iostream>
 
 template <typename T>
-class ALNode
+struct ALNode
 {
-public:
-	ALNode<T>() : data(NULL), nodePos(NULL)
-	{
-	}
-	~ALNode<T>()
-	{
-	}
+	T data;
 
-public:
-	T			data;
-	ALNode<T>	*nodePos;
+	ALNode<T>() {}
 };
 
-
-template<typename T>
-class ArrayLinkedListTemplate
+template <typename T>
+class ArrayLinkedList
 {
 	// Public Methods
 public:
-	ArrayLinkedListTemplate<T>(bool verboseMode = false) : verboseMode(verboseMode), InsertIndex(0)
-	{
-	}
-	~ArrayLinkedListTemplate<T>()
-	{
-	}
+	ArrayLinkedList<T>(int arraySize = DEFAULT_ARRAY_SIZE, bool verboseMode = false);
+	~ArrayLinkedList<T>();
 
 	// Insert new data
-	bool	Insert(int pos, T data)
-	{
-		// Test if InsertInex is full
-		if (InsertIndex > 5)
-		{
-			if (verboseMode)
-			{
-				fprintf(stderr, "# Warning: List is overflow!");
-			}
-			return false;
-		}
-		else
-		{	// Test if insertinex and pos is overflow
-			if (InsertIndex == 5 || pos > 4)
-			{
-				if (verboseMode)
-				{
-					fprintf(stderr, "# Warning: Insertindex or position is overflow!");
-				}
-				return false;
-			}
-			else if (pos == 4)
-			{
-				// Create Dynamic allocation node
-				ALNode<T> *node = new ALNode<T>();
-				node->data = data;
-				node->nodePos = node;
-				arrayList[pos] = *node;
-			}
-			else
-			{
-				// Sorting arraylist
-				for (int i = 4; i > pos; i--)
-				{
-					arrayList[i] = arrayList[i - 1];
-				}
-				// Create Dynamic allocation node
-				ALNode<T> *node = new ALNode<T>();
-				node->data = data;
-				node->nodePos = node;
-				arrayList[pos] = *node;
-			}
-			InsertIndex++;
-			return true;
-		}
-	}
+	bool Insert(T data);
 
 	// Insert new data
-	bool	Insert(T data)
-	{
-		// Test if InsertInex is full
-		if (InsertIndex > 5)
-		{
-			if (verboseMode)
-				fprintf(stderr, "# Warning: List is overflow!");
-			return false;
-		}
-		else
-		{
-			// Create Dynamic allocation node
-			ALNode<T> *node = new ALNode<T>();
-			node->data = data;
-			node->nodePos = node;
-			arrayList[InsertIndex] = *node;
-			InsertIndex++;
-		}
-		return true;
-	}
+	bool Insert(T data, int pos);
 
 	// Remove list data position
-	bool	Remove(int pos)
+	bool Remove(int pos, T *pdata = NULL);
+	inline bool Remove(int pos, T &data)
 	{
-		if (InsertIndex == 0)
-		{
-			if (verboseMode)
-				fprintf(stderr, "# Warning: List is overflow!");
-			return false;
-		}
-		else
-		{
-			// Sorting arraylist
-			ALNode<T> *temp = arrayList[pos].nodePos;
-			delete temp;
-			arrayList[pos].data = NULL;
-			arrayList[pos].nodePos = NULL;
-
-			// Sorting arraylist
-			for (int i = pos; i < ARRAY_SIZE - 1; i++)
-			{
-				arrayList[i] = arrayList[i + 1];
-			}
-			InsertIndex--;
-			// Arranging array behind InsertIndex
-			for (int i = InsertIndex; i < ARRAY_SIZE; i++)
-			{
-				ALNode<T> *temp = arrayList[i].nodePos;
-				delete temp;
-				arrayList[i].data = NULL;
-				arrayList[i].nodePos = NULL;
-			}
-			return true;
-		}
+		return Remove(pos, &data);
 	}
 
 	// Input Array
-	void	TestAllArray()
-	{
-		for (int i = 0; i < 5; i++)
-		{
-			fprintf(stdout, "%d \n", arrayList[i].data);
-		}
-		fprintf(stdout, "- - -\n");
-	}
-
-	// Class Constants
-public:
-	static const int	EMPTY = -1;
+	void TestAllArray();
 
 	// Private properties
 private:
 	// Maximum array size
-	static const int	ARRAY_SIZE = 5;
+	static const int	DEFAULT_ARRAY_SIZE = 5;
 
 	// Explain state
-	bool		verboseMode;
+	bool	verboseMode;
 
 	// ArrayList
-	ALNode<T>	arrayList[ARRAY_SIZE];
+	int		arraySize;
+	ALNode<T>	**elemArr;
 
 	// Insert position
-	int			InsertIndex;
+	int		numElem;
 };
+
+
+template <typename T>
+ArrayLinkedList<T>::ArrayLinkedList(int arraySize, bool verboseMode) : verboseMode(verboseMode), arraySize(arraySize), numElem(0)
+{
+	elemArr = new ALNode<T>*[arraySize];
+}
+
+template <typename T>
+ArrayLinkedList<T>::~ArrayLinkedList()
+{
+	for (int i = 0; i < numElem; i++)
+	{
+		delete elemArr[i];
+	}
+	delete elemArr;
+}
+
+template <typename T>
+bool ArrayLinkedList<T>::Insert(T data)
+{
+	return Insert(data, numElem);
+}
+
+template <typename T>
+bool ArrayLinkedList<T>::Insert(T data, int pos)
+{
+	// Test if InsertInex is full
+	if (numElem >= arraySize)
+	{
+		if (verboseMode)
+		{
+			fprintf(stderr, "# Error: List is overflow!\n");
+		}
+		return false;
+	}
+
+	// Test if pos is within a valid range
+	if (pos < 0 || pos >= arraySize)
+	{
+		if (verboseMode)
+		{
+			fprintf(stderr, "# Error: pos is not within a valid range\n");
+		}
+		return false;
+	}
+
+	// Sorting arraylist
+	for (int i = numElem; i > pos; i--)
+	{
+		elemArr[i] = elemArr[i - 1];
+	}
+	// Create Dynamic allocation node
+	ALNode<T> *node = new ALNode<T>();
+	node->data = data;
+	elemArr[pos] = node;
+
+	numElem++;
+	return true;
+}
+
+template <typename T>
+bool ArrayLinkedList<T>::Remove(int pos, T *pdata)
+{
+	if (numElem == 0)
+	{
+		if (verboseMode)
+		{
+			fprintf(stderr, "# Warning: Insertindex is empty\n");
+		}
+		return false;
+	}
+
+	if (pdata != NULL)
+		*pdata = elemArr[pos]->data;
+
+	// Delete the node pointed by 'pos'
+	delete elemArr[pos];
+
+	// Shift the elements after 'pos'
+	for (int i = pos; i < numElem - 1; i++)
+	{
+		elemArr[i] = elemArr[i + 1];
+	}
+	numElem--;
+
+	return true;
+}
+
+template <typename T>
+void ArrayLinkedList<T>::TestAllArray()
+{
+	printf("   > num_elem = %d,   ", numElem);
+
+	for (int i = 0; i < numElem; i++)
+	{
+		std::cout << "  " << elemArr[i]->data;
+	}
+	printf("\n");
+}
