@@ -12,17 +12,21 @@ class ArrayLinkedList
 {
 	// Public Methods
 public:
-	ArrayLinkedList(bool verboseMode = false);
+	ArrayLinkedList(int arraySize = DEFAULT_ARRAY_SIZE, bool verboseMode = false);
 	~ArrayLinkedList();
 
 	// Insert new data
-	bool Insert(int data, int pos);
+	bool Insert(int data);
 
 	// Insert new data
-	bool Insert(int data);
+	bool Insert(int data, int pos);
 	
 	// Remove list data position
-	bool Remove(int pos);
+	bool Remove(int pos, int *pdata = NULL);
+	inline bool Remove(int pos, int &data)
+	{
+		return Remove(pos, &data);
+	}
 
 	// Input Array
 	void TestAllArray();
@@ -30,13 +34,14 @@ public:
 	// Private properties
 private:
 	// Maximum array size
-	static const int	ARRAY_SIZE = 5;
+	static const int	DEFAULT_ARRAY_SIZE = 5;
 
 	// Explain state
 	bool	verboseMode;
 
 	// ArrayList
-	ALNode	*elemArr[ARRAY_SIZE];
+	int		arraySize;
+	ALNode	**elemArr;
 
 	// Insert position
 	int		numElem;

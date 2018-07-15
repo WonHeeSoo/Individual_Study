@@ -1,51 +1,42 @@
 #include "ArrayLinkedList.h"
 
-ArrayLinkedList::ArrayLinkedList(bool verboseMode) : verboseMode(verboseMode), numElem(0)
+ArrayLinkedList::ArrayLinkedList(int arraySize, bool verboseMode) : verboseMode(verboseMode), arraySize(arraySize), numElem(0)
 {
+	elemArr = new ALNode*[arraySize];
 }
 
 ArrayLinkedList::~ArrayLinkedList()
 {
+	for (int i = 0; i < numElem; i++)
+	{
+		delete elemArr[i];
+	}
+	delete elemArr;
 }
 
 bool ArrayLinkedList::Insert(int data)
 {
-	// Test if InsertInex is full
-	if (numElem >= ARRAY_SIZE)
-	{
-		if (verboseMode)
-			fprintf(stderr, "# Warning: List is overflow!");
-		return false;
-	}
-	else
-	{
-		// Create Dynamic allocation node
-		ALNode *node = new ALNode();
-		node->data = data;
-		elemArr[numElem] = node;
-		numElem++;
-		return true;
-	}
+	return Insert(data, numElem);
 }
 
 bool ArrayLinkedList::Insert(int data, int pos)
 {
 	// Test if InsertInex is full
-	if (numElem >= ARRAY_SIZE)
+	if (numElem >= arraySize)
 	{
 		if (verboseMode)
 		{
-			fprintf(stderr, "# Error: List is overflow!");
+			fprintf(stderr, "# Error: List is overflow!\n");
 		}
 		return false;
 	}
 
 	// Test if pos is within a valid range
-	if (pos < 0 || pos >= ARRAY_SIZE)
+	if (pos < 0 || pos >= arraySize)
 	{
 		if (verboseMode)
 		{
-			fprintf(stderr, "# Error: pos is not within a valid range");
+			fprintf(stderr, "# Error: pos is not within a valid range\n");
 		}
 		return false;
 	}
@@ -64,47 +55,40 @@ bool ArrayLinkedList::Insert(int data, int pos)
 	return true;
 }
 
-bool ArrayLinkedList::Remove(int pos)
+bool ArrayLinkedList::Remove(int pos, int *pdata)
 {
 	if (numElem == 0)
 	{
 		if (verboseMode)
 		{
-			fprintf(stderr, "# Warning: Insertindex is empty");
+			fprintf(stderr, "# Warning: Insertindex is empty\n");
 		}
 		return false;
 	}
-	else
-	{
-		// Sorting arraylist
-		ALNode *temp = elemArr[pos].nodePos;
-		delete temp;
-		elemArr[pos].data = NULL;
-		elemArr[pos].nodePos = NULL;
 
-		// Sorting arraylist
-		for (int i = pos; i < ARRAY_SIZE - 1; i++)
-		{
-			elemArr[i] = elemArr[i + 1];
-		}
-		numElem--;
-		// Arranging array behind InsertIndex
-		for (int i = numElem; i < ARRAY_SIZE; i++)
-		{
-			ALNode *temp = elemArr[i].nodePos;
-			delete temp;
-			elemArr[i].data = NULL;
-			elemArr[i].nodePos = NULL;
-		}
-		return true;
+	if (pdata != NULL)
+		*pdata = elemArr[pos]->data;
+
+	// Delete the node pointed by 'pos'
+	delete elemArr[pos];
+
+	// Shift the elements after 'pos'
+	for (int i = pos; i < numElem - 1; i++)
+	{
+		elemArr[i] = elemArr[i + 1];
 	}
+	numElem--;
+
+	return true;
 }
 
 void ArrayLinkedList::TestAllArray()
 {
-	for (int i = 0; i < ARRAY_SIZE; i++)
+	printf("   > num_elem = %d,   ", numElem);
+
+	for (int i = 0; i < arraySize; i++)
 	{
-		fprintf(stdout, "%d \n", elemArr[i].data);
+		printf("%4d ", elemArr[i]->data);
 	}
-	fprintf(stdout, "- - -\n");
+	printf("\n");
 }

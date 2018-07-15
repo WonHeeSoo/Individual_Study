@@ -3,7 +3,7 @@
 
 int main()
 {
-	ArrayLinkedList *list = new ArrayLinkedList(false);
+	ArrayLinkedList *list = new ArrayLinkedList(true);
 
 	list->Insert(3);
 	list->Insert(2);
@@ -12,12 +12,15 @@ int main()
 	list->Insert(1);
 	
 	list->TestAllArray();
-
-	list->Remove(2);
+	
+	int		val;
+	int		index = 2;
+	list->Remove(index, val);
+	printf("Removed the value '%d' at the index %d\n", val, index);
 
 	list->TestAllArray();
 
-	list->Insert(2, 10);
+	list->Insert(10,2);
 
 	list->TestAllArray();
 
