@@ -18,7 +18,8 @@ public:
 	SinglyLinkedList(bool verbose = false);
 	~SinglyLinkedList();
 
-	bool	Insert(int data);
+	bool	Insert(int data, int pos = 0);
+	//bool	Insert(int data);
 	bool	Remove();
 	bool	Remove(int pos);
 	void	TestAllList();
@@ -30,6 +31,9 @@ private:
 	bool	verbose;
 
 	Node	*head;
+	Node	*prev;
+	Node	*del;
+	Node	*temp;
 
 	int		nodeCnt;
 };

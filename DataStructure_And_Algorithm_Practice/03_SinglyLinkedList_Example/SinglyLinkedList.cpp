@@ -9,8 +9,8 @@ SinglyLinkedList::SinglyLinkedList(bool verbose) : verbose(verbose)
 
 SinglyLinkedList::~SinglyLinkedList()
 {
-	Node *temp = head;
-	Node *del = head;
+	temp = head;
+	del = head;
 	while (temp != NULL)
 	{
 		del = temp;
@@ -20,6 +20,30 @@ SinglyLinkedList::~SinglyLinkedList()
 	delete head;
 }
 
+bool	SinglyLinkedList::Insert(int data, int pos)
+{
+	if (nodeCnt > 4)
+	{
+		if (verbose)
+		{
+			fprintf(stderr, "# Error: insertIndex is overflow\n");
+		}
+		return false;
+	}
+
+	Node *node = new Node();
+	node->data = data;
+	temp = head;
+	for (int i = 0; i < pos; i++)
+	{
+		temp = temp->next;
+	}
+	node->next = temp->next;
+	temp->next = node;
+	nodeCnt++;
+	return true;
+}
+/*
 bool	SinglyLinkedList::Insert(int data)
 {
 	if (nodeCnt > 4)
@@ -31,24 +55,13 @@ bool	SinglyLinkedList::Insert(int data)
 		return false;
 	}
 
-	if (nodeCnt == 0)
-	{
-		Node *node = new Node();
-		node->data = data;
-		head->next = node;
-		nodeCnt++;
-		return true;
-	}
-	else
-	{
-		Node *node = new Node();
-		node->data = data;
-		node->next = head->next;
-		head->next = node;
-		nodeCnt++;
-		return true;
-	}
-}
+	Node *node = new Node();
+	node->data = data;
+	if(nodeCnt != 0) { node->next = head->next; }
+	head->next = node;
+	nodeCnt++;
+	return true;
+}*/
 
 bool	SinglyLinkedList::Remove()
 {
@@ -61,9 +74,8 @@ bool	SinglyLinkedList::Remove()
 		return false;
 	}
 
-	Node *temp = head->next->next;
-	Node *del = head->next;
-	head->next = temp;
+	del = head->next;
+	head->next = head->next->next;;
 	delete del;
 	return true;
 }
@@ -79,9 +91,9 @@ bool	SinglyLinkedList::Remove(int pos)
 		return false;
 	}
 
-	Node *prev = head;
-	Node *del = head->next;
-	Node *temp = head->next->next;
+	prev = head;
+	del = head->next;
+	temp = head->next->next;
 	// Move node position
 	for (int i = 0; i < pos; i++)
 	{
@@ -97,7 +109,7 @@ bool	SinglyLinkedList::Remove(int pos)
 
 void	SinglyLinkedList::TestAllList()
 {
-	Node *temp = head;
+	temp = head;
 	
 	while (temp->next != NULL)
 	{
