@@ -2,7 +2,7 @@
 
 ## 1. Introduce
 
-Programming practice
+Programming practice.
 
 
 ## 2. Folder List
@@ -18,6 +18,7 @@ Project language is C++.
 - Array Linked List
 - Array Linked List of Template
 - Singly Linked List
+- Singly Linked List of No Dummy
 
 ### :file_folder: Android_Studio
 
