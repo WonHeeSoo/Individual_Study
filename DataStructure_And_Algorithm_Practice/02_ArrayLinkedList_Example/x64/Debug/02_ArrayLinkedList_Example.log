@@ -1,2 +1,14 @@
-﻿  Main02ArrayLinkedList.cpp
+﻿  Main02ArrList.cpp
+f:\dev\programming_practice\datastructure_and_algorithm_practice\02_arraylinkedlist_example\main02arrlist.cpp(15): warning C4477: 'printf' : 서식 문자열 '%d'에 'int' 형식의 인수가 필요하지만 variadic 인수 1의 형식이 'size_t'입니다.
+  f:\dev\programming_practice\datastructure_and_algorithm_practice\02_arraylinkedlist_example\main02arrlist.cpp(15): note: 서식 문자열에서 '%zd'을(를) 사용하는 것이 좋습니다.
+f:\dev\programming_practice\datastructure_and_algorithm_practice\02_arraylinkedlist_example\main02arrlist.cpp(16): warning C4477: 'printf' : 서식 문자열 '%d'에 'int' 형식의 인수가 필요하지만 variadic 인수 1의 형식이 'size_t'입니다.
+  f:\dev\programming_practice\datastructure_and_algorithm_practice\02_arraylinkedlist_example\main02arrlist.cpp(16): note: 서식 문자열에서 '%zd'을(를) 사용하는 것이 좋습니다.
+f:\dev\programming_practice\datastructure_and_algorithm_practice\02_arraylinkedlist_example\main02arrlist.cpp(17): warning C4477: 'printf' : 서식 문자열 '%d'에 'int' 형식의 인수가 필요하지만 variadic 인수 1의 형식이 'size_t'입니다.
+  f:\dev\programming_practice\datastructure_and_algorithm_practice\02_arraylinkedlist_example\main02arrlist.cpp(17): note: 서식 문자열에서 '%zd'을(를) 사용하는 것이 좋습니다.
+f:\dev\programming_practice\datastructure_and_algorithm_practice\02_arraylinkedlist_example\main02arrlist.cpp(18): warning C4477: 'printf' : 서식 문자열 '%d'에 'int' 형식의 인수가 필요하지만 variadic 인수 1의 형식이 'size_t'입니다.
+  f:\dev\programming_practice\datastructure_and_algorithm_practice\02_arraylinkedlist_example\main02arrlist.cpp(18): note: 서식 문자열에서 '%zd'을(를) 사용하는 것이 좋습니다.
+f:\dev\programming_practice\datastructure_and_algorithm_practice\02_arraylinkedlist_example\main02arrlist.cpp(19): warning C4477: 'printf' : 서식 문자열 '%d'에 'int' 형식의 인수가 필요하지만 variadic 인수 1의 형식이 'unsigned __int64'입니다.
+  f:\dev\programming_practice\datastructure_and_algorithm_practice\02_arraylinkedlist_example\main02arrlist.cpp(19): note: 서식 문자열에서 '%lld'을(를) 사용하는 것이 좋습니다.
+  f:\dev\programming_practice\datastructure_and_algorithm_practice\02_arraylinkedlist_example\main02arrlist.cpp(19): note: 서식 문자열에서 '%Id'을(를) 사용하는 것이 좋습니다.
+  f:\dev\programming_practice\datastructure_and_algorithm_practice\02_arraylinkedlist_example\main02arrlist.cpp(19): note: 서식 문자열에서 '%I64d'을(를) 사용하는 것이 좋습니다.
   02_ArrayLinkedList_Example.vcxproj -> F:\Dev\Programming_Practice\DataStructure_And_Algorithm_Practice\x64\Debug\02_ArrayLinkedList_Example.exe

@@ -6,7 +6,7 @@ int main()
 	SinglyLinkedList *list = new SinglyLinkedList(true);
 
 	// List is empty
-	list->Remove();
+	//list->Remove();
 
 	list->Insert(3);
 	list->Insert(2);

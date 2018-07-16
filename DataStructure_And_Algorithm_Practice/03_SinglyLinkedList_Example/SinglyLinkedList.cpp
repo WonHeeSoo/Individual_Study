@@ -1,28 +1,28 @@
 #include "SinglyLinkedList.h"
+#include <stdlib.h>
+
+#define min_val(a,b)  (((a) < (b)) ? (a) : (b))
 
 
-
-SinglyLinkedList::SinglyLinkedList(bool verbose) : verbose(verbose)
+SinglyLinkedList::SinglyLinkedList(bool verbose) : verbose(verbose), nodeCnt(0)
 {
-	head = new Node();
 }
 
 SinglyLinkedList::~SinglyLinkedList()
 {
-	temp = head;
-	del = head;
+	Node *temp = head.next;
+	Node *del = temp;
 	while (temp != NULL)
 	{
 		del = temp;
 		temp = temp->next;
 		delete del;
 	}
-	delete head;
 }
 
-bool	SinglyLinkedList::Insert(int data, int pos)
+bool SinglyLinkedList::Insert(int data, int pos)
 {
-	if (nodeCnt > 4)
+	if (nodeCnt >= LIST_SIZE)
 	{
 		if (verbose)
 		{
@@ -31,15 +31,16 @@ bool	SinglyLinkedList::Insert(int data, int pos)
 		return false;
 	}
 
-	Node *node = new Node();
-	node->data = data;
-	temp = head;
-	for (int i = 0; i < pos; i++)
+	Node *cur_node = &head;
+	for (int i = 0; i < pos; i++) // min test
 	{
-		temp = temp->next;
+		if (cur_node->next == NULL)
+			break;
+		cur_node = cur_node->next;
 	}
-	node->next = temp->next;
-	temp->next = node;
+	Node *node = new Node(data);
+	node->next = cur_node->next;
+	cur_node->next = node;
 	nodeCnt++;
 	return true;
 }
@@ -63,9 +64,10 @@ bool	SinglyLinkedList::Insert(int data)
 	return true;
 }*/
 
-bool	SinglyLinkedList::Remove()
+bool SinglyLinkedList::Remove()
 {
-	if (head->next == NULL)
+	Node *del = head.next;
+	if (del == NULL)
 	{
 		if (verbose)
 		{
@@ -74,15 +76,14 @@ bool	SinglyLinkedList::Remove()
 		return false;
 	}
 
-	del = head->next;
-	head->next = head->next->next;;
+	head.next = del->next;
 	delete del;
 	return true;
 }
 
 bool	SinglyLinkedList::Remove(int pos)
 {
-	if (head->next == NULL)
+	if (head.next == NULL)
 	{
 		if (verbose)
 		{
@@ -91,11 +92,11 @@ bool	SinglyLinkedList::Remove(int pos)
 		return false;
 	}
 
-	prev = head;
-	del = head->next;
-	temp = head->next->next;
+	Node *prev = &head;
+	Node *del = head.next;
+	Node *temp = del->next;
 	// Move node position
-	for (int i = 0; i < pos; i++)
+	for (int i = 0; i < min_val(pos, nodeCnt - 1); i++)
 	{
 		prev = prev->next;
 		del = del->next;
@@ -109,12 +110,12 @@ bool	SinglyLinkedList::Remove(int pos)
 
 void	SinglyLinkedList::TestAllList()
 {
-	temp = head;
+	Node *cur = head.next;
 	
-	while (temp->next != NULL)
+	while (cur != NULL)
 	{
-		temp = temp->next;
-		fprintf(stdout, "%d ", temp->data);
+		printf("%d ", cur->data);
+		cur = cur->next;
 	}
 	printf("\n----\n");
 }
