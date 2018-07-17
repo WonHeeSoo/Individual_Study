@@ -57,10 +57,38 @@ bool SinglyLinkedListNoDummy::Remove()
 
 bool SinglyLinkedListNoDummy::Remove(int pos)
 {
+	if (pos < 0)
+	{
+		return false;
+	}
+
+	Node *delNode = head;
+	if (pos == 0)
+	{
+		head = head->next;
+		delete delNode;
+	}
+	
+	Node *prevNode = head;
+	delNode = delNode->next;
+	Node *nextNode = delNode->next;
+	for (int i = 1; i < __min(pos, nodeCnt); i++)
+	{
+		prevNode = prevNode->next;
+		delNode = delNode->next;
+		nextNode = nextNode->next;
+	}
+	prevNode->next = nextNode;
+	delete delNode;
 	return true;
 }
 
 void SinglyLinkedListNoDummy::TestAllList()
 {
-
+	Node *testNode = head;
+	while (testNode != NULL)
+	{
+		printf("%d ,", testNode->data);
+	}
+	printf("\n");
 }
