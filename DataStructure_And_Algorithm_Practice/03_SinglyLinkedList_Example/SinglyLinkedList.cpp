@@ -32,7 +32,7 @@ bool SinglyLinkedList::Insert(int data, int pos)
 	}
 
 	Node *cur_node = &head;
-	for (int i = 0; i < min_val(pos, nodeCnt); i++) // min test
+	for (int i = 0; i < min_val(pos, nodeCnt+1); i++) // min test
 	{
 		if (cur_node->next == NULL)
 			break;

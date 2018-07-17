@@ -3,5 +3,6 @@
 
 int main()
 {
+	SinglyLinkedListNoDummy *list = new SinglyLinkedListNoDummy();
 	return 0;
 }
