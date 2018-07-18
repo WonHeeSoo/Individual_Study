@@ -118,7 +118,7 @@
     <ClInclude Include="SinglyLinkedListNoDummy.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Main03SinglyListNoDummy.cpp" />
+    <ClCompile Include="Main03NoDummy.cpp" />
     <ClCompile Include="SinglyLinkedListNoDummy.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

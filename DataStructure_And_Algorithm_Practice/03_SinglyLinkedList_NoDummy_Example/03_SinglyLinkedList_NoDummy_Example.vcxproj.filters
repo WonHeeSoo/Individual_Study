@@ -23,7 +23,7 @@
     <ClCompile Include="SinglyLinkedListNoDummy.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="Main03SinglyListNoDummy.cpp">
+    <ClCompile Include="Main03NoDummy.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>

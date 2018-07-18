@@ -4,7 +4,7 @@
     <ClCompile Include="SinglyLinkedList.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="Main03SinglyList.cpp">
+    <ClCompile Include="Main03.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>

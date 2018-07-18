@@ -118,7 +118,7 @@
     <ClInclude Include="SinglyLinkedListTemplate.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Main03SinglyListTemplate.cpp" />
+    <ClCompile Include="Main03Template.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
