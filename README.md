@@ -20,6 +20,7 @@ Project language is C++.
 - Singly Linked List
 - Singly Linked List of No Dummy
 - Singly Linked List of Template
+- Circular Linked List
 
 ### :file_folder: Android_Studio
 
