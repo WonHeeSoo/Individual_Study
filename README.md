@@ -19,6 +19,7 @@ Project language is C++.
 - Array Linked List of Template
 - Singly Linked List
 - Singly Linked List of No Dummy
+- Singly Linked List of Template
 
 ### :file_folder: Android_Studio
 
