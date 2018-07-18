@@ -1,6 +1,6 @@
 #include "SinglyLinkedListNoDummy.h"
 
-SinglyLinkedListNoDummy::SinglyLinkedListNoDummy()
+SinglyLinkedListNoDummy::SinglyLinkedListNoDummy() : nodeCnt(0)
 {
 }
 
@@ -17,6 +17,8 @@ bool SinglyLinkedListNoDummy::Insert(int data, int pos)
 
 	if (nodeCnt == 0)
 	{
+		//Node *newNode = new Node(data);
+		//head = newNode;
 		head = new Node(data);
 		nodeCnt++;
 		return true;
@@ -28,12 +30,13 @@ bool SinglyLinkedListNoDummy::Insert(int data, int pos)
 		Node *node = new Node(data);
 		head = node;
 		head->next = nextNode;
+		nodeCnt++;
 		return true;
 	}
 
 	Node *prevNode = head;
 	Node *nextNode = head->next;
-	for (int i = 0; i <= __min(pos, nodeCnt); i++)
+	for (int i = 0; i < __min(pos-1, nodeCnt-1); i++)
 	{
 		prevNode = prevNode->next;
 		nextNode = nextNode->next;
@@ -41,17 +44,32 @@ bool SinglyLinkedListNoDummy::Insert(int data, int pos)
 	Node *newNode = new Node(data);
 	prevNode->next = newNode;
 	newNode->next = nextNode;
+	nodeCnt++;
 	return true;
 }
 
 bool SinglyLinkedListNoDummy::Remove()
 {
-	Node *del = head;
+	if (nodeCnt < 1)
+	{
+		return false;
+	}
+	
+	if (nodeCnt == 1)
+	{
+		delete head;
+	}
+
+	Node *prev = head;
+	Node *del = head->next;
 	while (del->next != NULL)
 	{
-		del = head->next;
+		prev = prev->next;
+		del = del->next;
 	}
 	delete del;
+	prev->next = NULL;
+	nodeCnt--;
 	return true;
 }
 
@@ -78,8 +96,11 @@ bool SinglyLinkedListNoDummy::Remove(int pos)
 		delNode = delNode->next;
 		nextNode = nextNode->next;
 	}
+
 	prevNode->next = nextNode;
+
 	delete delNode;
+	nodeCnt--;
 	return true;
 }
 
@@ -89,6 +110,7 @@ void SinglyLinkedListNoDummy::TestAllList()
 	while (testNode != NULL)
 	{
 		printf("%d ,", testNode->data);
+		testNode = testNode->next;
 	}
 	printf("\n");
 }

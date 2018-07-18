@@ -22,4 +22,4 @@ Project language is C++.
 
 ### :file_folder: Android_Studio
 
-Held Project
+Held Project.
