@@ -16,17 +16,18 @@ Project language is C++.
 #### :pushpin: Project List
 - Array Circular Queue
 - Array Linked List
-- Array Linked List of Template
+- Template-based Array Linked List
 - Singly Linked List
-- Singly Linked List of No Dummy
-- Singly Linked List of Template
+- No-Dummy-based Singly Linked List
+- Template-based Singly Linked List
 - Circular Linked List
 
 #### :ballot_box_with_check: To Do
-[ ] Circular Linekd List of Template
-[ ] Doubly Linked List
-[ ] Doubly Linked List of Template
-[ ] Stack
+- [ ] Template-based Circular Linekd List
+- [ ] Doubly Linked List
+- [ ] Template-based Doubly Linked List
+- [ ] Array Stack
+- [ ] Linked List Stack
 
 ### :file_folder: Android_Studio
 
