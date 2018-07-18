@@ -22,6 +22,12 @@ Project language is C++.
 - Singly Linked List of Template
 - Circular Linked List
 
+#### :ballot_box_with_check: To Do
+[ ] Circular Linekd List of Template
+[ ] Doubly Linked List
+[ ] Doubly Linked List of Template
+[ ] Stack
+
 ### :file_folder: Android_Studio
 
 Held Project.
