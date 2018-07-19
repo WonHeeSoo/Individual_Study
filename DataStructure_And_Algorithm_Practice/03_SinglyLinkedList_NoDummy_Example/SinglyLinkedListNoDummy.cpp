@@ -80,6 +80,11 @@ bool SinglyLinkedListNoDummy::Remove(int pos)
 		return false;
 	}
 
+	if (nodeCnt == 1)
+	{
+		delete head;
+	}
+
 	Node *delNode = head;
 	if (pos == 0)
 	{
