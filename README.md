@@ -24,6 +24,7 @@ Project language is C++.
 
 #### :ballot_box_with_check: To Do
 - [ ] Template-based Circular Linekd List
+- [ ] No-Dummy-based Circular Linked List
 - [ ] Doubly Linked List
 - [ ] Template-based Doubly Linked List
 - [ ] Array Stack
