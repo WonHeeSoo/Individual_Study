@@ -6,6 +6,16 @@ SinglyLinkedListNoDummy::SinglyLinkedListNoDummy() : nodeCnt(0)
 
 SinglyLinkedListNoDummy::~SinglyLinkedListNoDummy()
 {
+	Node *del = head;
+	Node *cur = head;
+	while (cur != NULL)
+	{
+		delete del;
+		cur = cur->next;
+		del = cur;
+	}
+
+
 }
 
 bool SinglyLinkedListNoDummy::Insert(int data, int pos)
@@ -17,8 +27,6 @@ bool SinglyLinkedListNoDummy::Insert(int data, int pos)
 
 	if (nodeCnt == 0)
 	{
-		//Node *newNode = new Node(data);
-		//head = newNode;
 		head = new Node(data);
 		nodeCnt++;
 		return true;
@@ -58,6 +66,8 @@ bool SinglyLinkedListNoDummy::Remove()
 	if (nodeCnt == 1)
 	{
 		delete head;
+		nodeCnt--;
+		return true;
 	}
 
 	Node *prev = head;
@@ -75,7 +85,7 @@ bool SinglyLinkedListNoDummy::Remove()
 
 bool SinglyLinkedListNoDummy::Remove(int pos)
 {
-	if (pos < 0)
+	if (pos < 0 || nodeCnt < 1)
 	{
 		return false;
 	}
@@ -83,6 +93,8 @@ bool SinglyLinkedListNoDummy::Remove(int pos)
 	if (nodeCnt == 1)
 	{
 		delete head;
+		nodeCnt--;
+		return true;
 	}
 
 	Node *delNode = head;
@@ -90,6 +102,8 @@ bool SinglyLinkedListNoDummy::Remove(int pos)
 	{
 		head = head->next;
 		delete delNode;
+		nodeCnt--;
+		return true;
 	}
 	
 	Node *prevNode = head;
