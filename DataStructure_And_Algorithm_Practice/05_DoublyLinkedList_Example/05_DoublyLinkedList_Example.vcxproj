@@ -115,6 +115,11 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="DoublyLinkedList.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="DoublyLinkedList.cpp" />
+    <ClCompile Include="Main05.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
