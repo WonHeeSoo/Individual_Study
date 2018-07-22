@@ -13,12 +13,12 @@ class SinglyLinkedListNoDummy
 {
 public:
 	SinglyLinkedListNoDummy();
-	~SinglyLinkedListNoDummy();
+	virtual ~SinglyLinkedListNoDummy();
 
-	bool	Insert(int data = 0, int pos = 0);
-	bool	Remove();
-	bool	Remove(int pos);
-	void	TestAllList();
+	void Insert(int data, size_t pos = 0);
+	//void Remove();
+	int Remove(size_t pos = 0);
+	void TestAllList();
 
 private:
 	Node	*head;

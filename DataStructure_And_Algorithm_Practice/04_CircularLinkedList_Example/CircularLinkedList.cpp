@@ -64,7 +64,6 @@ bool CircularLinkedList::Remove(int pos)
 
 	if (nodeCnt == 1)
 	{
-		
 		delete tail.next;
 		nodeCnt--;
 		return true;

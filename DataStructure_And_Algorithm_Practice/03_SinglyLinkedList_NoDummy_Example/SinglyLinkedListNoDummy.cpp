@@ -1,6 +1,7 @@
 #include "SinglyLinkedListNoDummy.h"
+#include <assert.h>
 
-SinglyLinkedListNoDummy::SinglyLinkedListNoDummy() : nodeCnt(0)
+SinglyLinkedListNoDummy::SinglyLinkedListNoDummy() : nodeCnt(0), head(NULL)
 {
 }
 
@@ -10,125 +11,112 @@ SinglyLinkedListNoDummy::~SinglyLinkedListNoDummy()
 	Node *cur = head;
 	while (cur != NULL)
 	{
-		delete del;
 		cur = cur->next;
+		delete del;
 		del = cur;
 	}
-
-
 }
 
-bool SinglyLinkedListNoDummy::Insert(int data, int pos)
+void SinglyLinkedListNoDummy::Insert(int data, size_t pos)
 {
-	if (pos < 0)
-	{
-		return false;
-	}
-
 	if (nodeCnt == 0)
 	{
+		assert(head == NULL);
 		head = new Node(data);
 		nodeCnt++;
-		return true;
+		return;
 	}
+	assert(head != NULL);
+	assert(nodeCnt != 0);
 
-	if (nodeCnt != 0 && pos == 0)
+	if (pos == 0)
 	{
-		Node *nextNode = head;
 		Node *node = new Node(data);
+		node->next = head;
 		head = node;
-		head->next = nextNode;
 		nodeCnt++;
-		return true;
+		return;
 	}
 
 	Node *prevNode = head;
-	Node *nextNode = head->next;
 	for (int i = 0; i < __min(pos-1, nodeCnt-1); i++)
 	{
 		prevNode = prevNode->next;
-		nextNode = nextNode->next;
 	}
 	Node *newNode = new Node(data);
+	newNode->next = prevNode->next;
 	prevNode->next = newNode;
-	newNode->next = nextNode;
 	nodeCnt++;
-	return true;
 }
 
-bool SinglyLinkedListNoDummy::Remove()
+/*void SinglyLinkedListNoDummy::Remove()
 {
-	if (nodeCnt < 1)
-	{
-		return false;
-	}
-	
+	assert(nodeCnt < 1);
+
 	if (nodeCnt == 1)
 	{
 		delete head;
 		nodeCnt--;
-		return true;
+		return;
 	}
 
 	Node *prev = head;
-	Node *del = head->next;
-	while (del->next != NULL)
+	while (prev->next != NULL)
 	{
 		prev = prev->next;
-		del = del->next;
 	}
+	Node *del = prev;
 	delete del;
-	prev->next = NULL;
 	nodeCnt--;
-	return true;
-}
+}*/
 
-bool SinglyLinkedListNoDummy::Remove(int pos)
+int SinglyLinkedListNoDummy::Remove(size_t pos)
 {
-	if (pos < 0 || nodeCnt < 1)
+	assert(nodeCnt >= 0);
+
+	if (nodeCnt == 0)
 	{
-		return false;
+		fprintf(stderr, "# Error: List is Empty\n");
+		//exit(-1);
+		return -1;
 	}
 
-	if (nodeCnt == 1)
+	if (pos == 0 || nodeCnt == 1)
 	{
-		delete head;
-		nodeCnt--;
-		return true;
-	}
-
-	Node *delNode = head;
-	if (pos == 0)
-	{
+		int data = head->data;
+		Node *delNode = head;
 		head = head->next;
 		delete delNode;
 		nodeCnt--;
-		return true;
+		return data;
 	}
 	
 	Node *prevNode = head;
-	delNode = delNode->next;
-	Node *nextNode = delNode->next;
-	for (int i = 1; i < __min(pos, nodeCnt); i++)
+	for (int i = 0; i < __min(pos-1, nodeCnt-2); i++)
 	{
 		prevNode = prevNode->next;
-		delNode = delNode->next;
-		nextNode = nextNode->next;
 	}
-
-	prevNode->next = nextNode;
-
+	Node *delNode = prevNode->next;
+	prevNode->next = delNode->next;
+	int data = delNode->data;
 	delete delNode;
 	nodeCnt--;
-	return true;
+	return data;
 }
 
 void SinglyLinkedListNoDummy::TestAllList()
 {
+	if (head == NULL)
+	{
+		printf("List is Empty\n");
+		return;
+	}
 	Node *testNode = head;
+	printf("%d", testNode->data);
+	testNode = testNode->next;
 	while (testNode != NULL)
 	{
-		printf("%d ,", testNode->data);
+		printf(", %d", testNode->data);
 		testNode = testNode->next;
 	}
 	printf("\n");

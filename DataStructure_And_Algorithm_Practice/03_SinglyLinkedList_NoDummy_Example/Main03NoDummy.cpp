@@ -27,5 +27,16 @@ int main()
 	list->Remove(2);
 
 	list->TestAllList();
+
+	list->Remove(10);
+
+	list->TestAllList();
+
+	list->Remove();
+	list->Remove();
+	list->Remove();
+	list->Remove();
+
+	list->TestAllList();
 	return 0;
 }
