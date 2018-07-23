@@ -20,7 +20,9 @@ public:
 	inline bool InsertHead(int data) { return Insert(data, 0); }
 	inline bool InsertTail(int data) { return Insert(data, -1); }
 
-	bool Remove(int pos = 0);
+	int Remove(int pos = 0);
+	inline int RemoveHead(int data) { return Remove(0); }
+	inline int RemoveTail(int data) { return Remove(-1); }
 	void TestAllList();
 
 private:

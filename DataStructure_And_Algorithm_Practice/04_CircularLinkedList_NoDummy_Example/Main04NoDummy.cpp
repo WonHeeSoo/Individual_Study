@@ -8,11 +8,14 @@ int main()
 
 	list->TestAllList();
 
-	//list->Remove();
+	list->Insert(2, 0);
 
 	list->TestAllList();
 
-	list->Insert(2,0);
+	list->Remove(-1);
+
+	list->TestAllList();
+
 	list->Insert(3,0);
 
 	list->TestAllList();
@@ -21,7 +24,11 @@ int main()
 
 	list->TestAllList();
 
-	//list->Remove(5);
+	list->Remove(0);
+
+	list->TestAllList();
+
+	list->Remove(2);
 
 	list->TestAllList();
 

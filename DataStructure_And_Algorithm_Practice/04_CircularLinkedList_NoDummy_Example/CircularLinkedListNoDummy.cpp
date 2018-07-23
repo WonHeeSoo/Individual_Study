@@ -1,6 +1,6 @@
 #include "CircularLinkedListNoDummy.h"
 
-CircularLinkedListNoDummy::CircularLinkedListNoDummy() : tail(0), nodeCnt(0)
+CircularLinkedListNoDummy::CircularLinkedListNoDummy() : tail(NULL), nodeCnt(0)
 {
 }
 
@@ -12,6 +12,7 @@ CircularLinkedListNoDummy::~CircularLinkedListNoDummy()
 	{
 		cur = cur->next;
 		delete del;
+		del = cur;
 	}
 }
 
@@ -21,9 +22,8 @@ bool CircularLinkedListNoDummy::Insert(int data, int pos)
 
 	if (nodeCnt == 0)
 	{
-		Node *newNode = new Node(data);
-		newNode->next = newNode;
-		tail = newNode;
+		tail = new Node(data);
+		tail->next = tail;
 		nodeCnt++;
 		return true;
 	}
@@ -48,49 +48,53 @@ bool CircularLinkedListNoDummy::Insert(int data, int pos)
 	Node *newNode = new Node(data);
 	newNode->next = prev->next;
 	prev->next = newNode;
-
-	if (pos == nodeCnt - 1)
-	{
-		tail = newNode;
-	}
 	nodeCnt++;
 	return true;
 }
 
-bool CircularLinkedListNoDummy::Remove(int pos)
+int CircularLinkedListNoDummy::Remove(int pos)
 {
-	/*if (pos < 0 || nodeCnt == 0)
+	assert(nodeCnt >= 0);
+
+	if (nodeCnt == 0)
 	{
-		return false;
+		fprintf(stderr, "# Error: List is Empty\n");
+		return -1;
 	}
 
-	if (nodeCnt == 1)
+	int tempPos;
+	if (pos == -1)
 	{
-		delete tail.next;
-		nodeCnt--;
-		return true;
+		tempPos = nodeCnt-1;
+	}
+	else
+	{
+		tempPos = pos;
 	}
 
-	Node *prev = &tail;
-	Node *del = tail.next;
-	Node *next = del->next;
-	for (int i = 0; i < __min(pos, nodeCnt - 1); i++)
+	Node *prev = tail;
+	for (int i = 0; i < tempPos; i++)
 	{
 		prev = prev->next;
-		del = del->next;
-		next = next->next;
 	}
-	prev->next = next;
-	delete del;*/
+	Node *del = prev->next;
+	prev->next = del->next;
+	
+	if (tempPos == (nodeCnt - 1))
+	{
+		tail = prev;
+	}
+	int deldata = del->data;
+	delete del;
 	nodeCnt--;
-	return true;
+	return deldata;
 }
 
 void CircularLinkedListNoDummy::TestAllList()
 {
 	Node *cur = tail->next;
 	// List + head data
-	for (int i = 0; i < nodeCnt+1; i++)
+	for (int i = 0; i < nodeCnt; i++)
 	{
 		printf("%d ", cur->data);
 		cur = cur->next;
