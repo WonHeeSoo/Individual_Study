@@ -20,13 +20,12 @@ Project language is C++.
 - Singly Linked List
 - No-Dummy-based Singly Linked List
 - Template-based Singly Linked List
-- Circular Linked List
+- No-Dummy-based Circular Linked List
+- No-Dummy-based Doubly Linked List
+- Doubly-Linked-List-based Stack
+- Circular-Linked-List-based Queue
 
 #### :ballot_box_with_check: To Do
-- [ ] Template-based Circular Linekd List
-- [ ] No-Dummy-based Circular Linked List
-- [ ] Doubly Linked List
-- [ ] Template-based Doubly Linked List
 - [ ] Array Stack
 - [ ] Linked List Stack
 
