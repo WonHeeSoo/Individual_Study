@@ -7,7 +7,7 @@ struct Node
 {
 	int		data;
 	Node	*next;
-	Node(int data) : data(data), next(NULL) {}
+	Node(int data, Node *next=NULL) : data(data), next(next) {}
 };
 
 class CircularLinkedListNoDummy
@@ -18,13 +18,15 @@ public:
 
 	bool Insert(int data, int pos);
 	inline bool InsertHead(int data) { return Insert(data, 0); }
-	inline bool InsertTail(int data) { return Insert(data, -1); }
+	inline bool InsertTail(int data) { return Insert(data, NODE_TAIL); }
 
 	int Remove(int pos = 0);
-	inline int RemoveHead(int data) { return Remove(0); }
-	inline int RemoveTail(int data) { return Remove(-1); }
+	inline int RemoveHead() { return Remove(0); }
+	inline int RemoveTail() { return Remove(NODE_TAIL); }
 	void TestAllList();
 
+	static const int NODE_TAIL = -1;
+	static const int ERROR = -2;
 private:
 	Node	*tail;
 

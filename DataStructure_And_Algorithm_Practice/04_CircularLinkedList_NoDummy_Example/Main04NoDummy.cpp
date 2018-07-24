@@ -1,10 +1,12 @@
 #include "CircularLinkedListNoDummy.h"
+#include "MyQueue.h"
 
-int main()
+void TestCircularList()
 {
+	printf("\n CircularLinkedListNoDummy \n");
 	CircularLinkedListNoDummy *list = new CircularLinkedListNoDummy();
 
-	list->Insert(1,0);
+	list->Insert(1, 0);
 
 	list->TestAllList();
 
@@ -16,7 +18,7 @@ int main()
 
 	list->TestAllList();
 
-	list->Insert(3,0);
+	list->Insert(3, 0);
 
 	list->TestAllList();
 
@@ -32,5 +34,39 @@ int main()
 
 	list->TestAllList();
 
+	list->Remove();
+	list->Remove();
+	list->Remove();
+	list->TestAllList();
+
+	delete list;
+}
+
+void TestQueue()
+{
+	printf("\n MyQueue \n");
+	MyQueue queue;
+	queue.Push(0);
+	queue.Push(1);
+	queue.Push(2);
+	queue.TestAllQueue();
+	printf("Pop, %d\n", queue.Pop());
+	queue.TestAllQueue();
+	printf("Pop, %d\n", queue.Pop());
+	queue.Push(3);
+	queue.TestAllQueue();
+	printf("Pop, %d\n", queue.Pop());
+	queue.TestAllQueue();
+	printf("Pop, %d\n", queue.Pop());
+	printf("Pop, %d\n", queue.Pop());
+	printf("Pop, %d\n", queue.Pop());
+	queue.TestAllQueue();
+
+}
+
+int main()
+{
+	TestCircularList();
+	TestQueue();
 	return 0;
 }

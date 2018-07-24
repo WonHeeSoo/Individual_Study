@@ -6,22 +6,31 @@ CircularLinkedListNoDummy::CircularLinkedListNoDummy() : tail(NULL), nodeCnt(0)
 
 CircularLinkedListNoDummy::~CircularLinkedListNoDummy()
 {
-	Node *cur = tail;
-	Node *del = cur;
-	while (cur != NULL)
+	if (tail == NULL) { return; }
+	if (tail->next == tail) 
+	{ 
+		delete tail;
+		return;
+	}
+
+	Node *del = tail;
+	Node *cur = del->next;
+	
+	while (cur != tail)
 	{
-		cur = cur->next;
 		delete del;
 		del = cur;
+		cur = cur->next;
 	}
 }
 
 bool CircularLinkedListNoDummy::Insert(int data, int pos)
 {
-	assert(pos >= -1);
+	assert(pos >= 0 || pos == NODE_TAIL);
 
 	if (nodeCnt == 0)
 	{
+		assert(tail == NULL);
 		tail = new Node(data);
 		tail->next = tail;
 		nodeCnt++;
@@ -29,10 +38,9 @@ bool CircularLinkedListNoDummy::Insert(int data, int pos)
 	}
 
 	// InsertTail
-	if (pos == -1)
+	if (pos == NODE_TAIL)
 	{
-		Node *newNode = new Node(data);
-		newNode->next = tail->next;
+		Node *newNode = new Node(data, tail->next);
 		tail->next = newNode;
 		tail = newNode;
 		nodeCnt++;
@@ -45,8 +53,7 @@ bool CircularLinkedListNoDummy::Insert(int data, int pos)
 		prev = prev->next;
 	}
 
-	Node *newNode = new Node(data);
-	newNode->next = prev->next;
+	Node *newNode = new Node(data, prev->next);
 	prev->next = newNode;
 	nodeCnt++;
 	return true;
@@ -55,35 +62,40 @@ bool CircularLinkedListNoDummy::Insert(int data, int pos)
 int CircularLinkedListNoDummy::Remove(int pos)
 {
 	assert(nodeCnt >= 0);
+	assert(pos >= 0 || pos == NODE_TAIL);
 
 	if (nodeCnt == 0)
 	{
 		fprintf(stderr, "# Error: List is Empty\n");
-		return -1;
+		return ERROR;
 	}
 
-	int tempPos;
-	if (pos == -1)
+	if (nodeCnt == 1)
 	{
-		tempPos = nodeCnt-1;
+		assert(tail == tail->next);
+		int delData = tail->data;
+		delete tail;
+		tail = NULL;
+		nodeCnt--;
+		return delData;
 	}
-	else
+	bool remove_tail = false;
+	if (pos == NODE_TAIL || pos == nodeCnt - 1)
 	{
-		tempPos = pos;
+		remove_tail = true;
+		pos = nodeCnt - 1;
 	}
 
 	Node *prev = tail;
-	for (int i = 0; i < tempPos; i++)
+	for (int i = 0; i < pos; i++)
 	{
 		prev = prev->next;
 	}
 	Node *del = prev->next;
 	prev->next = del->next;
 	
-	if (tempPos == (nodeCnt - 1))
-	{
+	if (remove_tail)
 		tail = prev;
-	}
 	int deldata = del->data;
 	delete del;
 	nodeCnt--;
@@ -92,12 +104,18 @@ int CircularLinkedListNoDummy::Remove(int pos)
 
 void CircularLinkedListNoDummy::TestAllList()
 {
-	Node *cur = tail->next;
 	// List + head data
-	for (int i = 0; i < nodeCnt; i++)
+	printf("Num node = %d :  ", nodeCnt);
+	if (tail == NULL)
+		printf("(empty)\n");
+	else
 	{
-		printf("%d ", cur->data);
-		cur = cur->next;
+		Node *cur = tail->next;
+		for (int i = 0; i < nodeCnt; i++)
+		{
+			printf("%d ", cur->data);
+			cur = cur->next;
+		}
+		printf("\n---\n");
 	}
-	printf("\n---\n");
 }

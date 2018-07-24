@@ -116,10 +116,12 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="DoublyLinkedListNoDummy.h" />
+    <ClInclude Include="MyStack.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="DoublyLinkedListNoDummy.cpp" />
     <ClCompile Include="Main05NoDummy.cpp" />
+    <ClCompile Include="MyStack.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
