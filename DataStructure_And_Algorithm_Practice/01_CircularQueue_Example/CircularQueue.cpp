@@ -1,13 +1,13 @@
 #include "CircularQueue.h"
 
-
-
 CircularQueue::CircularQueue(bool verboseMode): verboseMode(verboseMode), pushIndex(0), popIndex(0)
 {
+
 }
 
 CircularQueue::~CircularQueue()
 {
+
 }
 
 bool CircularQueue::Push(char value)

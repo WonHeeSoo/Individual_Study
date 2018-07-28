@@ -61,7 +61,6 @@ void TestQueue()
 	printf("Pop, %d\n", queue.Pop());
 	printf("Pop, %d\n", queue.Pop());
 	queue.TestAllQueue();
-
 }
 
 int main()
