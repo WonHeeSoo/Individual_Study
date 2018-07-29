@@ -1,8 +1,10 @@
 #include "BinaryTree.h"
+#include <list>
 
-BinaryTree::BinaryTree()
+
+BinaryTree::BinaryTree(DType data)
 {
-	rootNode = new TreeNode();
+	rootNode = new TreeNode(data);
 	rootNode->left = NULL;
 	rootNode->right = NULL;
 }
@@ -12,38 +14,63 @@ BinaryTree::~BinaryTree()
 	DeleteNode(rootNode);
 }
 
-void BinaryTree::MakeLeftSubTree(TreeNode * bt)
+TreeNode* BinaryTree::MakeLeftSubTree(TreeNode *bt, DType data)
 {
-	if (bt == NULL)
-	{
-		fprintf(stderr, "# Error: Empty Node.");
-		return;
-	}
-
 	if (bt->left != NULL)
 	{
 		DeleteNode(bt->left);
 	}
-
-	TreeNode *newNode = new TreeNode();
+	TreeNode *newNode = new TreeNode(data);
 	bt->left = newNode;
+	return newNode;
 }
 
-void BinaryTree::MakeRightSubTree(TreeNode * bt)
+TreeNode* BinaryTree::MakeRightSubTree(TreeNode *bt, DType data)
 {
-	if (bt == NULL)
-	{
-		fprintf(stderr, "# Error: Empty Node.");
-		return;
-	}
-
 	if (bt->right != NULL)
 	{
 		DeleteNode(bt->right);
 	}
 
-	TreeNode *newNode = new TreeNode();
+	TreeNode *newNode = new TreeNode(data);
 	bt->right = newNode;
+	return newNode;
+}
+
+void BinaryTree::PreorderTree() {
+	printf("Preorder  : ");
+	PreorderTraverse(rootNode);
+	printf("\n");
+}
+void BinaryTree::InorderTree() {
+	printf("Inorder   : ");
+	InorderTraverse(rootNode);
+	printf("\n");
+}
+void BinaryTree::PostorderTree() {
+	printf("Postorder : ");
+	PostporderTraverse(rootNode);
+	printf("\n");
+}
+
+void BinaryTree::DepthOrderTree()
+{
+	std::list<TreeNode*> visit_queue;
+
+	printf("DepthOrder : ");
+
+	visit_queue.push_back(rootNode);
+	while (!visit_queue.empty()) {
+		TreeNode	*cur_node = visit_queue.front();
+		visit_queue.pop_front();
+
+		printf("%d ", cur_node->data);
+		if (cur_node->left)
+			visit_queue.push_back(cur_node->left);
+		if (cur_node->right)
+			visit_queue.push_back(cur_node->right);
+	}
+	printf("\n");
 }
 
 // Tree node is first.
@@ -63,9 +90,9 @@ void BinaryTree::InorderTraverse(TreeNode *bt)
 	if (bt == NULL)
 		return;
 
-	PreorderTraverse(bt->left);
+	InorderTraverse(bt->left);
 	printf("%d ", bt->data);
-	PreorderTraverse(bt->right);
+	InorderTraverse(bt->right);
 }
 
 // Tree node is last.
@@ -74,8 +101,8 @@ void BinaryTree::PostporderTraverse(TreeNode *bt)
 	if (bt == NULL)
 		return;
 
-	PreorderTraverse(bt->left);
-	PreorderTraverse(bt->right);
+	PostporderTraverse(bt->left);
+	PostporderTraverse(bt->right);
 	printf("%d ", bt->data);
 }
 

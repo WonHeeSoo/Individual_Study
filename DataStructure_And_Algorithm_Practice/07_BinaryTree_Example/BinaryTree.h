@@ -1,36 +1,38 @@
 #pragma once
 #include <stdio.h>
 
+typedef size_t DType;
+
 struct TreeNode
 {
-	size_t		data;
+	DType		data;
 	TreeNode	*left;
 	TreeNode	*right;
 
-	TreeNode() : left(NULL), right(NULL) {}
+	TreeNode(DType data = 0) : data(data), left(NULL), right(NULL) {}
 };
 
 class BinaryTree
 {
 public:
-	BinaryTree();
+	BinaryTree(DType data = 0);
 	virtual ~BinaryTree();
 
 	// Making left node.
-	void MakeLeftSubTree(TreeNode *bt);
+	TreeNode* MakeLeftSubTree(TreeNode *bt, DType data = 0);
 	// Making right node.
-	void MakeRightSubTree(TreeNode *bt);
+	TreeNode* MakeRightSubTree(TreeNode *bt, DType data = 0);
 
-	// Root node is first.
-	void PreorderTraverse(TreeNode *bt);
-	// Root node is middle.
-	void InorderTraverse(TreeNode *bt);
-	// Root node is last.
-	void PostporderTraverse(TreeNode *bt);
+	void PreorderTree();
+	void InorderTree();
+	void PostorderTree();
+
+	void DepthOrderTree();
+	
 
 	void DeleteNode(TreeNode *bt);
 
-	inline TreeNode GetRootNode() { return *rootNode; }
+	inline TreeNode *GetRootNode() { return rootNode; }
 
 	int GetData(TreeNode *bt);
 
@@ -44,5 +46,11 @@ public:
 private:
 	TreeNode	*rootNode;
 
+	// Root node is first.
+	void PreorderTraverse(TreeNode *bt);
+	// Root node is middle.
+	void InorderTraverse(TreeNode *bt);
+	// Root node is last.
+	void PostporderTraverse(TreeNode *bt);
 };
 
