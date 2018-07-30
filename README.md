@@ -22,12 +22,15 @@ Project language is C++.
 - Template-based Singly Linked List
 - No-Dummy-based Circular Linked List
 - No-Dummy-based Doubly Linked List
-- Doubly-Linked-List-based Stack
 - Circular-Linked-List-based Queue
+- ArrayStack
+- Binary Tree
+- Expression Tree
 
 #### :ballot_box_with_check: To Do
-- [ ] Array Stack
-- [ ] Linked List Stack
+- [ ] Priority Queue
+- [ ] Heap
+- [ ] Sorting
 
 ### :file_folder: Android_Studio
 
