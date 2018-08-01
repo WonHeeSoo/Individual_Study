@@ -1,0 +1,12 @@
+﻿  ExpressionTree.cpp
+f:\dev\programming_practice\datastructure_and_algorithm_practice\08_expressiontree_example\expressiontree.cpp(19): warning C4267: '초기화 중': 'size_t'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  Main08.cpp
+  코드를 생성하고 있습니다...
+ExpressionTree.obj : error LNK2019: "public: __cdecl ArrayStack::ArrayStack(void)" (??0ArrayStack@@QEAA@XZ) 외부 기호(참조 위치: "public: int __cdecl ExpressionTree::MakeExpTree(char * const)" (?MakeExpTree@ExpressionTree@@QEAAHQEAD@Z) 함수)에서 확인하지 못했습니다.
+ExpressionTree.obj : error LNK2019: "public: void __cdecl ArrayStack::Push(unsigned __int64)" (?Push@ArrayStack@@QEAAX_K@Z) 외부 기호(참조 위치: "public: int __cdecl ExpressionTree::MakeExpTree(char * const)" (?MakeExpTree@ExpressionTree@@QEAAHQEAD@Z) 함수)에서 확인하지 못했습니다.
+ExpressionTree.obj : error LNK2019: "public: int __cdecl ArrayStack::Pop(void)" (?Pop@ArrayStack@@QEAAHXZ) 외부 기호(참조 위치: "public: int __cdecl ExpressionTree::MakeExpTree(char * const)" (?MakeExpTree@ExpressionTree@@QEAAHQEAD@Z) 함수)에서 확인하지 못했습니다.
+ExpressionTree.obj : error LNK2019: "public: __cdecl BinaryTree::BinaryTree(unsigned __int64)" (??0BinaryTree@@QEAA@_K@Z) 외부 기호(참조 위치: "public: int __cdecl ExpressionTree::MakeExpTree(char * const)" (?MakeExpTree@ExpressionTree@@QEAAHQEAD@Z) 함수)에서 확인하지 못했습니다.
+ExpressionTree.obj : error LNK2019: "public: struct TreeNode * __cdecl BinaryTree::MakeLeftSubTree(struct TreeNode *,int)" (?MakeLeftSubTree@BinaryTree@@QEAAPEAUTreeNode@@PEAU2@H@Z) 외부 기호(참조 위치: "public: int __cdecl ExpressionTree::MakeExpTree(char * const)" (?MakeExpTree@ExpressionTree@@QEAAHQEAD@Z) 함수)에서 확인하지 못했습니다.
+ExpressionTree.obj : error LNK2019: "public: struct TreeNode * __cdecl BinaryTree::MakeRightSubTree(struct TreeNode *,int)" (?MakeRightSubTree@BinaryTree@@QEAAPEAUTreeNode@@PEAU2@H@Z) 외부 기호(참조 위치: "public: int __cdecl ExpressionTree::MakeExpTree(char * const)" (?MakeExpTree@ExpressionTree@@QEAAHQEAD@Z) 함수)에서 확인하지 못했습니다.
+ExpressionTree.obj : error LNK2019: "public: void __cdecl BinaryTree::SetData(struct TreeNode *,int)" (?SetData@BinaryTree@@QEAAXPEAUTreeNode@@H@Z) 외부 기호(참조 위치: "public: int __cdecl ExpressionTree::MakeExpTree(char * const)" (?MakeExpTree@ExpressionTree@@QEAAHQEAD@Z) 함수)에서 확인하지 못했습니다.
+F:\Dev\Programming_Practice\DataStructure_And_Algorithm_Practice\x64\Debug\08_ExpressionTree_Example.exe : fatal error LNK1120: 7개의 확인할 수 없는 외부 참조입니다.

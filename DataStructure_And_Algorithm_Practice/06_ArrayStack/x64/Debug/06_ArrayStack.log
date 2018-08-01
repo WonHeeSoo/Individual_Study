@@ -1,1 +1,5 @@
-﻿  06_ArrayStack.vcxproj -> F:\Dev\Programming_Practice\DataStructure_And_Algorithm_Practice\x64\Debug\06_ArrayStack.exe
+﻿  ArrayStack.cpp
+f:\dev\programming_practice\datastructure_and_algorithm_practice\06_arraystack\arraystack.cpp(36): warning C4267: '초기화 중': 'size_t'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+f:\dev\programming_practice\datastructure_and_algorithm_practice\06_arraystack\arraystack.cpp(47): warning C4477: 'printf' : 서식 문자열 '%d'에 'int' 형식의 인수가 필요하지만 variadic 인수 1의 형식이 'size_t'입니다.
+  f:\dev\programming_practice\datastructure_and_algorithm_practice\06_arraystack\arraystack.cpp(47): note: 서식 문자열에서 '%zd'을(를) 사용하는 것이 좋습니다.
+  06_ArrayStack.vcxproj -> F:\Dev\Programming_Practice\DataStructure_And_Algorithm_Practice\x64\Debug\06_ArrayStack.exe

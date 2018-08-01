@@ -14,7 +14,7 @@ BinaryTree::~BinaryTree()
 	DeleteNode(rootNode);
 }
 
-TreeNode* BinaryTree::MakeLeftSubTree(TreeNode *bt, DType data)
+TreeNode* BinaryTree::MakeLeftSubTree(TreeNode *bt, int data)
 {
 	if (bt->left != NULL)
 	{
@@ -25,7 +25,7 @@ TreeNode* BinaryTree::MakeLeftSubTree(TreeNode *bt, DType data)
 	return newNode;
 }
 
-TreeNode* BinaryTree::MakeRightSubTree(TreeNode *bt, DType data)
+TreeNode* BinaryTree::MakeRightSubTree(TreeNode *bt, int data)
 {
 	if (bt->right != NULL)
 	{
@@ -122,6 +122,11 @@ int BinaryTree::GetData(TreeNode * bt)
 		return ERROR;
 
 	return bt->data;
+}
+
+void BinaryTree::SetData(TreeNode * bt, int data)
+{
+	bt->data = data;
 }
 
 TreeNode BinaryTree::GetNode(TreeNode * bt)

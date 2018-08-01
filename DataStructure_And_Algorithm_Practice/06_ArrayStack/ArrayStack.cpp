@@ -38,7 +38,6 @@ int ArrayStack::Pop()
 		index--;
 		return i;
 	}
-	return 0;
 }
 
 void ArrayStack::TestAllStack()

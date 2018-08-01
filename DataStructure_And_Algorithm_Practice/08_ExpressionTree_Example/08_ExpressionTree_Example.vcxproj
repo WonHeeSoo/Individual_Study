@@ -76,6 +76,7 @@
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>F:\Dev\Programming_Practice\DataStructure_And_Algorithm_Practice\06_ArrayStack;F:\Dev\Programming_Practice\DataStructure_And_Algorithm_Practice\07_BinaryTree_Example;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
@@ -115,6 +116,11 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="ExpressionTree.cpp" />
+    <ClCompile Include="Main08.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="ExpressionTree.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

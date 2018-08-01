@@ -19,9 +19,9 @@ public:
 	virtual ~BinaryTree();
 
 	// Making left node.
-	TreeNode* MakeLeftSubTree(TreeNode *bt, DType data = 0);
+	TreeNode* MakeLeftSubTree(TreeNode *bt, int data = 0);
 	// Making right node.
-	TreeNode* MakeRightSubTree(TreeNode *bt, DType data = 0);
+	TreeNode* MakeRightSubTree(TreeNode *bt, int data = 0);
 
 	void PreorderTree();
 	void InorderTree();
@@ -35,6 +35,8 @@ public:
 	inline TreeNode *GetRootNode() { return rootNode; }
 
 	int GetData(TreeNode *bt);
+
+	void SetData(TreeNode *bt, int data);
 
 	TreeNode GetNode(TreeNode *bt);
 	TreeNode GetLeftSubTree(TreeNode *bt);
