@@ -3,7 +3,9 @@
 int main()
 {
 	char exp[] = "12+7*";
-	ExpressionTree *eTree = new ExpressionTree();
-	eTree->MakeExpTree(exp);
+	int result = 0;
+	/*ExpressionTree *eTree = new ExpressionTree();
+	result = eTree->MakeExpTree(exp);
+	printf("Result : %d", result);*/
 	return 0;
 }

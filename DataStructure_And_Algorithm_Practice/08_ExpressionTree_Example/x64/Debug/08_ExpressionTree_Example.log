@@ -1,12 +1,18 @@
 ﻿  ExpressionTree.cpp
-f:\dev\programming_practice\datastructure_and_algorithm_practice\08_expressiontree_example\expressiontree.cpp(19): warning C4267: '초기화 중': 'size_t'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+f:\dev\programming_practice\datastructure_and_algorithm_practice\commonlib\include\mybtreetemplate.h(122): error C2760: 구문 오류: '>'은(는) 예기치 않은 토큰입니다. 필요한 토큰은 '식'입니다.
+f:\dev\programming_practice\datastructure_and_algorithm_practice\commonlib\include\mybtreetemplate.h(204): error C2244: 'BinaryTree<T>::GetNode': 함수 정의를 기존 선언과 일치시킬 수 없습니다.
+  f:\dev\programming_practice\datastructure_and_algorithm_practice\commonlib\include\mybtreetemplate.h(203): note: 'BinaryTree<T>::GetNode' 선언을 참조하십시오.
+  f:\dev\programming_practice\datastructure_and_algorithm_practice\commonlib\include\mybtreetemplate.h(204): note: 정의
+  f:\dev\programming_practice\datastructure_and_algorithm_practice\commonlib\include\mybtreetemplate.h(204): note: 'BinaryTree<T> BinaryTree<T>::GetNode(BinaryTree<T> *)'
+  f:\dev\programming_practice\datastructure_and_algorithm_practice\commonlib\include\mybtreetemplate.h(204): note: 기존 선언
+  f:\dev\programming_practice\datastructure_and_algorithm_practice\commonlib\include\mybtreetemplate.h(204): note: 'TreeNode<T> BinaryTree<T>::GetNode(TreeNode<T> *)'
+f:\dev\programming_practice\datastructure_and_algorithm_practice\08_expressiontree_example\expressiontree.cpp(18): warning C4267: '초기화 중': 'size_t'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
   Main08.cpp
+f:\dev\programming_practice\datastructure_and_algorithm_practice\commonlib\include\mybtreetemplate.h(122): error C2760: 구문 오류: '>'은(는) 예기치 않은 토큰입니다. 필요한 토큰은 '식'입니다.
+f:\dev\programming_practice\datastructure_and_algorithm_practice\commonlib\include\mybtreetemplate.h(204): error C2244: 'BinaryTree<T>::GetNode': 함수 정의를 기존 선언과 일치시킬 수 없습니다.
+  f:\dev\programming_practice\datastructure_and_algorithm_practice\commonlib\include\mybtreetemplate.h(203): note: 'BinaryTree<T>::GetNode' 선언을 참조하십시오.
+  f:\dev\programming_practice\datastructure_and_algorithm_practice\commonlib\include\mybtreetemplate.h(204): note: 정의
+  f:\dev\programming_practice\datastructure_and_algorithm_practice\commonlib\include\mybtreetemplate.h(204): note: 'BinaryTree<T> BinaryTree<T>::GetNode(BinaryTree<T> *)'
+  f:\dev\programming_practice\datastructure_and_algorithm_practice\commonlib\include\mybtreetemplate.h(204): note: 기존 선언
+  f:\dev\programming_practice\datastructure_and_algorithm_practice\commonlib\include\mybtreetemplate.h(204): note: 'TreeNode<T> BinaryTree<T>::GetNode(TreeNode<T> *)'
   코드를 생성하고 있습니다...
-ExpressionTree.obj : error LNK2019: "public: __cdecl ArrayStack::ArrayStack(void)" (??0ArrayStack@@QEAA@XZ) 외부 기호(참조 위치: "public: int __cdecl ExpressionTree::MakeExpTree(char * const)" (?MakeExpTree@ExpressionTree@@QEAAHQEAD@Z) 함수)에서 확인하지 못했습니다.
-ExpressionTree.obj : error LNK2019: "public: void __cdecl ArrayStack::Push(unsigned __int64)" (?Push@ArrayStack@@QEAAX_K@Z) 외부 기호(참조 위치: "public: int __cdecl ExpressionTree::MakeExpTree(char * const)" (?MakeExpTree@ExpressionTree@@QEAAHQEAD@Z) 함수)에서 확인하지 못했습니다.
-ExpressionTree.obj : error LNK2019: "public: int __cdecl ArrayStack::Pop(void)" (?Pop@ArrayStack@@QEAAHXZ) 외부 기호(참조 위치: "public: int __cdecl ExpressionTree::MakeExpTree(char * const)" (?MakeExpTree@ExpressionTree@@QEAAHQEAD@Z) 함수)에서 확인하지 못했습니다.
-ExpressionTree.obj : error LNK2019: "public: __cdecl BinaryTree::BinaryTree(unsigned __int64)" (??0BinaryTree@@QEAA@_K@Z) 외부 기호(참조 위치: "public: int __cdecl ExpressionTree::MakeExpTree(char * const)" (?MakeExpTree@ExpressionTree@@QEAAHQEAD@Z) 함수)에서 확인하지 못했습니다.
-ExpressionTree.obj : error LNK2019: "public: struct TreeNode * __cdecl BinaryTree::MakeLeftSubTree(struct TreeNode *,int)" (?MakeLeftSubTree@BinaryTree@@QEAAPEAUTreeNode@@PEAU2@H@Z) 외부 기호(참조 위치: "public: int __cdecl ExpressionTree::MakeExpTree(char * const)" (?MakeExpTree@ExpressionTree@@QEAAHQEAD@Z) 함수)에서 확인하지 못했습니다.
-ExpressionTree.obj : error LNK2019: "public: struct TreeNode * __cdecl BinaryTree::MakeRightSubTree(struct TreeNode *,int)" (?MakeRightSubTree@BinaryTree@@QEAAPEAUTreeNode@@PEAU2@H@Z) 외부 기호(참조 위치: "public: int __cdecl ExpressionTree::MakeExpTree(char * const)" (?MakeExpTree@ExpressionTree@@QEAAHQEAD@Z) 함수)에서 확인하지 못했습니다.
-ExpressionTree.obj : error LNK2019: "public: void __cdecl BinaryTree::SetData(struct TreeNode *,int)" (?SetData@BinaryTree@@QEAAXPEAUTreeNode@@H@Z) 외부 기호(참조 위치: "public: int __cdecl ExpressionTree::MakeExpTree(char * const)" (?MakeExpTree@ExpressionTree@@QEAAHQEAD@Z) 함수)에서 확인하지 못했습니다.
-F:\Dev\Programming_Practice\DataStructure_And_Algorithm_Practice\x64\Debug\08_ExpressionTree_Example.exe : fatal error LNK1120: 7개의 확인할 수 없는 외부 참조입니다.

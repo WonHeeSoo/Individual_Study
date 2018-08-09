@@ -1,7 +1,9 @@
 #pragma once
-#include "ArrayStack.h"
-#include "BinaryTree.h"
-#include<string>
+
+#include "MyBTreeTemplate.h"
+#include "MyStackTemplate.h"
+#include <stack>
+#include <string>
 
 class ExpressionTree
 {
@@ -10,7 +12,8 @@ public:
 	~ExpressionTree();
 
 	int MakeExpTree(char exp[]);
-
+	int EvalateExpTree(BinaryTree<int> *bt);
+	int EvalateTree(TreeNode<int> *tn);
 private:
 };
 
