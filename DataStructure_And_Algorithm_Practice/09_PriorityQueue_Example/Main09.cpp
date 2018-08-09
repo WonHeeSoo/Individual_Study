@@ -1,11 +1,20 @@
 #include "Heap.h"
+using namespace std;
 
 int main()
 {
+
 	Heap *heap = new Heap();
+	char c;
 
 	heap->Insert('f', 5);
 	heap->TestAllHeap();
+	c = heap->Delete();
+	cout << "Delete data : " << c << endl;
+	c = heap->Delete();
+	cout << "Delete data : " << c << endl;
+	c = heap->Delete();
+	cout << "Delete data : " << c << endl;
 
 	heap->Insert('g', 6);
 	heap->TestAllHeap();
@@ -21,7 +30,8 @@ int main()
 
 	heap->TestAllHeap();
 
-	heap->Delete();
+	c = heap->Delete();
+	cout << "Delete data : " << c << endl;
 
 	heap->TestAllHeap();
 
@@ -32,7 +42,8 @@ int main()
 
 	heap->TestAllHeap();
 
-	heap->Delete();
+	c = heap->Delete();
+	cout << "Delete data : " << c << endl;
 
 	heap->TestAllHeap();
 
