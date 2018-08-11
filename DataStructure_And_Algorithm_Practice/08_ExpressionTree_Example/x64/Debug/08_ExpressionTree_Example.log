@@ -1,18 +1,5 @@
 ﻿  ExpressionTree.cpp
-f:\dev\programming_practice\datastructure_and_algorithm_practice\commonlib\include\mybtreetemplate.h(122): error C2760: 구문 오류: '>'은(는) 예기치 않은 토큰입니다. 필요한 토큰은 '식'입니다.
-f:\dev\programming_practice\datastructure_and_algorithm_practice\commonlib\include\mybtreetemplate.h(204): error C2244: 'BinaryTree<T>::GetNode': 함수 정의를 기존 선언과 일치시킬 수 없습니다.
-  f:\dev\programming_practice\datastructure_and_algorithm_practice\commonlib\include\mybtreetemplate.h(203): note: 'BinaryTree<T>::GetNode' 선언을 참조하십시오.
-  f:\dev\programming_practice\datastructure_and_algorithm_practice\commonlib\include\mybtreetemplate.h(204): note: 정의
-  f:\dev\programming_practice\datastructure_and_algorithm_practice\commonlib\include\mybtreetemplate.h(204): note: 'BinaryTree<T> BinaryTree<T>::GetNode(BinaryTree<T> *)'
-  f:\dev\programming_practice\datastructure_and_algorithm_practice\commonlib\include\mybtreetemplate.h(204): note: 기존 선언
-  f:\dev\programming_practice\datastructure_and_algorithm_practice\commonlib\include\mybtreetemplate.h(204): note: 'TreeNode<T> BinaryTree<T>::GetNode(TreeNode<T> *)'
-f:\dev\programming_practice\datastructure_and_algorithm_practice\08_expressiontree_example\expressiontree.cpp(18): warning C4267: '초기화 중': 'size_t'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+f:\dev\programming_practice\datastructure_and_algorithm_practice\08_expressiontree_example\expressiontree.cpp(18): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
   Main08.cpp
-f:\dev\programming_practice\datastructure_and_algorithm_practice\commonlib\include\mybtreetemplate.h(122): error C2760: 구문 오류: '>'은(는) 예기치 않은 토큰입니다. 필요한 토큰은 '식'입니다.
-f:\dev\programming_practice\datastructure_and_algorithm_practice\commonlib\include\mybtreetemplate.h(204): error C2244: 'BinaryTree<T>::GetNode': 함수 정의를 기존 선언과 일치시킬 수 없습니다.
-  f:\dev\programming_practice\datastructure_and_algorithm_practice\commonlib\include\mybtreetemplate.h(203): note: 'BinaryTree<T>::GetNode' 선언을 참조하십시오.
-  f:\dev\programming_practice\datastructure_and_algorithm_practice\commonlib\include\mybtreetemplate.h(204): note: 정의
-  f:\dev\programming_practice\datastructure_and_algorithm_practice\commonlib\include\mybtreetemplate.h(204): note: 'BinaryTree<T> BinaryTree<T>::GetNode(BinaryTree<T> *)'
-  f:\dev\programming_practice\datastructure_and_algorithm_practice\commonlib\include\mybtreetemplate.h(204): note: 기존 선언
-  f:\dev\programming_practice\datastructure_and_algorithm_practice\commonlib\include\mybtreetemplate.h(204): note: 'TreeNode<T> BinaryTree<T>::GetNode(TreeNode<T> *)'
-  코드를 생성하고 있습니다...
+  Generating Code...
+  08_ExpressionTree_Example.vcxproj -> F:\Dev\Programming_Practice\DataStructure_And_Algorithm_Practice\x64\Debug\08_ExpressionTree_Example.exe

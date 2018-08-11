@@ -9,10 +9,10 @@ class ExpressionTree
 {
 public:
 	ExpressionTree();
-	~ExpressionTree();
+	virtual ~ExpressionTree();
 
-	int MakeExpTree(char exp[]);
-	int EvalateExpTree(BinaryTree<int> *bt);
+	MyBinaryTreeTemplate<int *> MakeExpTree(char exp[]);
+	//int EvalateExpTree(MyBinaryTreeTemplate<int> *bt);
 	int EvalateTree(TreeNode<int> *tn);
 private:
 };

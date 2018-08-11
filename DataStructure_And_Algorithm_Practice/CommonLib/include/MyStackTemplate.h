@@ -15,6 +15,7 @@ public:
 	void TestAllStack() const;
 
 private:
+	static const int EMPTY = -1;
 	static const int ARRAY_SIZE = 10;
 
 	T arr[ARRAY_SIZE];

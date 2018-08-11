@@ -1,5 +1,6 @@
 #pragma once
 #include <stdio.h>
+//#include <list>
 
 template <typename T>
 struct TreeNode
@@ -9,14 +10,16 @@ struct TreeNode
 	TreeNode	*right;
 
 	TreeNode<T>(T data) : data(data), left(NULL), right(NULL) {}
+	TreeNode<T>() : left(NULL), right(NULL) {}
 };
 
 template <typename T>
-class BinaryTree
+class MyBinaryTreeTemplate
 {
 public:
-	BinaryTree<T>(T data);
-	virtual ~BinaryTree<T>();
+	MyBinaryTreeTemplate<T>(T data);
+	MyBinaryTreeTemplate<T>();
+	virtual ~MyBinaryTreeTemplate<T>();
 
 	// Making left node.
 	TreeNode<T>* MakeLeftSubTree(TreeNode<T> *bt, T data);
@@ -29,6 +32,12 @@ public:
 
 	void DepthOrderTree();
 	
+	// Root node is first.
+	void PreorderTraverse(TreeNode<T> *bt);
+	// Root node is middle.
+	void InorderTraverse(TreeNode<T> *bt);
+	// Root node is last.
+	void PostporderTraverse(TreeNode<T> *bt);
 
 	void DeleteNode(TreeNode<T> *bt);
 
@@ -36,11 +45,11 @@ public:
 
 	T GetData(TreeNode<T> *bt);
 
-	void SetData(TreeNode<T> *bt, T data);
+	inline void SetData(TreeNode<T> *bt, T data) { bt->data = data; }
+
+	inline TreeNode<T> SetNode(TreeNode<T> *bt) { return rootNode = bt; }
 
 	TreeNode<T> GetNode(TreeNode<T> *bt);
-	TreeNode<T> GetLeftSubTree(TreeNode<T> *bt);
-	TreeNode<T> GetRightSubTree(TreeNode<T> *bt);
 
 
 	//inline void SetData()
@@ -48,30 +57,32 @@ public:
 private:
 	TreeNode<T>	*rootNode;
 
-	// Root node is first.
-	void PreorderTraverse(TreeNode<T> *bt);
-	// Root node is middle.
-	void InorderTraverse(TreeNode<T> *bt);
-	// Root node is last.
-	void PostporderTraverse(TreeNode<T> *bt);
 };
 
 template <typename T>
-BinaryTree<T>::BinaryTree(T data)
+MyBinaryTreeTemplate<T>::MyBinaryTreeTemplate(T data)
 {
-	rootNode = new TreeNode(data);
+	rootNode = new TreeNode<T>(data);
 	rootNode->left = NULL;
 	rootNode->right = NULL;
 }
 
 template <typename T>
-BinaryTree<T>::~BinaryTree()
+MyBinaryTreeTemplate<T>::MyBinaryTreeTemplate()
+{
+	rootNode = new TreeNode<T>();
+	rootNode->left = NULL;
+	rootNode->right = NULL;
+}
+
+template <typename T>
+MyBinaryTreeTemplate<T>::~MyBinaryTreeTemplate()
 {
 	DeleteNode(rootNode);
 }
 
 template <typename T>
-TreeNode<T>* BinaryTree<T>::MakeLeftSubTree(TreeNode<T> *bt, T data)
+TreeNode<T>* MyBinaryTreeTemplate<T>::MakeLeftSubTree(TreeNode<T> *bt, T data)
 {
 	if (bt->left != NULL)
 	{
@@ -83,7 +94,7 @@ TreeNode<T>* BinaryTree<T>::MakeLeftSubTree(TreeNode<T> *bt, T data)
 }
 
 template <typename T>
-TreeNode<T>* BinaryTree<T>::MakeRightSubTree(TreeNode<T> *bt, T data)
+TreeNode<T>* MyBinaryTreeTemplate<T>::MakeRightSubTree(TreeNode<T> *bt, T data)
 {
 	if (bt->right != NULL)
 	{
@@ -96,27 +107,27 @@ TreeNode<T>* BinaryTree<T>::MakeRightSubTree(TreeNode<T> *bt, T data)
 }
 
 template <typename T>
-void BinaryTree<T>::PreorderTree() {
+void MyBinaryTreeTemplate<T>::PreorderTree() {
 	printf("Preorder  : ");
 	PreorderTraverse(rootNode);
 	printf("\n");
 }
 
 template <typename T>
-void BinaryTree<T>::InorderTree() {
+void MyBinaryTreeTemplate<T>::InorderTree() {
 	printf("Inorder   : ");
 	InorderTraverse(rootNode);
 	printf("\n");
 }
 
 template <typename T>
-void BinaryTree<T>::PostorderTree() {
+void MyBinaryTreeTemplate<T>::PostorderTree() {
 	printf("Postorder : ");
 	PostporderTraverse(rootNode);
 	printf("\n");
 }
 
-template <typename T>
+/*template <typename T>
 void BinaryTree<T>::DepthOrderTree()
 {
 	std::list<TreeNode<T>*> visit_queue;
@@ -135,11 +146,11 @@ void BinaryTree<T>::DepthOrderTree()
 			visit_queue.push_back(cur_node->right);
 	}
 	printf("\n");
-}
+}*/
 
 // Tree node is first.
 template <typename T>
-void BinaryTree<T>::PreorderTraverse(TreeNode<T> *bt)
+void MyBinaryTreeTemplate<T>::PreorderTraverse(TreeNode<T> *bt)
 {
 	if (bt == NULL)
 		return;
@@ -151,7 +162,7 @@ void BinaryTree<T>::PreorderTraverse(TreeNode<T> *bt)
 
 // Tree node is middle.
 template <typename T>
-void BinaryTree<T>::InorderTraverse(TreeNode<T> *bt)
+void MyBinaryTreeTemplate<T>::InorderTraverse(TreeNode<T> *bt)
 {
 	if (bt == NULL)
 		return;
@@ -163,7 +174,7 @@ void BinaryTree<T>::InorderTraverse(TreeNode<T> *bt)
 
 // Tree node is last.
 template <typename T>
-void BinaryTree<T>::PostporderTraverse(TreeNode<T> *bt)
+void MyBinaryTreeTemplate<T>::PostporderTraverse(TreeNode<T> *bt)
 {
 	if (bt == NULL)
 		return;
@@ -174,7 +185,7 @@ void BinaryTree<T>::PostporderTraverse(TreeNode<T> *bt)
 }
 
 template <typename T>
-void BinaryTree<T>::DeleteNode(TreeNode<T> * bt)
+void MyBinaryTreeTemplate<T>::DeleteNode(TreeNode<T> * bt)
 {
 	if (bt == NULL)
 		return;
@@ -185,7 +196,7 @@ void BinaryTree<T>::DeleteNode(TreeNode<T> * bt)
 }
 
 template <typename T>
-T BinaryTree<T>::GetData(TreeNode<T> * bt)
+T MyBinaryTreeTemplate<T>::GetData(TreeNode<T> * bt)
 {
 	if (bt == NULL)
 		return ERROR;
@@ -193,17 +204,13 @@ T BinaryTree<T>::GetData(TreeNode<T> * bt)
 	return bt->data;
 }
 
-template <typename T>
-void BinaryTree<T>::SetData(TreeNode<T> * bt, T data)
-{
-	bt->data = data;
-}
 
-template <typename T>
-BinaryTree<T> BinaryTree<T>::GetNode(BinaryTree<T> *bt)
+/*template <typename T>
+TreeNode<T> BinaryTree<T>::GetNode(TreeNode<T> *bt)
 {
 	if (bt == NULL)
 		return TreeNode();
 
-	return bt->data;
-}
+	return bt->rootNode;
+}*/
+
