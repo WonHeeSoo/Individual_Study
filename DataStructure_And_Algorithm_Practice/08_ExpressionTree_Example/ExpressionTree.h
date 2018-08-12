@@ -5,15 +5,12 @@
 #include <stack>
 #include <string>
 
-class ExpressionTree
+namespace ExpressionTree
 {
-public:
-	ExpressionTree();
-	virtual ~ExpressionTree();
+	MyBinaryTreeTemplate<char>* MakeExpTree(char exp[]);
 
-	MyBinaryTreeTemplate<int *> MakeExpTree(char exp[]);
-	//int EvalateExpTree(MyBinaryTreeTemplate<int> *bt);
-	int EvalateTree(TreeNode<int> *tn);
-private:
+	int EvaluateNode(TreeNode<char> *tn);
+
+	inline int EvaluateTree(MyBinaryTreeTemplate<char> *bt) { return EvaluateNode(bt->GetRootNode()); }
+
 };
-

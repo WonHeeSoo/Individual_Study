@@ -1,84 +1,64 @@
 #include "ExpressionTree.h"
+#include <assert.h>
+#include <iostream>
 
+using namespace std;
+using namespace ExpressionTree;
 
+namespace ExpressionTree {
 
-ExpressionTree::ExpressionTree()
-{
-}
-
-
-ExpressionTree::~ExpressionTree()
-{
-}
-
-MyBinaryTreeTemplate<int *> ExpressionTree::MakeExpTree(char exp[])
-{
-	MyStackTemplate<int> *stack = new MyStackTemplate<int>();
-	MyBinaryTreeTemplate<int> *bTree = new MyBinaryTreeTemplate<int>();
-	int expLen = strlen(exp);
-
-	for (int i = 0; i < expLen; i++)
+	MyBinaryTreeTemplate<char>* MakeExpTree(char exp[])
 	{
-		TreeNode<int> *tnode = new TreeNode<int>();
-		if (isdigit(exp[i]))
+		MyStackTemplate<TreeNode<char>*> stack;
+
+		size_t expLen = strlen(exp);
+
+		for (int i = 0; i < expLen; i++)
 		{
-			tnode->data = (exp[i] - '0');
-		}
-		else
-		{
-			tnode->right->data = stack->Pop();
-			tnode->left->data = stack->Pop();
+			TreeNode<char> *tnode = new TreeNode<char>();
+			if (!isdigit(exp[i]))
+			{
+				tnode->right = stack.Pop();
+				tnode->left = stack.Pop();
+			}
 			tnode->data = exp[i];
+			stack.Push(tnode);
 		}
-		stack->Push(tnode);
+		MyBinaryTreeTemplate<char> *bTree = new MyBinaryTreeTemplate<char>();
+		bTree->SetRootNode(stack.Pop());
+		assert(stack.IsEmpty());
+		return bTree;
 	}
-	return bTree->SetNode(stack->Pop());
-}
 
-/*int ExpressionTree::EvalateExpTree(MyBinaryTreeTemplate<int> *bt)
-{
-	
-	if (bt->GetRootNode()->left == NULL && bt->GetRootNode()->right == NULL)
-		return bt->GetData(bt->GetRootNode());
-
-	int op1, op2;
-	op1 = EvalateTree(bt->GetRootNode()->left);
-	op2 = EvalateTree(bt->GetRootNode()->right);
-
-	switch (bt->GetData(bt->GetRootNode()))
+	int EvaluateNode(TreeNode<char> * tn)
 	{
-	case '+':
-		return op1 + op2;
-	case '-':
-		return op1 - op2;
-	case '*':
-		return op1 * op2;
-	case '/':
-		return op1 / op2;
+		if (tn->left == NULL && tn->right == NULL)
+		{
+			// 'tn' contains a value.
+			assert(isdigit(tn->data));
+			return tn->data - '0';
+		}
+
+
+		// 'tn' contains a binary operator.
+		int op1, op2;
+		op1 = EvaluateNode(tn->left);
+		op2 = EvaluateNode(tn->right);
+
+		switch (tn->data)
+		{
+		case '+':
+			return op1 + op2;
+		case '-':
+			return op1 - op2;
+		case '*':
+			return op1 * op2;
+		case '/':
+			return op1 / op2;
+		default:
+			cerr << "# ERROR : This case is error." << endl;
+			assert(false);
+			return 0;
+		}
 	}
-
-	return 0;
-}*/
-
-int ExpressionTree::EvalateTree(TreeNode<int> * tn)
-{
-	if (tn->left == NULL && tn->right == NULL)
-		return tn->data;
-
-	int op1, op2;
-	op1 = EvalateTree(tn->left);
-	op2 = EvalateTree(tn->right);
-
-	switch (tn->data)
-	{
-	case '+':
-		return op1 + op2;
-	case '-':
-		return op1 - op2;
-	case '*':
-		return op1 * op2;
-	case '/':
-		return op1 / op2;
-	}
-	return 0;
 }

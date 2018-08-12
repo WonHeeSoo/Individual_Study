@@ -3,9 +3,11 @@
 int main()
 {
 	char exp[] = "12+7*";
-	int result = 0;
-	/*ExpressionTree *eTree = new ExpressionTree();
-	result = eTree->MakeExpTree(exp);
-	printf("Result : %d", result);*/
+	MyBinaryTreeTemplate<char> *expTree;
+	expTree = ExpressionTree::MakeExpTree(exp);
+
+	int result = ExpressionTree::EvaluateTree(expTree);
+
+	printf("Result : %d", result);
 	return 0;
 }

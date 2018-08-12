@@ -1,5 +1,2 @@
 ﻿  ExpressionTree.cpp
-f:\dev\programming_practice\datastructure_and_algorithm_practice\08_expressiontree_example\expressiontree.cpp(18): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
-  Main08.cpp
-  Generating Code...
   08_ExpressionTree_Example.vcxproj -> F:\Dev\Programming_Practice\DataStructure_And_Algorithm_Practice\x64\Debug\08_ExpressionTree_Example.exe
