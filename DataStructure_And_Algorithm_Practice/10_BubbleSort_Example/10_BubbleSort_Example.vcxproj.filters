@@ -24,7 +24,7 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Main10.cpp">
-      <Filter>Header Files</Filter>
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

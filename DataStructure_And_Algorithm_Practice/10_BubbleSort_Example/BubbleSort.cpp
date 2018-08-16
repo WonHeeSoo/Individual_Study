@@ -1,12 +1,8 @@
 #include "BubbleSort.h"
 
-
-
 BubbleSort::BubbleSort()
 {
-	
 }
-
 
 BubbleSort::~BubbleSort()
 {
@@ -52,14 +48,13 @@ void BubbleSort::Sort(bool ascend)
 
 void BubbleSort::SetArray(int arr[])
 {
-	size_t bArr = (sizeof(bubbleArray) / sizeof(int));
-	size_t dArr = (sizeof(*arr) / sizeof(int));
+	/*size_t dArr = (sizeof(arr) / sizeof(int));
 	if (ARRAY_SIZE != dArr)
 	{
 		std::cerr << "# ERORR : Size is different.";
 		assert(false);
 		return;
-	}
+	}*/
 	//memcpy(bubbleArray, arr, sizeof(arr));
 	for (int i = 0; i < ARRAY_SIZE; i++)
 	{

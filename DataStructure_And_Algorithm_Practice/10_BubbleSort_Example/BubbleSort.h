@@ -15,7 +15,7 @@ public:
 	void TestAllSort();
 
 private:
-	static const int ARRAY_SIZE = 10;
+	static const int ARRAY_SIZE = 5;
 
 	int bubbleArray[ARRAY_SIZE] = {NULL, };
 };
