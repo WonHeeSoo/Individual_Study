@@ -26,11 +26,13 @@ Project language is C++.
 - ArrayStack
 - Binary Tree
 - Expression Tree
+- Priority Queue
+- Bubble Sort
 
 #### :ballot_box_with_check: To Do
-- [ ] Priority Queue
-- [ ] Heap
-- [ ] Sorting
+- [ ] Selection Sort
+- [ ] Insertion Sort
+- [ ] Heap Sort
 
 ### :file_folder: Android_Studio
 
