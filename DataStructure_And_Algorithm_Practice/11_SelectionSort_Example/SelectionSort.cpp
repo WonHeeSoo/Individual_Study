@@ -2,38 +2,43 @@
 
 
 
-SelectionSort::SelectionSort()
+SelectionSort::SelectionSort() : arraySize(0), selectionArray(NULL)
 {
 }
 
 
 SelectionSort::~SelectionSort()
 {
+	if (selectionArray != NULL)
+		delete[] selectionArray;
 }
 
-void SelectionSort::AscendingOrder()
+void SelectionSort::SortAscending()
 {
 	Sort(true);
 }
 
-void SelectionSort::DescendingOrder()
+void SelectionSort::SortDescending()
 {
 	Sort(false);
 }
 
 void SelectionSort::Sort(bool Ascend)
 {
-	for (int i = 0; i < ARRAY_SIZE - 1; i++)
+	for (int i = 0; i < arraySize - 1; i++)
 	{
+		bool sortCheck = false;
 		if (Ascend)
 		{
 			int minIdx = i;
+			
 
-			for (int comp = i + 1; comp < ARRAY_SIZE; comp++)
+			for (int comp = i + 1; comp < arraySize; comp++)
 			{
 				if (selectionArray[minIdx] > selectionArray[comp])
 				{
 					minIdx = comp;
+					sortCheck = true;
 				}
 			}
 
@@ -45,11 +50,12 @@ void SelectionSort::Sort(bool Ascend)
 		{
 			int maxIdx = i;
 
-			for (int comp = i + 1; comp < ARRAY_SIZE; comp++)
+			for (int comp = i + 1; comp < arraySize; comp++)
 			{
 				if (selectionArray[maxIdx] < selectionArray[comp])
 				{
 					maxIdx = comp;
+					sortCheck = true;
 				}
 			}
 
@@ -57,21 +63,25 @@ void SelectionSort::Sort(bool Ascend)
 			selectionArray[i] = selectionArray[maxIdx];
 			selectionArray[maxIdx] = temp;
 		}
-		
+		if (sortCheck == false)
+			break;
 	}
 }
 
-void SelectionSort::SetArray(int arr[])
+void SelectionSort::SetArray(const int *arr, size_t len)
 {
-	for (int i = 0; i < ARRAY_SIZE; i++)
-	{
-		selectionArray[i] = arr[i];
-	}
+	if (selectionArray != NULL)
+		delete[] selectionArray;
+
+	selectionArray = new int[len];
+	arraySize = len;
+
+	memcpy(selectionArray, arr, sizeof(int) * len);
 }
 
-void SelectionSort::TestAllSort()
+void SelectionSort::TestAllSort() const
 {
-	for (int i = 0; i < ARRAY_SIZE; i++)
+	for (int i = 0; i < arraySize; i++)
 	{
 		std::cout << selectionArray[i] << " ";
 	}

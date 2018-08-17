@@ -1,28 +1,33 @@
 #include "BubbleSort.h"
 
-BubbleSort::BubbleSort()
+using namespace std;
+
+BubbleSort::BubbleSort() : bubbleArray(NULL), arraySize(0)
 {
 }
 
 BubbleSort::~BubbleSort()
 {
+	if (bubbleArray != NULL)
+		delete[] bubbleArray;
 }
 
-void BubbleSort::AscendingOrder()
+void BubbleSort::SortAscending()
 {
 	Sort(true);
 }
 
-void BubbleSort::DescendingOrder()
+void BubbleSort::SortDescending()
 {
 	Sort(false);
 }
 
 void BubbleSort::Sort(bool ascend)
 {
-	for (int pos = 0; pos < ARRAY_SIZE - 1; pos++)
+	for (int i = 0; i < arraySize - 1; i++)
 	{
-		for (int comp = 0; comp < (ARRAY_SIZE - 1) - pos; comp++)
+		bool swapCheck = false;
+		for (int comp = 0; comp < (arraySize - 1) - i; comp++)
 		{
 			if (ascend)
 			{
@@ -31,6 +36,7 @@ void BubbleSort::Sort(bool ascend)
 					int temp = bubbleArray[comp + 1];
 					bubbleArray[comp + 1] = bubbleArray[comp];
 					bubbleArray[comp] = temp;
+					swapCheck = true;
 				}
 			}
 			else
@@ -40,33 +46,31 @@ void BubbleSort::Sort(bool ascend)
 					int temp = bubbleArray[comp + 1];
 					bubbleArray[comp + 1] = bubbleArray[comp];
 					bubbleArray[comp] = temp;
+					swapCheck = true;
 				}
 			}
 		}
+		if (swapCheck == false)
+			break;
 	}
 }
 
-void BubbleSort::SetArray(int arr[])
+void BubbleSort::SetArray(const int *arr, size_t len)
 {
-	/*size_t dArr = (sizeof(arr) / sizeof(int));
-	if (ARRAY_SIZE != dArr)
-	{
-		std::cerr << "# ERORR : Size is different.";
-		assert(false);
-		return;
-	}*/
-	//memcpy(bubbleArray, arr, sizeof(arr));
-	for (int i = 0; i < ARRAY_SIZE; i++)
-	{
-		bubbleArray[i] = arr[i];
-	}
+	if (bubbleArray != NULL)
+		delete[] bubbleArray;
+
+	bubbleArray = new int[len];
+	arraySize = len;
+	
+	memcpy(bubbleArray, arr, (sizeof(int) * len));
 }
 
-void BubbleSort::TestAllSort()
+void BubbleSort::TestAllSort() const
 {
-	for (int i = 0; i < ARRAY_SIZE; i++)
+	for (int i = 0; i < arraySize; i++)
 	{
-		std::cout << bubbleArray[i] << " ";
+		cout << bubbleArray[i] << " ";
 	}
-	std::cout << std::endl;
+	cout << endl;
 }

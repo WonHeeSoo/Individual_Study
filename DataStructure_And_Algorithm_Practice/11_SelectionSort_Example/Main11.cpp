@@ -5,12 +5,12 @@ int main()
 	int arr[5] = { 9,4,8,6,1 };
 	SelectionSort selection;
 
-	selection.SetArray(arr);
+	selection.SetArray(arr,5);
 	selection.TestAllSort();
 
-	selection.AscendingOrder();
+	selection.SortAscending();
 	selection.TestAllSort();
 
-	selection.DescendingOrder();
+	selection.SortDescending();
 	selection.TestAllSort();
 }

@@ -7,15 +7,17 @@ public:
 	SelectionSort();
 	virtual ~SelectionSort();
 
-	void AscendingOrder();
-	void DescendingOrder();
+	void SortAscending();
+	void SortDescending();
 	void Sort(bool Ascend);
-	void SetArray(int arr[]);
-	void TestAllSort();
+	void SetArray(const int *arr, size_t len);
+	inline const int* GetArray() const { return selectionArray; }
+	inline const size_t GetArraySize() const { return arraySize; }
+	void TestAllSort() const;
 
 private:
-	static const int ARRAY_SIZE = 5;
+	size_t arraySize;
 
-	int selectionArray[ARRAY_SIZE] = { NULL, };
+	int *selectionArray;
 };
 

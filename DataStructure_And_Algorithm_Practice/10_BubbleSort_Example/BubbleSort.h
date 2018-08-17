@@ -8,15 +8,25 @@ public:
 	BubbleSort();
 	virtual ~BubbleSort();
 
-	void AscendingOrder();
-	void DescendingOrder();
+	void SortAscending();
+	void SortDescending();
 	void Sort(bool Ascend);
-	void SetArray(int arr[]);
-	void TestAllSort();
+	void SetArray(const int *arr, size_t len);
+	const int* GetArray() const
+	{
+		return bubbleArray;
+	}
+	size_t GetArraySize() const
+	{
+		return arraySize;
+	}
+
+	void TestAllSort() const;
 
 private:
-	static const int ARRAY_SIZE = 5;
+	//static const int ARRAY_SIZE = 5;
+	size_t arraySize;
 
-	int bubbleArray[ARRAY_SIZE] = {NULL, };
+	int *bubbleArray;
 };
 
