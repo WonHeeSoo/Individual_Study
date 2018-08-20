@@ -12,7 +12,7 @@ public:
 	void Sort(bool Ascend);
 	void SetArray(const int *arr, size_t len);
 	inline const int* GetArray() const { return selectionArray; }
-	inline const size_t GetArraySize() const { return arraySize; }
+	inline size_t GetArraySize() const { return arraySize; }
 	void TestAllSort() const;
 
 private:
