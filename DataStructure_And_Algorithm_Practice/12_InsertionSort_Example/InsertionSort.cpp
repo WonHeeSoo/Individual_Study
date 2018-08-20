@@ -1,19 +1,21 @@
 #include "InsertionSort.h"
 
-InsertionSort::InsertionSort()
+InsertionSort::InsertionSort() : arraySize(0), insertionArray(NULL)
 {
 }
 
 InsertionSort::~InsertionSort()
 {
+	if (insertionArray != NULL)
+		delete[] insertionArray;
 }
 
-void InsertionSort::AscendingOrder()
+void InsertionSort::SortAscending()
 {
 	Sort(true);
 }
 
-void InsertionSort::DescendingOrder()
+void InsertionSort::SortDescending()
 {
 	Sort(false);
 
@@ -21,8 +23,9 @@ void InsertionSort::DescendingOrder()
 
 void InsertionSort::Sort(bool Ascend)
 {
-	for (int i = 1; i < ARRAY_SIZE; i++)
+	for (int i = 1; i < arraySize; i++)
 	{
+		bool InsertionCheck = false;
 		int j;
 		int compData = insertionArray[i];
 		for (j = i - 1; j >= 0; j--)
@@ -32,6 +35,7 @@ void InsertionSort::Sort(bool Ascend)
 				if (insertionArray[j] > compData)
 				{
 					insertionArray[j + 1] = insertionArray[j];
+					InsertionCheck = true;
 				}
 				else
 					break;
@@ -41,27 +45,32 @@ void InsertionSort::Sort(bool Ascend)
 				if (insertionArray[j] < compData)
 				{
 					insertionArray[j + 1] = insertionArray[j];
+					InsertionCheck = true;
 				}
 				else
 					break;
 			}
-			
 		}
 		insertionArray[j + 1] = compData;
+		if (InsertionCheck == false)
+			break;
 	}
 }
 
-void InsertionSort::SetArray(int arr[])
+void InsertionSort::SetArray(const int *arr, size_t len)
 {
-	for (int i = 0; i < ARRAY_SIZE; i++)
-	{
-		insertionArray[i] = arr[i];
-	}
+	if (insertionArray != NULL)
+		delete[] insertionArray;
+
+	insertionArray = new int[len];
+	arraySize = len;
+
+	memcpy(insertionArray, arr, sizeof(int) * len);
 }
 
-void InsertionSort::TestAllSort()
+void InsertionSort::TestAllSort() const
 {
-	for (int i = 0; i < ARRAY_SIZE; i++)
+	for (int i = 0; i < arraySize; i++)
 	{
 		std::cout << insertionArray[i] << " ";
 	}
