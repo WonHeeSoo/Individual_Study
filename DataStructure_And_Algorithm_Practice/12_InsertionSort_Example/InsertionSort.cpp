@@ -25,7 +25,6 @@ void InsertionSort::Sort(bool Ascend)
 {
 	for (int i = 1; i < arraySize; i++)
 	{
-		bool InsertionCheck = false;
 		int j;
 		int compData = insertionArray[i];
 		for (j = i - 1; j >= 0; j--)
@@ -35,7 +34,6 @@ void InsertionSort::Sort(bool Ascend)
 				if (insertionArray[j] > compData)
 				{
 					insertionArray[j + 1] = insertionArray[j];
-					InsertionCheck = true;
 				}
 				else
 					break;
@@ -45,15 +43,13 @@ void InsertionSort::Sort(bool Ascend)
 				if (insertionArray[j] < compData)
 				{
 					insertionArray[j + 1] = insertionArray[j];
-					InsertionCheck = true;
 				}
 				else
 					break;
 			}
 		}
-		insertionArray[j + 1] = compData;
-		if (InsertionCheck == false)
-			break;
+		if (j < i - 1)
+			insertionArray[j + 1] = compData;
 	}
 }
 

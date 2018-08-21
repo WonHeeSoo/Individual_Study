@@ -1,3 +1,4 @@
+
 #include "SelectionSort.h"
 
 
@@ -27,44 +28,31 @@ void SelectionSort::Sort(bool Ascend)
 {
 	for (int i = 0; i < arraySize - 1; i++)
 	{
-		bool sortCheck = false;
+		int targetIdx = i;
+
 		if (Ascend)
 		{
-			int minIdx = i;
-			
-
 			for (int comp = i + 1; comp < arraySize; comp++)
 			{
-				if (selectionArray[minIdx] > selectionArray[comp])
-				{
-					minIdx = comp;
-					sortCheck = true;
-				}
+				if (selectionArray[targetIdx] > selectionArray[comp])
+					targetIdx = comp;
 			}
-
-			int temp = selectionArray[i];
-			selectionArray[i] = selectionArray[minIdx];
-			selectionArray[minIdx] = temp;
 		}
 		else
 		{
-			int maxIdx = i;
-
 			for (int comp = i + 1; comp < arraySize; comp++)
 			{
-				if (selectionArray[maxIdx] < selectionArray[comp])
-				{
-					maxIdx = comp;
-					sortCheck = true;
-				}
+				if (selectionArray[targetIdx] < selectionArray[comp])
+					targetIdx = comp;
 			}
-
-			int temp = selectionArray[i];
-			selectionArray[i] = selectionArray[maxIdx];
-			selectionArray[maxIdx] = temp;
 		}
-		if (sortCheck == false)
-			break;
+
+		if (targetIdx != i)
+		{
+			int temp = selectionArray[i];
+			selectionArray[i] = selectionArray[targetIdx];
+			selectionArray[targetIdx] = temp;
+		}
 	}
 }
 
