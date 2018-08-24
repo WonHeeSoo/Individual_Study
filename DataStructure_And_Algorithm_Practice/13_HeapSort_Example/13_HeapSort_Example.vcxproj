@@ -119,7 +119,6 @@
     <ClInclude Include="HeapSort.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="HeapSort.cpp" />
     <ClCompile Include="Main13.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
