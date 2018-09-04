@@ -1,5 +1,5 @@
 #pragma once
-#include "iostream"
+#include <iostream>
 
 using namespace std;
 
@@ -17,7 +17,7 @@ public:
 	size_t GetArraySize() const;
 
 private:
-	int *mergeArray;
-	size_t arraySize;
+	int		*mergeArray;
+	size_t	arraySize;
 };
 

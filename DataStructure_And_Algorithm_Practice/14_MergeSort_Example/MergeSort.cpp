@@ -26,32 +26,32 @@ void MergeSort::SetArray(int * arr, size_t len)
 
 void MergeSort::MergeTwoArea(int left, int mid, int right)
 {
-	int lIdx = left;
-	int rIdx = mid + 1;
+	int leftIdx = left;
+	int rightIdx = mid + 1;
 	int i;
 
 	int *sortArr = new int[right+1];
-	int mIdx = left;
+	int midIdx = left;
 
-	while (lIdx <= mid && rIdx <= right)
+	while (leftIdx <= mid && rightIdx <= right && rightIdx <= arraySize)
 	{
-		if (mergeArray[lIdx] <= mergeArray[rIdx])
-			sortArr[mIdx] = mergeArray[lIdx++];
+		if (mergeArray[leftIdx] <= mergeArray[rightIdx])
+			sortArr[midIdx] = mergeArray[leftIdx++];
 		else
-			sortArr[mIdx] = mergeArray[rIdx++];
+			sortArr[midIdx] = mergeArray[rightIdx++];
 
-		mIdx++;
+		midIdx++;
 	}
 
-	if (lIdx > mid)
+	if (leftIdx > mid)
 	{
-		for (i = rIdx; i <= right; i++, mIdx++)
-			sortArr[mIdx] = mergeArray[i];
+		for (i = rightIdx; i <= right; i++, midIdx++)
+			sortArr[midIdx] = mergeArray[i];
 	}
 	else
 	{
-		for (i = lIdx; i <= mid; i++, mIdx++)
-			sortArr[mIdx] = mergeArray[i];
+		for (i = leftIdx; i <= mid; i++, midIdx++)
+			sortArr[midIdx] = mergeArray[i];
 	}
 
 	for (i = left; i <= right; i++)
