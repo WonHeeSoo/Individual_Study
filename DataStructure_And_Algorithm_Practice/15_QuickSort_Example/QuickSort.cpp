@@ -45,7 +45,7 @@ int QuickSort::Partition(int left, int right)
 			high--;
 
 		if (low <= high)
-			Swap(left, high);
+			Swap(low, high);
 	}
 	Swap(left, high);
 	return high;

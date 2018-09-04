@@ -13,7 +13,7 @@ MergeSort::~MergeSort()
 		delete[] mergeArray;
 }
 
-void MergeSort::SetArray(int * arr, size_t len)
+void MergeSort::SetArray(const int * arr, size_t len)
 {
 	if (mergeArray != NULL)
 		delete[] mergeArray;
@@ -24,16 +24,28 @@ void MergeSort::SetArray(int * arr, size_t len)
 	
 }
 
+void MergeSort::ResetArray()
+{
+	if (mergeArray != NULL)
+	{
+		delete[] mergeArray;
+		mergeArray = NULL;
+		arraySize = 0;
+	}
+}
+
 void MergeSort::MergeTwoArea(int left, int mid, int right)
 {
-	int leftIdx = left;
-	int rightIdx = mid + 1;
+	int leftIdx = left; // 왼쪽 배열에서 비교 대상의 인덱스
+	int rightIdx = mid + 1; // 오른쪽 배열에서 비교 대상의 인덱스
 	int i;
 
-	int *sortArr = new int[right+1];
-	int midIdx = left;
+	size_t arrLen = (right - left) + 1;
 
-	while (leftIdx <= mid && rightIdx <= right && rightIdx <= arraySize)
+	int *sortArr = new int[arrLen]; // 정렬된 값을 저장하기 위한 배열
+	int midIdx = 0; //
+
+	while (leftIdx <= mid && rightIdx <= right)
 	{
 		if (mergeArray[leftIdx] <= mergeArray[rightIdx])
 			sortArr[midIdx] = mergeArray[leftIdx++];
@@ -45,17 +57,18 @@ void MergeSort::MergeTwoArea(int left, int mid, int right)
 
 	if (leftIdx > mid)
 	{
+		// left 배열의 처리만 끝난 경우
 		for (i = rightIdx; i <= right; i++, midIdx++)
 			sortArr[midIdx] = mergeArray[i];
 	}
 	else
 	{
+		// right 배열의 처리만 끝난 경우
 		for (i = leftIdx; i <= mid; i++, midIdx++)
 			sortArr[midIdx] = mergeArray[i];
 	}
 
-	for (i = left; i <= right; i++)
-		mergeArray[i] = sortArr[i];
+	memcpy(mergeArray + left, sortArr, sizeof(int) * arrLen);
 
 	delete[] sortArr;
 }
