@@ -2,7 +2,7 @@
 #include "MyCircularQueue.h"
 
 
-RadixSort::RadixSort() : radixArr(NULL), arraySize(0), maxStrSize(0)
+RadixSort::RadixSort() : radixArr(NULL), arraySize(0), digitLen(0)
 {
 }
 
@@ -13,13 +13,13 @@ RadixSort::~RadixSort()
 		delete[] radixArr;
 }
 
-void RadixSort::SetArray(const int * arr, size_t len, size_t maxStrLen)
+void RadixSort::SetArray(const int *arr, size_t len, size_t digitLen)
 {
 	if (radixArr != NULL)
 		delete[] radixArr;
 
 	arraySize = len;
-	maxStrSize = maxStrLen;
+	this->digitLen = digitLen;
 	radixArr = new int[len];
 	memcpy(radixArr, arr, sizeof(int) * len);
 }
@@ -31,34 +31,38 @@ void RadixSort::ResetArray()
 		delete[] radixArr;
 		radixArr = NULL;
 		arraySize = 0;
-		maxStrSize = 0;
+		digitLen = 0;
 	}
 }
 
-void RadixSort::Sort(int radixSize)
+void RadixSort::Sort(int numElem)
 {
+	if (arraySize <= 0)
+		return;
+
 	MyCircularQueue<int> buckets[BUCKET_NUM];
 
-	// 가장 긴 데이터의 길이만큼 반복
-	for (int size = 0; size < maxStrSize; size++)
+	int divfac = 1;
+
+	// 가장 낮은 수부터 차례대로 높은 수까지 반복
+	for (int digit = 0; digit < digitLen; digit++)
 	{
-		int divfac = 1;
 		// 정렬대상의 수만큼 반복
-		for (int sortNum = 0; sortNum < radixSize; sortNum++)
+		for (int i = 0; i < numElem; i++)
 		{
 			// N 번째 자리의 숫자 추출
-			int radixNum = (radixArr[sortNum] / divfac) % 10;
+			int radixNum = (radixArr[i] / divfac) % 10;
 
 			// 추출한 숫자를 근거로 버킷에 데이터 저장
-			buckets[radixNum].Push(radixArr[sortNum]);
+			buckets[radixNum].Push(radixArr[i]);
 		}
 
 		// 버킷 수만큼 반복
-		for (int bucketNum = 0, dn = 0; bucketNum < BUCKET_NUM; bucketNum++)
+		for (int iBucket = 0, iPos = 0; iBucket < BUCKET_NUM; iBucket++)
 		{
 			//버킷에 저장된 것 순서대로 다 꺼내서 다시 radixArr에 저장
-			while (!buckets[bucketNum].Empty())
-				radixArr[dn++] = buckets[bucketNum].Pop();
+			while (!buckets[iBucket].Empty())
+				radixArr[iPos++] = buckets[iBucket].Pop();
 		}
 
 		divfac *= 10;

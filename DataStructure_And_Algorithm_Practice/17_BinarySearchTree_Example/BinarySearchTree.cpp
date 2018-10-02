@@ -56,9 +56,9 @@ TreeNode* BinarySearchTree::Search(size_t target)
 		if (sNode->data == target)
 			return sNode;
 		else if (sNode->data > target)
-			return sNode->left;
+			sNode = sNode->left;
 		else
-			return sNode->right;
+			sNode = sNode->right;
 	}
 
 	return NULL;
@@ -67,44 +67,101 @@ TreeNode* BinarySearchTree::Search(size_t target)
 size_t BinarySearchTree::Remove(size_t target)
 {
 	if (rootNode == NULL)
+		return NULL;
+
+	TreeNode *dNode = rootNode;
+	TreeNode *tParentNode = NULL;
+
+	while (dNode->data != target)
 	{
-		//return -1;
+		if (dNode != NULL)
+		{
+			tParentNode = dNode;
+			if (dNode->data < target)
+				dNode = dNode->right;
+			else
+				dNode = dNode->left;
+		}
+		else
+			return NULL;
+		
 	}
-	// root에 자식이 없는 단말 노드라면
-	else if (rootNode->data == target && rootNode->left == NULL && rootNode->right == NULL)
+
+	size_t result = dNode->data;
+
+	// 자식 노드가 없다면
+	if (dNode->left == NULL && dNode->right == NULL)
 	{
-		size_t result = rootNode->data;
-		delete rootNode;
+		delete dNode;
 		return result;
 	}
-	else
+	// 오른쪽 자식 노드가 없으면
+	else if (dNode->right == NULL)
 	{
-		TreeNode *tNode = Search(target);
-		size_t result = tNode->data;
-		// 해당 노드에 자식 노드가 없으면
-		if (tNode->left == NULL && tNode->right == NULL)
+		TreeNode *leftChildNode = dNode->left;
+
+		// rootNode일 경우
+		if (tParentNode == NULL)
 		{
-			size_t result = tNode->data;
-			delete tNode;
-			return result;
+			delete dNode;
+			rootNode = leftChildNode;
 		}
 		else
 		{
-			if (tNode->right != NULL)
-			{
-				// 오른쪽 자식 노드의 왼쪽 자식 노드가 없다면
-				if (tNode->right->left != NULL)
-				{
-					TreeNode *fNode = tNode;
-					while (fNode->right == NULL)
-					{
-						fNode->right->left = fNode->left;
-						fNode = fNode->right;
-					}
-				}
-			}
-			
+			delete dNode;
+			tParentNode->left = leftChildNode;
 		}
+
+		return result;
+	}
+	// 왼쪽 자식 노드가 없으면
+	else if (dNode->left == NULL)
+	{
+		TreeNode *rightChildNode = dNode->right;
+
+		delete dNode;
+
+		// rootNode일 경우
+		if (tParentNode == NULL)
+			rootNode = rightChildNode;
+		else
+			tParentNode->left = rightChildNode;
+
+		return result;
+	}
+	// 왼쪽 오른쪽 자식 노드가 있다면
+	else
+	{
+		TreeNode *childNode = dNode->right;
+		TreeNode *pNode = dNode;
+		while (childNode->left != NULL)
+		{
+			pNode = childNode;
+			childNode = childNode->left;
+		}
+
+		// 삭제할 노드를 대체할 노드에 오른쪽 자식 노드가 있다면
+		if (childNode->right != NULL)
+			pNode->right = childNode->right;
+		else
+			pNode->right = NULL;
+
+		childNode->left = pNode->left;
+		childNode->right = pNode->right;
+
+		// dNode가 rootNode가 아니면
+		if (tParentNode != NULL)
+		{
+			// 부모 노드의 데이터보다 크면
+			if (dNode->data > tParentNode->data)
+				tParentNode->right = childNode;
+			else
+				tParentNode->left = childNode;
+		}
+
+		delete dNode;
+		
+		return result;
 	}
 }
 

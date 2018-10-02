@@ -1,12 +1,10 @@
 ﻿  BinarySearchTree.cpp
-f:\dev\programming_practice\datastructure_and_algorithm_practice\17_binarysearchtree_example\binarysearchtree.cpp(126): warning C4477: 'printf' : format string '%d' requires an argument of type 'int', but variadic argument 1 has type 'size_t'
-  f:\dev\programming_practice\datastructure_and_algorithm_practice\17_binarysearchtree_example\binarysearchtree.cpp(126): note: consider using '%zd' in the format string
-f:\dev\programming_practice\datastructure_and_algorithm_practice\17_binarysearchtree_example\binarysearchtree.cpp(162): warning C4477: 'printf' : format string '%d' requires an argument of type 'int', but variadic argument 1 has type 'size_t'
-  f:\dev\programming_practice\datastructure_and_algorithm_practice\17_binarysearchtree_example\binarysearchtree.cpp(162): note: consider using '%zd' in the format string
-f:\dev\programming_practice\datastructure_and_algorithm_practice\17_binarysearchtree_example\binarysearchtree.cpp(173): warning C4477: 'printf' : format string '%d' requires an argument of type 'int', but variadic argument 1 has type 'size_t'
-  f:\dev\programming_practice\datastructure_and_algorithm_practice\17_binarysearchtree_example\binarysearchtree.cpp(173): note: consider using '%zd' in the format string
-f:\dev\programming_practice\datastructure_and_algorithm_practice\17_binarysearchtree_example\binarysearchtree.cpp(184): warning C4477: 'printf' : format string '%d' requires an argument of type 'int', but variadic argument 1 has type 'size_t'
-  f:\dev\programming_practice\datastructure_and_algorithm_practice\17_binarysearchtree_example\binarysearchtree.cpp(184): note: consider using '%zd' in the format string
-  Main17.cpp
-  Generating Code...
+f:\dev\programming_practice\datastructure_and_algorithm_practice\17_binarysearchtree_example\binarysearchtree.cpp(180): warning C4477: 'printf' : format string '%d' requires an argument of type 'int', but variadic argument 1 has type 'size_t'
+  f:\dev\programming_practice\datastructure_and_algorithm_practice\17_binarysearchtree_example\binarysearchtree.cpp(180): note: consider using '%zd' in the format string
+f:\dev\programming_practice\datastructure_and_algorithm_practice\17_binarysearchtree_example\binarysearchtree.cpp(216): warning C4477: 'printf' : format string '%d' requires an argument of type 'int', but variadic argument 1 has type 'size_t'
+  f:\dev\programming_practice\datastructure_and_algorithm_practice\17_binarysearchtree_example\binarysearchtree.cpp(216): note: consider using '%zd' in the format string
+f:\dev\programming_practice\datastructure_and_algorithm_practice\17_binarysearchtree_example\binarysearchtree.cpp(227): warning C4477: 'printf' : format string '%d' requires an argument of type 'int', but variadic argument 1 has type 'size_t'
+  f:\dev\programming_practice\datastructure_and_algorithm_practice\17_binarysearchtree_example\binarysearchtree.cpp(227): note: consider using '%zd' in the format string
+f:\dev\programming_practice\datastructure_and_algorithm_practice\17_binarysearchtree_example\binarysearchtree.cpp(238): warning C4477: 'printf' : format string '%d' requires an argument of type 'int', but variadic argument 1 has type 'size_t'
+  f:\dev\programming_practice\datastructure_and_algorithm_practice\17_binarysearchtree_example\binarysearchtree.cpp(238): note: consider using '%zd' in the format string
   17_BinarySearchTree_Example.vcxproj -> F:\Dev\Programming_Practice\DataStructure_And_Algorithm_Practice\x64\Debug\17_BinarySearchTree_Example.exe

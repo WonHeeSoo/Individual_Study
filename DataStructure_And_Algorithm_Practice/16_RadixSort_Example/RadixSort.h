@@ -9,15 +9,16 @@ public:
 	RadixSort();
 	virtual ~RadixSort();
 	
-	void SetArray(const int *arr, size_t len, size_t maxStrLen);
+public:
+	void SetArray(const int *arr, size_t len, size_t digitLen);
 	void ResetArray();
 
 	inline const int* GetArray() const { return radixArr; }
 	inline size_t GetArraySize() const { return arraySize; }
-	inline size_t GetMaxStringSize() const { return maxStrSize; }
+	inline size_t GetDigitSize() const { return digitLen; }
 
 	inline void Sort() { Sort(arraySize); }
-	void Sort(int radixSize);
+	void Sort(int numElem);
 
 	void TestAllArray() const;
 	
@@ -27,6 +28,5 @@ public:
 private:
 	int *radixArr;
 	size_t arraySize;
-	size_t maxStrSize;
+	size_t digitLen;
 };
-
