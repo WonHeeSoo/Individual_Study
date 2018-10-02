@@ -3,45 +3,51 @@
 
 // 부모의 노드를 저장해도 괜찮은지
 
+typedef unsigned	data_t;
+
 struct TreeNode
 {
-	size_t		data;
+	data_t		data;
 	TreeNode	*left;
 	TreeNode	*right;
 
-	TreeNode(size_t data = 0) : data(data), left(NULL), right(NULL) {}
+	TreeNode(data_t data = 0) : data(data), left(NULL), right(NULL) {}
 };
 
 class BinarySearchTree
 {
 public:
-	BinarySearchTree(size_t data);
-	~BinarySearchTree();
+	BinarySearchTree();
+	virtual ~BinarySearchTree();
 
 public:
-	void Insert(size_t data);
+	void Insert(data_t data);
 	
-	TreeNode* Search(size_t target);
-	size_t Remove(size_t target);
+	TreeNode* Search(data_t target) const;
+	bool Remove(data_t target);
 	inline TreeNode* GetLeftSubTree(TreeNode *tNode) { return tNode->left; }
 	inline TreeNode* GetRightSubTree(TreeNode *tNode) { return tNode->right; }
 
-	void DepthOrderTree();
+	void DepthOrderTree() const;
 
-	void PreorderTree();
-	void InorderTree();
-	void PostorderTree();
+	void PreorderTree() const;
+	void InorderTree() const;
+	void PostorderTree() const;
 
 private:
 
 	// Root node is first.
-	void PreorderTraverse(TreeNode *bt);
+	void PreorderTraverse(TreeNode *bt) const;
 	// Root node is middle.
-	void InorderTraverse(TreeNode *bt);
+	void InorderTraverse(TreeNode *bt) const;
 	// Root node is last.
-	void PostporderTraverse(TreeNode *bt);
+	void PostporderTraverse(TreeNode *bt) const;
+
+	void RemoveTree();
+
+	void UpdateParent(TreeNode *parent, TreeNode *toBeDeleted, TreeNode *newChild);
 
 private:
-	TreeNode * rootNode;
+	TreeNode	*rootNode;
 };
 

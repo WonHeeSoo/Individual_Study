@@ -2,44 +2,46 @@
 #include <list>
 
 
-BinarySearchTree::BinarySearchTree(size_t data) : rootNode(NULL)
+BinarySearchTree::BinarySearchTree() : rootNode(NULL)
 {
-	rootNode = new TreeNode();
-	rootNode->data = data;
-	rootNode->left = NULL;
-	rootNode->right = NULL;
 }
 
 
 BinarySearchTree::~BinarySearchTree()
 {
+	RemoveTree();
 }
 
-void BinarySearchTree::Insert(size_t data)
+void BinarySearchTree::Insert(data_t data)
 {
+	if (rootNode == NULL)
+	{
+		rootNode = new TreeNode(data);
+		return;
+	}
+
 	TreeNode *iNode = rootNode;
 	while (iNode != NULL)
 	{
-		// 데이터의 중복을 허용하지 않음
 		if (data == iNode->data)
+			// data의 같은 값을 허용하지 않음
 			return;
-
-		if (iNode->data > data)
+		else if (data < iNode->data)
 		{
+			// data의 값이 더 작으면
 			if (iNode->left == NULL)
 			{
-				TreeNode *lNode = new TreeNode(data);
-				iNode->left = lNode;
+				iNode->left = new TreeNode(data);
 				return;
 			}
 			iNode = iNode->left;
 		}
 		else
 		{
+			// data의 값이 더 크면
 			if (iNode->right == NULL)
 			{
-				TreeNode *lNode = new TreeNode(data);
-				iNode->right = lNode;
+				iNode->right = new TreeNode(data);
 				return;
 			}
 			iNode = iNode->right;
@@ -47,7 +49,7 @@ void BinarySearchTree::Insert(size_t data)
 	}
 }
 
-TreeNode* BinarySearchTree::Search(size_t target)
+TreeNode* BinarySearchTree::Search(data_t target) const
 {
 	TreeNode *sNode = rootNode;
 
@@ -64,71 +66,38 @@ TreeNode* BinarySearchTree::Search(size_t target)
 	return NULL;
 }
 
-size_t BinarySearchTree::Remove(size_t target)
+bool BinarySearchTree::Remove(data_t target)
 {
 	if (rootNode == NULL)
-		return NULL;
+		return false;
 
 	TreeNode *dNode = rootNode;
 	TreeNode *tParentNode = NULL;
 
-	while (dNode->data != target)
+	while (dNode != NULL)
 	{
-		if (dNode != NULL)
-		{
-			tParentNode = dNode;
-			if (dNode->data < target)
-				dNode = dNode->right;
-			else
-				dNode = dNode->left;
-		}
+		if (target == dNode->data)
+			break;
+
+		tParentNode = dNode;
+		if (target < dNode->data)
+			dNode = dNode->left;
 		else
-			return NULL;
-		
+			dNode = dNode->right;
 	}
 
-	size_t result = dNode->data;
+	if (dNode == NULL)
+		return false;
 
 	// 자식 노드가 없다면
 	if (dNode->left == NULL && dNode->right == NULL)
-	{
-		delete dNode;
-		return result;
-	}
+		UpdateParent(tParentNode, dNode, NULL);
 	// 오른쪽 자식 노드가 없으면
 	else if (dNode->right == NULL)
-	{
-		TreeNode *leftChildNode = dNode->left;
-
-		// rootNode일 경우
-		if (tParentNode == NULL)
-		{
-			delete dNode;
-			rootNode = leftChildNode;
-		}
-		else
-		{
-			delete dNode;
-			tParentNode->left = leftChildNode;
-		}
-
-		return result;
-	}
+		UpdateParent(tParentNode, dNode, dNode->left);
 	// 왼쪽 자식 노드가 없으면
 	else if (dNode->left == NULL)
-	{
-		TreeNode *rightChildNode = dNode->right;
-
-		delete dNode;
-
-		// rootNode일 경우
-		if (tParentNode == NULL)
-			rootNode = rightChildNode;
-		else
-			tParentNode->left = rightChildNode;
-
-		return result;
-	}
+		UpdateParent(tParentNode, dNode, dNode->right);
 	// 왼쪽 오른쪽 자식 노드가 있다면
 	else
 	{
@@ -142,30 +111,22 @@ size_t BinarySearchTree::Remove(size_t target)
 
 		// 삭제할 노드를 대체할 노드에 오른쪽 자식 노드가 있다면
 		if (childNode->right != NULL)
-			pNode->right = childNode->right;
+			pNode->left = childNode->right;
 		else
-			pNode->right = NULL;
+			pNode->left = NULL;
 
-		childNode->left = pNode->left;
-		childNode->right = pNode->right;
+		childNode->left = dNode->left;
+		childNode->right = dNode->right;
 
-		// dNode가 rootNode가 아니면
-		if (tParentNode != NULL)
-		{
-			// 부모 노드의 데이터보다 크면
-			if (dNode->data > tParentNode->data)
-				tParentNode->right = childNode;
-			else
-				tParentNode->left = childNode;
-		}
-
-		delete dNode;
 		
-		return result;
+		UpdateParent(tParentNode, dNode, childNode);
 	}
+
+	delete dNode;
+	return true;
 }
 
-void BinarySearchTree::DepthOrderTree()
+void BinarySearchTree::DepthOrderTree() const
 {
 	{
 		std::list<TreeNode*> visit_queue;
@@ -187,28 +148,28 @@ void BinarySearchTree::DepthOrderTree()
 	}
 }
 
-void BinarySearchTree::PreorderTree()
+void BinarySearchTree::PreorderTree() const
 {
 	printf("Preorder  : ");
 	PreorderTraverse(rootNode);
 	printf("\n");
 }
 
-void BinarySearchTree::InorderTree()
+void BinarySearchTree::InorderTree() const
 {
 	printf("Inorder   : ");
 	InorderTraverse(rootNode);
 	printf("\n");
 }
 
-void BinarySearchTree::PostorderTree()
+void BinarySearchTree::PostorderTree() const
 {
 	printf("Postorder : ");
 	PostporderTraverse(rootNode);
 	printf("\n");
 }
 
-void BinarySearchTree::PreorderTraverse(TreeNode * bt)
+void BinarySearchTree::PreorderTraverse(TreeNode * bt) const
 {
 	if (bt == NULL)
 		return;
@@ -218,7 +179,7 @@ void BinarySearchTree::PreorderTraverse(TreeNode * bt)
 	PreorderTraverse(bt->right);
 }
 
-void BinarySearchTree::InorderTraverse(TreeNode * bt)
+void BinarySearchTree::InorderTraverse(TreeNode * bt) const
 {
 	if (bt == NULL)
 		return;
@@ -228,7 +189,7 @@ void BinarySearchTree::InorderTraverse(TreeNode * bt)
 	InorderTraverse(bt->right);
 }
 
-void BinarySearchTree::PostporderTraverse(TreeNode * bt)
+void BinarySearchTree::PostporderTraverse(TreeNode * bt) const
 {
 	if (bt == NULL)
 		return;
@@ -237,5 +198,18 @@ void BinarySearchTree::PostporderTraverse(TreeNode * bt)
 	PostporderTraverse(bt->right);
 	printf("%d ", bt->data);
 }
+
+
+void BinarySearchTree::UpdateParent(TreeNode *parent, TreeNode *toBeDeleted, TreeNode *newChild)
+{
+	if (parent == NULL)
+		// 'targetNode' is the root
+		rootNode = newChild;
+	else if (toBeDeleted == parent->left)
+		parent->left = newChild;
+	else
+		parent->right = newChild;
+}
+
 
 // http://mattlee.tistory.com/30
