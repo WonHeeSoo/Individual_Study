@@ -28,11 +28,18 @@ Project language is C++.
 - Expression Tree
 - Priority Queue
 - Bubble Sort
+- Selection Sort
+- Instertion Sort
+- Heap Sort
+- Merge Sort
+- Quick Sort
+- Radix Sort
+- Binary Search Tree
 
 #### :ballot_box_with_check: To Do
-- [ ] Selection Sort
-- [ ] Insertion Sort
-- [ ] Heap Sort
+- [ ] AVL Tree
+- [ ] Table Hash
+- [ ] Graph
 
 ### :file_folder: Android_Studio
 
