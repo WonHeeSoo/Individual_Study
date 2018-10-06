@@ -1,8 +1,6 @@
 #pragma once
 #include <iostream>
 
-// 부모의 노드를 저장해도 괜찮은지
-
 typedef unsigned	data_t;
 
 struct TreeNode

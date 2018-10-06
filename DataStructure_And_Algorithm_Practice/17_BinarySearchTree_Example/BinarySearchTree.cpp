@@ -199,6 +199,15 @@ void BinarySearchTree::PostporderTraverse(TreeNode * bt) const
 	printf("%d ", bt->data);
 }
 
+void BinarySearchTree::RemoveTree()
+{
+	if (rootNode == NULL)
+		return;
+
+	InorderTraverse(rootNode->left);
+	InorderTraverse(rootNode->right);
+}
+
 
 void BinarySearchTree::UpdateParent(TreeNode *parent, TreeNode *toBeDeleted, TreeNode *newChild)
 {
