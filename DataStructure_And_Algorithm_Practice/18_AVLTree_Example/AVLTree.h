@@ -4,6 +4,7 @@
 #pragma once
 
 typedef unsigned data_t;
+typedef int func(int a);
 
 struct TreeNode
 {
@@ -12,6 +13,7 @@ struct TreeNode
 	TreeNode	*right;
 	int			heightDiff;
 	TreeNode(data_t value) : value(value), left(NULL), right(NULL), heightDiff(0) {}
+	func(value);
 };
 
 class AVLTree
