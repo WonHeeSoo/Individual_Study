@@ -20,14 +20,7 @@ bool Table::Insert(int key, std::string Name, int PhoneNumber)
 	else
 	{
 		int hashKey = HashFunc(key);
-		tbl[hashKey]->Insert(key, Name, PhoneNumber);
-		/*
-		Node<int> *node = tbl[hashKey]->GetHead;
-		while (node != NULL)
-		{
-			node = node->next;
-		}
-		node = new Node<int>(key, value);*/
+		tbl[hashKey].Insert(key, Name, PhoneNumber);
 		return true;
 	}
 }
@@ -35,7 +28,7 @@ bool Table::Insert(int key, std::string Name, int PhoneNumber)
 bool Table::Delete(int key)
 {
 	int hashKey = HashFunc(key);
-	Node *node = tbl[hashKey]->GetHead();
+	Node *node = tbl[hashKey].GetHead();
 	Node *parentNode = NULL;
 
 	while (node != NULL) // 노드가 존재하면
@@ -52,7 +45,7 @@ bool Table::Delete(int key)
 				else
 				{
 					parentNode = node->next;
-					tbl[hashKey]->SetHead(parentNode);
+					tbl[hashKey].SetHead(parentNode);
 					return true;
 				}
 			}
@@ -73,7 +66,7 @@ bool Table::Delete(int key)
 bool Table::Search(int key)
 {
 	int hashKey = HashFunc(key);
-	Node *node = tbl[hashKey]->GetHead();
+	Node *node = tbl[hashKey].GetHead();
 	while (node->data != NULL)
 	{
 		if (key == node->data->key)
@@ -90,7 +83,7 @@ void Table::DeleteTable()
 	Node *nextNode;
 	for (int i = 0; i < tableSize; i++)
 	{
-		node = tbl[i]->GetHead();
+		node = tbl[i].GetHead();
 		while (node != NULL)
 		{
 			nextNode = node->next;
