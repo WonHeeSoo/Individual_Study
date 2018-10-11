@@ -11,7 +11,7 @@ public:
 	virtual ~Table();
 
 public:
-	bool Insert(int key, const char *Name, int PhoneNumber);
+	bool Insert(int key, std::string Name, int PhoneNumber);
 	bool Delete(int key);
 	bool Search(int key);
 
@@ -21,6 +21,6 @@ private:
 
 private:
 	int tableSize;
-	LinkedList<int> **tbl;
+	LinkedList *tbl;
 };
 

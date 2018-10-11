@@ -1,2 +1,24 @@
-﻿  Table.cpp
-LINK : fatal error LNK1561: entry point must be defined
+﻿  LinkedList.cpp
+  Main19.cpp
+  Table.cpp
+f:\dev\programming_practice\datastructure_and_algorithm_practice\19_tableandhash_example\table.cpp(23): error C2819: type 'LinkedList' does not have an overloaded member 'operator ->'
+  f:\dev\programming_practice\datastructure_and_algorithm_practice\19_tableandhash_example\linkedlist.h(23): note: see declaration of 'LinkedList'
+  f:\dev\programming_practice\datastructure_and_algorithm_practice\19_tableandhash_example\table.cpp(23): note: did you intend to use '.' instead?
+f:\dev\programming_practice\datastructure_and_algorithm_practice\19_tableandhash_example\table.cpp(23): error C2232: '->LinkedList::Insert': left operand has 'class' type, use '.'
+f:\dev\programming_practice\datastructure_and_algorithm_practice\19_tableandhash_example\table.cpp(38): error C2819: type 'LinkedList' does not have an overloaded member 'operator ->'
+  f:\dev\programming_practice\datastructure_and_algorithm_practice\19_tableandhash_example\linkedlist.h(23): note: see declaration of 'LinkedList'
+  f:\dev\programming_practice\datastructure_and_algorithm_practice\19_tableandhash_example\table.cpp(38): note: did you intend to use '.' instead?
+f:\dev\programming_practice\datastructure_and_algorithm_practice\19_tableandhash_example\table.cpp(38): error C2232: '->LinkedList::GetHead': left operand has 'class' type, use '.'
+f:\dev\programming_practice\datastructure_and_algorithm_practice\19_tableandhash_example\table.cpp(55): error C2819: type 'LinkedList' does not have an overloaded member 'operator ->'
+  f:\dev\programming_practice\datastructure_and_algorithm_practice\19_tableandhash_example\linkedlist.h(23): note: see declaration of 'LinkedList'
+  f:\dev\programming_practice\datastructure_and_algorithm_practice\19_tableandhash_example\table.cpp(55): note: did you intend to use '.' instead?
+f:\dev\programming_practice\datastructure_and_algorithm_practice\19_tableandhash_example\table.cpp(55): error C2232: '->LinkedList::SetHead': left operand has 'class' type, use '.'
+f:\dev\programming_practice\datastructure_and_algorithm_practice\19_tableandhash_example\table.cpp(76): error C2819: type 'LinkedList' does not have an overloaded member 'operator ->'
+  f:\dev\programming_practice\datastructure_and_algorithm_practice\19_tableandhash_example\linkedlist.h(23): note: see declaration of 'LinkedList'
+  f:\dev\programming_practice\datastructure_and_algorithm_practice\19_tableandhash_example\table.cpp(76): note: did you intend to use '.' instead?
+f:\dev\programming_practice\datastructure_and_algorithm_practice\19_tableandhash_example\table.cpp(76): error C2232: '->LinkedList::GetHead': left operand has 'class' type, use '.'
+f:\dev\programming_practice\datastructure_and_algorithm_practice\19_tableandhash_example\table.cpp(93): error C2819: type 'LinkedList' does not have an overloaded member 'operator ->'
+  f:\dev\programming_practice\datastructure_and_algorithm_practice\19_tableandhash_example\linkedlist.h(23): note: see declaration of 'LinkedList'
+  f:\dev\programming_practice\datastructure_and_algorithm_practice\19_tableandhash_example\table.cpp(93): note: did you intend to use '.' instead?
+f:\dev\programming_practice\datastructure_and_algorithm_practice\19_tableandhash_example\table.cpp(93): error C2232: '->LinkedList::GetHead': left operand has 'class' type, use '.'
+  Generating Code...

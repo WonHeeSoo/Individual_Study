@@ -1,19 +1,20 @@
 #pragma once
-typedef struct _info
-{
-	const char	*name;
-	int		phoneNumber;
-	//_info(const char *infoName, int infoPhoneNumber) : name(infoName), phoneNumber(infoPhoneNumber) {}
-}Info;
+#include <string>
 
-typedef struct _slot
+#define INVALID_KEY	(-1)
+
+struct Slot
 {
 	int		key;
-	Info	*value;
-	/*_slot(int key, const char *slotName, int slotPhoneNumber) : key(key)
+
+	struct Info
 	{
-		value->name = slotName;
-		value->phoneNumber = slotPhoneNumber;
-		//(slotName, slotPhoneNumber);
-	}*/
-}Slot;
+		std::string	name;
+		int		phoneNumber;
+		Info() : name(), phoneNumber(0) {}
+		Info(std::string name, int phoneNumber) : name(name), phoneNumber(phoneNumber) {}
+	}	value;
+
+	Slot() : key(INVALID_KEY), value() {}
+	Slot(int key, std::string name, int phoneNumber) : key(key), value(name, phoneNumber) {}
+};

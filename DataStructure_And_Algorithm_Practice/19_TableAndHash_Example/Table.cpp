@@ -4,7 +4,7 @@
 
 Table::Table(int size) : tableSize(size)
 {
-	tbl = new LinkedList<int>*[size];
+	tbl = new LinkedList[size];
 }
 
 
@@ -13,7 +13,7 @@ Table::~Table()
 	DeleteTable();
 }
 
-bool Table::Insert(int key, const char *Name, int PhoneNumber)
+bool Table::Insert(int key, std::string Name, int PhoneNumber)
 {
 	if (Search(key) == true)
 		return false;
@@ -35,8 +35,8 @@ bool Table::Insert(int key, const char *Name, int PhoneNumber)
 bool Table::Delete(int key)
 {
 	int hashKey = HashFunc(key);
-	Node<int> *node = tbl[hashKey]->GetHead();
-	Node<int> *parentNode = NULL;
+	Node *node = tbl[hashKey]->GetHead();
+	Node *parentNode = NULL;
 
 	while (node != NULL) // 노드가 존재하면
 	{
@@ -73,7 +73,7 @@ bool Table::Delete(int key)
 bool Table::Search(int key)
 {
 	int hashKey = HashFunc(key);
-	Node<int> *node = tbl[hashKey]->GetHead();
+	Node *node = tbl[hashKey]->GetHead();
 	while (node->data != NULL)
 	{
 		if (key == node->data->key)
@@ -86,8 +86,8 @@ bool Table::Search(int key)
 
 void Table::DeleteTable()
 {
-	Node<int> *node;
-	Node<int> *nextNode;
+	Node *node;
+	Node *nextNode;
 	for (int i = 0; i < tableSize; i++)
 	{
 		node = tbl[i]->GetHead();
