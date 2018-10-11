@@ -1,14 +1,7 @@
 #pragma once
 #include <stdio.h>
 #include <stdlib.h>
-//#include "Slot.h"
-
-typedef struct _slot
-{
-	int		key;
-	char	*value;
-	_slot(int key, char *value) : key(key), value(value){}
-}Slot;
+#include "Slot.h"
 
 template <typename T>
 struct Node
@@ -17,7 +10,13 @@ struct Node
 	Node *next;
 
 	Node<T>() : next(NULL) {}
-	Node<T>(int key, char *value) : data(val, value), next(NULL) {}
+	Node<T>(int key, const char *slotName, int slotPhoneNumber) : next(NULL) 
+	{
+		data->key = key;
+		data->value->name = slotName;
+		data->value->phoneNumber = slotPhoneNumber;
+		//data(key, slotName, slotPhoneNumber);
+	}
 };
 
 template <typename T>
@@ -28,16 +27,16 @@ public:
 	// Public methods
 public:
 	LinkedList(bool verbose = false);
-	~LinkedList();
+	virtual ~LinkedList();
 
 public:
 	Node<T>*	GetHead();
 	bool		SetHead(Node<T> *node);
 
-	bool	Insert(int key, char *value);
+	bool	Insert(int key, const char *slotName, int slotPhoneNumber);
 	bool	Remove();
 	bool	Remove(int pos);
-	void	TestAllList();
+	void	TestAllList() const;
 	
 
 	// Private properties
@@ -46,7 +45,7 @@ private:
 
 	bool	verbose;
 
-	Node<T>	head;
+	Node<T>	*head;
 
 	int		nodeCnt;
 };
@@ -59,7 +58,7 @@ LinkedList<T>::LinkedList(bool verbose) : verbose(verbose), nodeCnt(0)
 template <typename T>
 LinkedList<T>::~LinkedList()
 {
-	Node<T> *temp = head.next;
+	Node<T> *temp = head->next;
 	Node<T> *del = temp;
 	while (temp != NULL)
 	{
@@ -87,7 +86,7 @@ bool LinkedList<T>::SetHead(Node<T> *node)
 }
 
 template <typename T>
-bool LinkedList<T>::Insert(int key, char *value)
+bool LinkedList<T>::Insert(int key, const char *Name, int PhoneNumber)
 {
 	if (nodeCnt >= LIST_SIZE)
 	{
@@ -98,14 +97,14 @@ bool LinkedList<T>::Insert(int key, char *value)
 		return false;
 	}
 
-	Node<T> *cur_node = &head;
+	Node<T> *cur_node = head;
 	for (int i = 0; i < nodeCnt + 1; i++) 
 	{
 		if (cur_node->next == NULL)
 			break;
 		cur_node = cur_node->next;
 	}
-	Node<T> *node = new Node<T>(key, value);
+	Node<T> *node = new Node<T>(key, Name, PhoneNumber);
 	node->next = cur_node->next;
 	cur_node->next = node;
 	nodeCnt++;
@@ -159,7 +158,7 @@ bool LinkedList<T>::Remove(int pos)
 }
 
 template <typename T>
-void LinkedList<T>::TestAllList()
+void LinkedList<T>::TestAllList() const
 {
 	Node<T> *cur = head.next;
 

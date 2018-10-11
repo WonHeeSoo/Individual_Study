@@ -10,17 +10,17 @@ Table::Table(int size) : tableSize(size)
 
 Table::~Table()
 {
-	delete[] tbl;
+	DeleteTable();
 }
 
-bool Table::Insert(int key, char * value)
+bool Table::Insert(int key, const char *Name, int PhoneNumber)
 {
 	if (Search(key) == true)
 		return false;
 	else
 	{
 		int hashKey = HashFunc(key);
-		tbl[hashKey]->Insert(key, value);
+		tbl[hashKey]->Insert(key, Name, PhoneNumber);
 		/*
 		Node<int> *node = tbl[hashKey]->GetHead;
 		while (node != NULL)
@@ -35,30 +35,32 @@ bool Table::Insert(int key, char * value)
 bool Table::Delete(int key)
 {
 	int hashKey = HashFunc(key);
-	Node<int> *node = tbl[hashKey]->GetHead;
-	Node<int> *parentNode;
-	while (node != NULL)
+	Node<int> *node = tbl[hashKey]->GetHead();
+	Node<int> *parentNode = NULL;
+
+	while (node != NULL) // 노드가 존재하면
 	{
-		if (key = node->data->key)
+		if (key == node->data->key)
 		{
-			if (node->next == NULL)
+			if (parentNode == NULL) // 첫번째 노드라면
 			{
-				delete node;
-				return true;
-			}
-			else
-			{
-				if (parentNode == NULL)
+				if (node->next == NULL) // next에 연결된 노드가 없다면
 				{
-					tbl[hashKey]->SetHead(node);
+					delete node;
 					return true;
 				}
 				else
 				{
-					parentNode->next = node->next;
-					delete node;
+					parentNode = node->next;
+					tbl[hashKey]->SetHead(parentNode);
 					return true;
 				}
+			}
+			else // 첫번째 노드가 아니라면
+			{
+				parentNode->next = node->next;
+				delete node;
+				return true;
 			}
 		}
 		else
@@ -71,8 +73,8 @@ bool Table::Delete(int key)
 bool Table::Search(int key)
 {
 	int hashKey = HashFunc(key);
-	Node<int> *node = tbl[hashKey]->GetHead;
-	while (node != NULL)
+	Node<int> *node = tbl[hashKey]->GetHead();
+	while (node->data != NULL)
 	{
 		if (key == node->data->key)
 			return true;
@@ -80,4 +82,20 @@ bool Table::Search(int key)
 			node = node->next;
 	}
 	return false;
+}
+
+void Table::DeleteTable()
+{
+	Node<int> *node;
+	Node<int> *nextNode;
+	for (int i = 0; i < tableSize; i++)
+	{
+		node = tbl[i]->GetHead();
+		while (node != NULL)
+		{
+			nextNode = node->next;
+			delete node;
+			node = nextNode;
+		}
+	}
 }

@@ -1,0 +1,13 @@
+﻿  Main13.cpp
+f:\dev\programming_practice\datastructure_and_algorithm_practice\commonlib\include\heaptemplate.h(34): error C2955: 'HeapElem': use of class template requires template argument list
+  f:\dev\programming_practice\datastructure_and_algorithm_practice\commonlib\include\heaptemplate.h(6): note: see declaration of 'HeapElem'
+  f:\dev\programming_practice\datastructure_and_algorithm_practice\commonlib\include\heaptemplate.h(35): note: see reference to class template instantiation 'HeapTemplate<T>' being compiled
+f:\dev\programming_practice\datastructure_and_algorithm_practice\commonlib\include\heaptemplate.h(83): error C3861: 'cerr': identifier not found
+f:\dev\programming_practice\datastructure_and_algorithm_practice\commonlib\include\heaptemplate.h(83): error C3861: 'endl': identifier not found
+f:\dev\programming_practice\datastructure_and_algorithm_practice\commonlib\include\heaptemplate.h(110): error C3861: 'cerr': identifier not found
+f:\dev\programming_practice\datastructure_and_algorithm_practice\commonlib\include\heaptemplate.h(110): error C3861: 'endl': identifier not found
+f:\dev\programming_practice\datastructure_and_algorithm_practice\commonlib\include\heaptemplate.h(141): error C3861: 'cout': identifier not found
+f:\dev\programming_practice\datastructure_and_algorithm_practice\commonlib\include\heaptemplate.h(144): error C3861: 'cout': identifier not found
+f:\dev\programming_practice\datastructure_and_algorithm_practice\commonlib\include\heaptemplate.h(144): error C3861: 'endl': identifier not found
+f:\dev\programming_practice\datastructure_and_algorithm_practice\13_heapsort_example\heapsort.h(53): error C2760: syntax error: unexpected token '}', expected ';'
+f:\dev\programming_practice\datastructure_and_algorithm_practice\13_heapsort_example\heapsort.h(67): error C2760: syntax error: unexpected token '}', expected ';'

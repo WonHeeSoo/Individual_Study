@@ -1,3 +1,6 @@
 ﻿  Main15.cpp
 f:\dev\programming_practice\datastructure_and_algorithm_practice\15_quicksort_example\quicksort.h(18): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+  QuickSort.cpp
+f:\dev\programming_practice\datastructure_and_algorithm_practice\15_quicksort_example\quicksort.h(18): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+  Generating Code...
   15_QuickSort_Example.vcxproj -> F:\Dev\Programming_Practice\DataStructure_And_Algorithm_Practice\x64\Debug\15_QuickSort_Example.exe

@@ -1,14 +1,14 @@
 ﻿  BinaryTree.cpp
-f:\dev\programming_practice\datastructure_and_algorithm_practice\07_binarytree_example\binarytree.cpp(67): warning C4477: 'printf' : 서식 문자열 '%d'에 'int' 형식의 인수가 필요하지만 variadic 인수 1의 형식이 'DType'입니다.
-  f:\dev\programming_practice\datastructure_and_algorithm_practice\07_binarytree_example\binarytree.cpp(67): note: 서식 문자열에서 '%zd'을(를) 사용하는 것이 좋습니다.
-f:\dev\programming_practice\datastructure_and_algorithm_practice\07_binarytree_example\binarytree.cpp(82): warning C4477: 'printf' : 서식 문자열 '%d'에 'int' 형식의 인수가 필요하지만 variadic 인수 1의 형식이 'DType'입니다.
-  f:\dev\programming_practice\datastructure_and_algorithm_practice\07_binarytree_example\binarytree.cpp(82): note: 서식 문자열에서 '%zd'을(를) 사용하는 것이 좋습니다.
-f:\dev\programming_practice\datastructure_and_algorithm_practice\07_binarytree_example\binarytree.cpp(94): warning C4477: 'printf' : 서식 문자열 '%d'에 'int' 형식의 인수가 필요하지만 variadic 인수 1의 형식이 'DType'입니다.
-  f:\dev\programming_practice\datastructure_and_algorithm_practice\07_binarytree_example\binarytree.cpp(94): note: 서식 문자열에서 '%zd'을(를) 사용하는 것이 좋습니다.
-f:\dev\programming_practice\datastructure_and_algorithm_practice\07_binarytree_example\binarytree.cpp(106): warning C4477: 'printf' : 서식 문자열 '%d'에 'int' 형식의 인수가 필요하지만 variadic 인수 1의 형식이 'DType'입니다.
-  f:\dev\programming_practice\datastructure_and_algorithm_practice\07_binarytree_example\binarytree.cpp(106): note: 서식 문자열에서 '%zd'을(를) 사용하는 것이 좋습니다.
-f:\dev\programming_practice\datastructure_and_algorithm_practice\07_binarytree_example\binarytree.cpp(124): warning C4267: 'return': 'size_t'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+f:\dev\programming_practice\datastructure_and_algorithm_practice\07_binarytree_example\binarytree.cpp(67): warning C4477: 'printf' : format string '%d' requires an argument of type 'int', but variadic argument 1 has type 'DType'
+  f:\dev\programming_practice\datastructure_and_algorithm_practice\07_binarytree_example\binarytree.cpp(67): note: consider using '%zd' in the format string
+f:\dev\programming_practice\datastructure_and_algorithm_practice\07_binarytree_example\binarytree.cpp(82): warning C4477: 'printf' : format string '%d' requires an argument of type 'int', but variadic argument 1 has type 'DType'
+  f:\dev\programming_practice\datastructure_and_algorithm_practice\07_binarytree_example\binarytree.cpp(82): note: consider using '%zd' in the format string
+f:\dev\programming_practice\datastructure_and_algorithm_practice\07_binarytree_example\binarytree.cpp(94): warning C4477: 'printf' : format string '%d' requires an argument of type 'int', but variadic argument 1 has type 'DType'
+  f:\dev\programming_practice\datastructure_and_algorithm_practice\07_binarytree_example\binarytree.cpp(94): note: consider using '%zd' in the format string
+f:\dev\programming_practice\datastructure_and_algorithm_practice\07_binarytree_example\binarytree.cpp(106): warning C4477: 'printf' : format string '%d' requires an argument of type 'int', but variadic argument 1 has type 'DType'
+  f:\dev\programming_practice\datastructure_and_algorithm_practice\07_binarytree_example\binarytree.cpp(106): note: consider using '%zd' in the format string
+f:\dev\programming_practice\datastructure_and_algorithm_practice\07_binarytree_example\binarytree.cpp(124): warning C4267: 'return': conversion from 'size_t' to 'int', possible loss of data
   Main07.cpp
-  코드를 생성하고 있습니다...
-f:\dev\programming_practice\datastructure_and_algorithm_practice\07_binarytree_example\binarytree.cpp(137): warning C4715: 'BinaryTree::GetNode': 모든 제어 경로에서 값을 반환하지는 않습니다.
+  Generating Code...
+f:\dev\programming_practice\datastructure_and_algorithm_practice\07_binarytree_example\binarytree.cpp(137): warning C4715: 'BinaryTree::GetNode': not all control paths return a value
   07_BinaryTree_Example.vcxproj -> F:\Dev\Programming_Practice\DataStructure_And_Algorithm_Practice\x64\Debug\07_BinaryTree_Example.exe

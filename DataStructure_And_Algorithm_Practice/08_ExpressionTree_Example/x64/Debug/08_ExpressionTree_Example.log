@@ -1,2 +1,17 @@
 ﻿  ExpressionTree.cpp
-  08_ExpressionTree_Example.vcxproj -> F:\Dev\Programming_Practice\DataStructure_And_Algorithm_Practice\x64\Debug\08_ExpressionTree_Example.exe
+f:\dev\programming_practice\datastructure_and_algorithm_practice\commonlib\include\mytreenodetemplate.h(26): error C3861: 'bt': identifier not found
+f:\dev\programming_practice\datastructure_and_algorithm_practice\commonlib\include\mytreenodetemplate.h(27): error C3861: 'bt': identifier not found
+f:\dev\programming_practice\datastructure_and_algorithm_practice\commonlib\include\mytreenodetemplate.h(29): error C3861: 'bt': identifier not found
+f:\dev\programming_practice\datastructure_and_algorithm_practice\commonlib\include\mytreenodetemplate.h(36): error C3861: 'bt': identifier not found
+f:\dev\programming_practice\datastructure_and_algorithm_practice\commonlib\include\mytreenodetemplate.h(37): error C3861: 'bt': identifier not found
+f:\dev\programming_practice\datastructure_and_algorithm_practice\commonlib\include\mytreenodetemplate.h(39): error C3861: 'bt': identifier not found
+f:\dev\programming_practice\datastructure_and_algorithm_practice\commonlib\include\mystacktemplate.h(63): error C3861: 'endl': identifier not found
+  Main08.cpp
+f:\dev\programming_practice\datastructure_and_algorithm_practice\commonlib\include\mytreenodetemplate.h(26): error C3861: 'bt': identifier not found
+f:\dev\programming_practice\datastructure_and_algorithm_practice\commonlib\include\mytreenodetemplate.h(27): error C3861: 'bt': identifier not found
+f:\dev\programming_practice\datastructure_and_algorithm_practice\commonlib\include\mytreenodetemplate.h(29): error C3861: 'bt': identifier not found
+f:\dev\programming_practice\datastructure_and_algorithm_practice\commonlib\include\mytreenodetemplate.h(36): error C3861: 'bt': identifier not found
+f:\dev\programming_practice\datastructure_and_algorithm_practice\commonlib\include\mytreenodetemplate.h(37): error C3861: 'bt': identifier not found
+f:\dev\programming_practice\datastructure_and_algorithm_practice\commonlib\include\mytreenodetemplate.h(39): error C3861: 'bt': identifier not found
+f:\dev\programming_practice\datastructure_and_algorithm_practice\commonlib\include\mystacktemplate.h(63): error C3861: 'endl': identifier not found
+  Generating Code...

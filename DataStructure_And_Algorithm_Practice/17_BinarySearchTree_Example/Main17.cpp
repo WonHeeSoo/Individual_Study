@@ -1,3 +1,8 @@
+#define _CRTDBG_MAP_ALLOC
+
+#include <stdlib.h>
+#include <crtdbg.h>
+
 #include "BinarySearchTree.h"
 
 void generate_randIntArray(int max_val, size_t size, BinarySearchTree *bst)
@@ -34,5 +39,9 @@ int main()
 	BST->Remove(1);*/
 
 	BST->InorderTree();
+	char *temp = new char[5];
+	
+	_CrtDumpMemoryLeaks();
+	_CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF);
 	return 0;
 }

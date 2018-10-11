@@ -1,7 +1,7 @@
 #pragma once
 
 #include "LinkedList.h"
-
+#include <iostream>
 
 
 class Table
@@ -11,12 +11,13 @@ public:
 	virtual ~Table();
 
 public:
-	bool Insert(int key, char *value);
+	bool Insert(int key, const char *Name, int PhoneNumber);
 	bool Delete(int key);
 	bool Search(int key);
-	
+
 private:
 	inline int HashFunc(int key) { return (key % tableSize); }
+	void DeleteTable();
 
 private:
 	int tableSize;
