@@ -5,19 +5,22 @@
 
 struct Node
 {
-	Slot *data;
+	Slot data;
 	Node *next;
 
-	Node() : next(NULL) { data = new Slot(); }
+	Node() : next(NULL) {  }
 	Node(int key, std::string slotName, int slotPhoneNumber) : next(NULL)
 	{
-		data = new Slot(key, slotName, slotPhoneNumber);
+		//data = new Slot(key, slotName, slotPhoneNumber);
+		data.key = key;
+		data.value.name = slotName;
+		data.value.phoneNumber = slotPhoneNumber;
 	}
-	virtual ~Node()
+	/*virtual ~Node()
 	{
 		if (data != NULL)
 			delete data;
-	}
+	}*/
 };
 
 class LinkedList
@@ -41,7 +44,7 @@ public:
 
 	// Private properties
 private:
-	static const int LIST_SIZE = 5;
+	static const int LIST_SIZE = 100;
 
 	bool	verbose;
 

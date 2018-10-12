@@ -15,6 +15,8 @@ public:
 	bool Delete(int key);
 	bool Search(int key);
 
+	void TestAllList() const;
+
 private:
 	inline int HashFunc(int key) { return (key % tableSize); }
 	void DeleteTable();

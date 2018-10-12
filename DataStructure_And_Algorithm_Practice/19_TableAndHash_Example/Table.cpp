@@ -11,6 +11,8 @@ Table::Table(int size) : tableSize(size)
 Table::~Table()
 {
 	DeleteTable();
+	//tbl->~LinkedList();
+	//delete tbl;
 }
 
 bool Table::Insert(int key, std::string Name, int PhoneNumber)
@@ -33,7 +35,7 @@ bool Table::Delete(int key)
 
 	while (node != NULL) // 노드가 존재하면
 	{
-		if (key == node->data->key)
+		if (key == node->data.key)
 		{
 			if (parentNode == NULL) // 첫번째 노드라면
 			{
@@ -67,14 +69,34 @@ bool Table::Search(int key)
 {
 	int hashKey = HashFunc(key);
 	Node *node = tbl[hashKey].GetHead();
-	while (node->data != NULL)
+	while (node != NULL)
 	{
-		if (key == node->data->key)
+		if (key == node->data.key)
 			return true;
 		else
 			node = node->next;
 	}
 	return false;
+}
+
+void Table::TestAllList() const
+{
+	for (int i = 0; i < tableSize; i++)
+	{
+		Node *node = tbl[i].GetHead();
+		std::cout << "tbl[" << i << "]" << std::endl;
+		while (node != NULL)
+		{
+			std::cout << "Hashkey : " << (node->data.key % tableSize) << ", "
+				<< "key : " << node->data.key << ", " 
+				<< "name : " << node->data.value.name << ", "
+				<< "phoneNumber : " << node->data.value.phoneNumber
+				<< std::endl;
+
+			node = node->next;
+		}
+	}
+	std::cout << "////////////////////////////////////////" << std::endl << std::endl;
 }
 
 void Table::DeleteTable()
@@ -83,12 +105,14 @@ void Table::DeleteTable()
 	Node *nextNode;
 	for (int i = 0; i < tableSize; i++)
 	{
-		node = tbl[i].GetHead();
+		tbl[i].~LinkedList();
+		/*node = tbl[i].GetHead();
 		while (node != NULL)
 		{
 			nextNode = node->next;
 			delete node;
 			node = nextNode;
-		}
+		}*/
 	}
+	//delete tbl;
 }

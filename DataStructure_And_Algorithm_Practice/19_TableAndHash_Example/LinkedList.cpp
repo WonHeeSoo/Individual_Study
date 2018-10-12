@@ -6,14 +6,18 @@ LinkedList::LinkedList(bool verbose) : verbose(verbose), head(NULL), nodeCnt(0)
 
 LinkedList::~LinkedList()
 {
-	Node *temp = head->next;
-	Node *del = temp;
-	while (temp != NULL)
+	if (head != NULL)
 	{
-		del = temp;
-		temp = temp->next;
-		delete del;
+		Node *temp = head;
+		Node *del = temp;
+		while (temp != NULL)
+		{
+			del = temp;
+			temp = temp->next;
+			delete del;
+		}
 	}
+	
 }
 
 Node* LinkedList::GetHead()
@@ -42,18 +46,27 @@ bool LinkedList::Insert(int key, std::string Name, int PhoneNumber)
 		return false;
 	}
 
-	Node *cur_node = head;
-	for (int i = 0; i < nodeCnt + 1; i++)
+	if (head == NULL)
 	{
-		if (cur_node->next == NULL)
-			break;
-		cur_node = cur_node->next;
+		head = new Node(key, Name, PhoneNumber);
 	}
-	Node *node = new Node(key, Name, PhoneNumber);
-	node->next = cur_node->next;
-	cur_node->next = node;
+	else
+	{
+		Node *cur_node = head;
+		for (int i = 0; i < nodeCnt + 1; i++)
+		{
+			if (cur_node->next == NULL)
+				break;
+			cur_node = cur_node->next;
+		}
+		Node *node = new Node(key, Name, PhoneNumber);
+		node->next = cur_node->next;
+		cur_node->next = node;
+		
+	}
 	nodeCnt++;
 	return true;
+	
 }
 
 bool LinkedList::Remove()
@@ -69,7 +82,7 @@ bool LinkedList::Remove()
 	}
 
 	head->next = del->next;
-	delete del->data;
+	//delete del->data;
 	delete del;
 	return true;
 }
@@ -97,7 +110,7 @@ bool LinkedList::Remove(int pos)
 	}
 	prev->next = temp;
 	nodeCnt--;
-	delete del->data;
+	//delete del->data;
 	delete del;
 	return true;
 }
@@ -109,9 +122,9 @@ void LinkedList::TestAllList() const
 	while (cur != NULL)
 	{
 		printf("%d, %s %d /",
-			cur->data->key,
-			cur->data->value.name.c_str(),
-			cur->data->value.phoneNumber);
+			cur->data.key,
+			cur->data.value.name.c_str(),
+			cur->data.value.phoneNumber);
 		cur = cur->next;
 	}
 	printf("\n----\n");
