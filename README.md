@@ -38,9 +38,9 @@ Project language is C++.
 
 #### :ballot_box_with_check: To Do
 - [ ] AVL Tree
-- [ ] Table Hash
-- [ ] Graph
+- [ ] Table and Hash
+- [ ] Graph (DFS, BFS)
 
 ### :file_folder: Android_Studio
 
-Held Project.
+Stopped Project.
