@@ -10,7 +10,8 @@ Table::Table(int size) : tableSize(size)
 
 Table::~Table()
 {
-	DeleteTable();
+	delete[] tbl;
+	//DeleteTable();
 	//tbl->~LinkedList();
 	//delete tbl;
 }
