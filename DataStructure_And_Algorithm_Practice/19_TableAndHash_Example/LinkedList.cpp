@@ -82,7 +82,6 @@ bool LinkedList::Remove()
 	}
 
 	head->next = del->next;
-	//delete del->data;
 	delete del;
 	return true;
 }
@@ -110,7 +109,6 @@ bool LinkedList::Remove(int pos)
 	}
 	prev->next = temp;
 	nodeCnt--;
-	//delete del->data;
 	delete del;
 	return true;
 }

@@ -8,19 +8,13 @@ struct Node
 	Slot data;
 	Node *next;
 
-	Node() : next(NULL) {  }
+	Node() : next(NULL) { data.key = INVALID_KEY; data.value.phoneNumber = 0; }
 	Node(int key, std::string slotName, int slotPhoneNumber) : next(NULL)
 	{
-		//data = new Slot(key, slotName, slotPhoneNumber);
 		data.key = key;
 		data.value.name = slotName;
 		data.value.phoneNumber = slotPhoneNumber;
 	}
-	/*virtual ~Node()
-	{
-		if (data != NULL)
-			delete data;
-	}*/
 };
 
 class LinkedList

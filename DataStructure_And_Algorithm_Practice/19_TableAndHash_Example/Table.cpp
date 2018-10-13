@@ -11,9 +11,6 @@ Table::Table(int size) : tableSize(size)
 Table::~Table()
 {
 	delete[] tbl;
-	//DeleteTable();
-	//tbl->~LinkedList();
-	//delete tbl;
 }
 
 bool Table::Insert(int key, std::string Name, int PhoneNumber)
@@ -49,6 +46,7 @@ bool Table::Delete(int key)
 				{
 					parentNode = node->next;
 					tbl[hashKey].SetHead(parentNode);
+					delete node;
 					return true;
 				}
 			}
@@ -88,10 +86,10 @@ void Table::TestAllList() const
 		std::cout << "tbl[" << i << "]" << std::endl;
 		while (node != NULL)
 		{
-			std::cout << "Hashkey : " << (node->data.key % tableSize) << ", "
-				<< "key : " << node->data.key << ", " 
-				<< "name : " << node->data.value.name << ", "
-				<< "phoneNumber : " << node->data.value.phoneNumber
+			std::cout << "Hashkey : " << (node->data.key % tableSize) 
+				<< ", " << "key : " << node->data.key 
+				<< ", " << "name : " << node->data.value.name 
+				<< ", "	<< "phoneNumber : " << node->data.value.phoneNumber
 				<< std::endl;
 
 			node = node->next;
@@ -100,20 +98,3 @@ void Table::TestAllList() const
 	std::cout << "////////////////////////////////////////" << std::endl << std::endl;
 }
 
-void Table::DeleteTable()
-{
-	Node *node;
-	Node *nextNode;
-	for (int i = 0; i < tableSize; i++)
-	{
-		tbl[i].~LinkedList();
-		/*node = tbl[i].GetHead();
-		while (node != NULL)
-		{
-			nextNode = node->next;
-			delete node;
-			node = nextNode;
-		}*/
-	}
-	//delete tbl;
-}

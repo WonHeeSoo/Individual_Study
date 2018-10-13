@@ -19,7 +19,6 @@ public:
 
 private:
 	inline int HashFunc(int key) { return (key % tableSize); }
-	void DeleteTable();
 
 private:
 	int tableSize;
