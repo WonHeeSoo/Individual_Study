@@ -2,30 +2,30 @@
 
 
 
-Table::Table(int size) : tableSize(size)
+BaseTable::BaseTable(int size) : tableSize(size)
 {
 	tbl = new LinkedList[size];
 }
 
 
-Table::~Table()
+BaseTable::~BaseTable()
 {
 	delete[] tbl;
 }
 
-bool Table::Insert(int key, std::string Name, int PhoneNumber)
+bool BaseTable::Insert(int key, std::string name, int phoneNumber)
 {
-	if (Search(key) == true)
+	if (SearchExistKey(key) == true)
 		return false;
 	else
 	{
 		int hashKey = HashFunc(key);
-		tbl[hashKey].Insert(key, Name, PhoneNumber);
+		tbl[hashKey].Insert(key, name, phoneNumber);
 		return true;
 	}
 }
 
-bool Table::Delete(int key)
+bool BaseTable::Delete(int key)
 {
 	int hashKey = HashFunc(key);
 	Node *node = tbl[hashKey].GetHead();
@@ -45,8 +45,8 @@ bool Table::Delete(int key)
 				else
 				{
 					parentNode = node->next;
-					tbl[hashKey].SetHead(parentNode);
 					delete node;
+					tbl[hashKey].SetHead(parentNode);
 					return true;
 				}
 			}
@@ -64,7 +64,7 @@ bool Table::Delete(int key)
 	return false;
 }
 
-bool Table::Search(int key)
+bool BaseTable::SearchExistKey(int key)
 {
 	int hashKey = HashFunc(key);
 	Node *node = tbl[hashKey].GetHead();
@@ -78,7 +78,21 @@ bool Table::Search(int key)
 	return false;
 }
 
-void Table::TestAllList() const
+Slot BaseTable::SearchData(int key)
+{
+	int hashKey = HashFunc(key);
+	Node *node = tbl[hashKey].GetHead();
+	while (node != NULL)
+	{
+		if (key == node->data.key)
+			return node->data;
+		else
+			node = node->next;
+	}
+	return ;
+}
+
+void BaseTable::TestAllList() const
 {
 	for (int i = 0; i < tableSize; i++)
 	{

@@ -35,7 +35,7 @@ bool LinkedList::SetHead(Node *node)
 	return true;
 }
 
-bool LinkedList::Insert(int key, std::string Name, int PhoneNumber)
+bool LinkedList::Insert(int key, std::string name, int phoneNumber)
 {
 	if (nodeCnt >= LIST_SIZE)
 	{
@@ -48,21 +48,17 @@ bool LinkedList::Insert(int key, std::string Name, int PhoneNumber)
 
 	if (head == NULL)
 	{
-		head = new Node(key, Name, PhoneNumber);
+		head = new Node(key, name, phoneNumber);
 	}
 	else
 	{
 		Node *cur_node = head;
-		for (int i = 0; i < nodeCnt + 1; i++)
-		{
-			if (cur_node->next == NULL)
-				break;
+
+		while (cur_node->next != NULL)
 			cur_node = cur_node->next;
-		}
-		Node *node = new Node(key, Name, PhoneNumber);
-		node->next = cur_node->next;
+
+		Node *node = new Node(key, name, phoneNumber);
 		cur_node->next = node;
-		
 	}
 	nodeCnt++;
 	return true;
