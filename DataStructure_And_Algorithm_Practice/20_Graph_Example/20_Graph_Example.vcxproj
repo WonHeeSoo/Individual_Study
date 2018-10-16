@@ -116,14 +116,10 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="BreadthFirstSearch.h" />
-    <ClInclude Include="DepthFirstSearch.h" />
     <ClInclude Include="Graph.h" />
     <ClInclude Include="LinkedList.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="BreadthFirstSearch.cpp" />
-    <ClCompile Include="DepthFirstSearch.cpp" />
     <ClCompile Include="Graph.cpp" />
     <ClCompile Include="LinkedList.cpp" />
     <ClCompile Include="main20.cpp" />

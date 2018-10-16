@@ -4,9 +4,11 @@
 
 struct Node
 {
+	int pos;
+	bool visit;
 	Node *next;
 
-	Node() : next(NULL) { }
+	Node(int pos) : pos(pos), visit(false), next(NULL) { }
 };
 
 class LinkedList
@@ -21,20 +23,20 @@ public:
 public:
 	Node*	GetHead();
 	bool	SetHead(Node *node);
+	Node*	GetTail();
+	bool	SetTail(Node *node);
 
-	bool	Insert(int key, std::string slotName, int slotPhoneNumber);
-	bool	Remove();
-	bool	Remove(int pos);
-	void	TestAllList() const;
+	bool	Insert(int Vertex);
 
+	Node*	SearchNoVisitNode();
 
 	// Private properties
 private:
-	static const int LIST_SIZE = 100;
 
 	bool	verbose;
 
 	Node	*head;
+	Node	*tail;
 
 	int		nodeCnt;
 };
