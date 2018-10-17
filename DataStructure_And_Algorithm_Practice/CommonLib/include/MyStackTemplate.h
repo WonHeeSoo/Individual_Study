@@ -60,5 +60,5 @@ void MyStackTemplate<T>::TestAllStack() const
 	{
 		std::cout << arr[i] << " ";
 	}
-	std::cout << endl;
+	std::cout << std::endl;
 }

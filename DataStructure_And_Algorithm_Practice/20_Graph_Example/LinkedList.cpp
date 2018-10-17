@@ -28,10 +28,13 @@ Node* LinkedList::GetHead()
 bool LinkedList::SetHead(Node *node)
 {
 	if (head != NULL)
-	{
 		delete head;
-	}
+
 	head = node;
+
+	if (head->next == NULL)
+		tail = head;
+
 	return true;
 }
 

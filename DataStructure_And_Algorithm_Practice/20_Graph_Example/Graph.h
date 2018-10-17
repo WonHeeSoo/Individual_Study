@@ -9,14 +9,15 @@ public:
 	Graph(int size);
 	~Graph();
 
+public:
 	bool Insert(int fromPos, int toPos);
-	bool DFS(int pos = 0);
+	bool DFS(int pos);
 	bool BFS();
 	
 	void ShowGraph() const;
 
 protected:
-	virtual bool AddEdge(int fromVertex, int toVertex) = 0;
+	//virtual bool AddEdge(int fromVertex, int toVertex) = 0;
 
 private:
 	void ResetSearch();

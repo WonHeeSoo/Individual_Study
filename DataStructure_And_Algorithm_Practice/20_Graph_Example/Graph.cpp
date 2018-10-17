@@ -11,7 +11,7 @@ Graph::Graph(int size) : graphSize(size), vertexCnt(0), edgeCnt(0), adjList(NULL
 	adjList = new LinkedList[size];
 	for (int i = 0; i < size; i++)
 	{
-		adjList[i].SetHead(new Node(i));
+		adjList[i].Insert(i);
 	}
 }
 
@@ -31,7 +31,7 @@ bool Graph::Insert(int fromPos, int toPos)
 	return true;
 }
 
-bool Graph::DFS(int pos = 0)
+bool Graph::DFS(int pos)
 {
 	if (adjList[pos].GetHead() == NULL)
 	{
@@ -43,7 +43,7 @@ bool Graph::DFS(int pos = 0)
 	LinkedList *searchList = startList;
 
 	startList->GetHead()->visit = true;
-	cout << "Pos : " << startList->GetHead()->pos << " ";
+	cout << "Pos : " << startList->GetHead()->pos << " / ";
 	stack.Push(startList->GetHead());
 	if (startList->SearchNoVisitNode() == NULL)
 	{// startList와 연결된 노드가 하나도 없으면
@@ -56,32 +56,44 @@ bool Graph::DFS(int pos = 0)
 		
 		if (searchList->GetHead()->visit == true) // 방문한 위치에 이미 방문했다면
 		{
-			while (searchList->GetHead()->visit == false || startList->GetTail()->visit == false) 
-			{// 방문하지 않은 곳을 찾거나 startList의 꼬리에 방문하지 않았을때까지
-				searchList = &adjList[stack.Pop()->pos];
+			//while (searchList->GetHead()->visit == false) //|| startList->GetTail()->visit == false) 
+			//{// 방문하지 않은 곳을 찾거나 startList의 꼬리에 방문하지 않았을때까지
+				if (stack.IsEmpty() == false)
+					searchList = &adjList[stack.Pop()->pos];
+				
 				if (searchList->SearchNoVisitNode() != NULL) // 빈 노드가 아니면
-				{
 					searchList = &adjList[searchList->SearchNoVisitNode()->pos];
-				}
-			}
+			//}
 		}
 		
-		searchList->GetHead()->visit = true;
-		cout << "Pos : " << startList->GetHead()->pos << " ";
-		stack.Push(searchList->GetHead());
-
+		if (searchList->GetHead()->visit == false)
+		{
+			searchList->GetHead()->visit = true;
+			cout << "Pos : " << startList->GetHead()->pos << " ";
+			stack.Push(searchList->GetHead());
+		}
+		
 		if (searchList->SearchNoVisitNode() != NULL)
 		{// searchList에 방문하지 않은 node가 있다면
 			searchList = &adjList[searchList->SearchNoVisitNode()->pos];
 		}
 	}
 
-	ResetSearch();
+	//ResetSearch();
+	return true;
 }
 
 bool Graph::BFS()
 {
 	ResetSearch();
 	return true;
+}
+
+void Graph::ShowGraph() const
+{
+}
+
+void Graph::ResetSearch()
+{
 }
 
