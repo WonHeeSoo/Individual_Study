@@ -33,8 +33,8 @@ bool Graph::Insert(int fromPos, int toPos)
 
 bool Graph::DFS(int pos)
 {
-	if (adjList[pos].GetHead() == NULL)
-	{
+	if (adjList[pos].GetHead() == NULL || adjList[pos].GetHead()->next == NULL)
+	{// 처음 위치가 존재하지 않고, 처음 위치에서 연결된 노드가 없으면
 		return false;
 	}
 	MyStackTemplate<Node*> stack;
@@ -42,7 +42,28 @@ bool Graph::DFS(int pos)
 	LinkedList *startList = &adjList[pos];
 	LinkedList *searchList = startList;
 
-	startList->GetHead()->visit = true;
+	while (!(startList->GetTail()->visit == true && stack.IsEmpty() == true))
+	{ // startList의 꼬리에 방문했고 stack에 아무것도 없다면 
+		if (searchList->GetHead()->visit == true)
+		{// 이미 방문한 곳이면
+			if (stack.IsEmpty() == false)
+				searchList = &adjList[stack.Pop()->pos];
+
+			//searchList = &adjList[searchList->SearchNoVisitNode()->pos];
+		}
+		else
+		{
+			searchList->GetHead()->visit = true;
+			cout << "Pos : " << searchList->GetHead()->pos << " / ";
+			stack.Push(searchList->GetHead());
+		}
+		
+		searchList = &adjList[searchList->SearchNoVisitNode()->pos];
+	}
+	
+
+
+	/*startList->GetHead()->visit = true;
 	cout << "Pos : " << startList->GetHead()->pos << " / ";
 	stack.Push(startList->GetHead());
 	if (startList->SearchNoVisitNode() == NULL)
@@ -77,7 +98,7 @@ bool Graph::DFS(int pos)
 		{// searchList에 방문하지 않은 node가 있다면
 			searchList = &adjList[searchList->SearchNoVisitNode()->pos];
 		}
-	}
+	}*/
 
 	//ResetSearch();
 	return true;
