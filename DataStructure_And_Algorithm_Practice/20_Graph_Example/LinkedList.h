@@ -4,11 +4,11 @@
 
 struct Node
 {
-	int pos;
-	bool visit;
-	Node *next;
+	int		pos;
+	bool	check;
+	Node	*next;
 
-	Node(int pos) : pos(pos), visit(false), next(NULL) { }
+	Node(int pos) : pos(pos), check(false), next(NULL) { }
 };
 
 class LinkedList
@@ -25,6 +25,8 @@ public:
 	bool	SetHead(Node *node);
 	Node*	GetTail();
 	bool	SetTail(Node *node);
+	bool	GetVisit();
+	bool	SetVisit(bool visit);
 
 	bool	Insert(int Vertex);
 
@@ -38,5 +40,6 @@ private:
 	Node	*head;
 	Node	*tail;
 
+	bool	visit;
 	int		nodeCnt;
 };

@@ -16,7 +16,7 @@ public:
 
 private:
 	static const int EMPTY = -1;
-	static const int ARRAY_SIZE = 10;
+	static const int ARRAY_SIZE = 100;
 
 	T arr[ARRAY_SIZE];
 

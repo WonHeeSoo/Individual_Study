@@ -1,6 +1,6 @@
 #include "LinkedList.h"
 
-LinkedList::LinkedList(bool verbose) : verbose(verbose), head(NULL), tail(NULL), nodeCnt(0)
+LinkedList::LinkedList(bool verbose) : verbose(verbose), visit(false), head(NULL), tail(NULL), nodeCnt(0)
 {
 }
 
@@ -54,6 +54,17 @@ bool LinkedList::SetTail(Node * node)
 		return false;
 }
 
+bool LinkedList::GetVisit()
+{
+	return visit;
+}
+
+bool LinkedList::SetVisit(bool visit)
+{
+	LinkedList::visit = visit;
+	return true;
+}
+
 bool LinkedList::Insert(int pos)
 {
 	if (head == NULL)
@@ -73,14 +84,21 @@ bool LinkedList::Insert(int pos)
 
 Node * LinkedList::SearchNoVisitNode()
 {
-	if (head->visit == false)
-	{
+	if (head->check == false) // head의 check가 false 이면
 		return head;
-	}
 
 	Node* node = head;
-	while (node->visit == false)
+	/*while (node->next != NULL)
 	{
+		if ( node->check == false)
+			return node;
+		else
+			node = node->next;
+	}
+	return NULL;*/
+	
+	while (node->check == true)
+	{ // node의 check가 false가 나올때까지
 		node = node->next;
 
 		if (node == NULL)

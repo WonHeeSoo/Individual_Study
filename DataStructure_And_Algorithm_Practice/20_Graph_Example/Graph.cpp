@@ -33,72 +33,61 @@ bool Graph::Insert(int fromPos, int toPos)
 
 bool Graph::DFS(int pos)
 {
-	if (adjList[pos].GetHead() == NULL || adjList[pos].GetHead()->next == NULL)
-	{// 처음 위치가 존재하지 않고, 처음 위치에서 연결된 노드가 없으면
+	if (adjList[pos].GetHead() == NULL || adjList[pos].GetHead()->next == NULL)// 처음 위치가 존재하지 않고, 처음 위치에서 연결된 노드가 없으면
 		return false;
-	}
+	
 	MyStackTemplate<Node*> stack;
-	//Node *node = adjList[pos].GetHead();
-	LinkedList *startList = &adjList[pos];
-	LinkedList *searchList = startList;
+	Node *node = adjList[pos].GetHead();
 
-	while (!(startList->GetTail()->visit == true && stack.IsEmpty() == true))
+	cout << "/Pos : " << node->pos << ",      ";
+
+	while (!(adjList[pos].GetTail()->check == true && stack.IsEmpty() == true))
 	{ // startList의 꼬리에 방문했고 stack에 아무것도 없다면 
-		if (searchList->GetHead()->visit == true)
-		{// 이미 방문한 곳이면
-			if (stack.IsEmpty() == false)
-				searchList = &adjList[stack.Pop()->pos];
+		
+		if (node == NULL || adjList[node->pos].GetVisit() == true)
+		{ // node가 NULL 이거나 이미 해당 정점에 방문 했다면
+			if (node != NULL && node->check == false) // node가 NULL이 아니고 해당 정점에는 방문했지만 연결된 node의 check가 false면
+				node->check = true;
 
-			//searchList = &adjList[searchList->SearchNoVisitNode()->pos];
+			if (stack.IsEmpty() == false)
+			{ // stack이 비어있지 않다면
+				node = stack.Pop();
+				cout << "/fPos : " << node->pos << ",     ";
+				if (adjList[node->pos].SearchNoVisitNode() != NULL)
+				{ // 방문 
+					stack.Push(node);
+					node = adjList[node->pos].SearchNoVisitNode();
+					cout << "/sPos : " << node->pos << ",     ";
+				}
+			}
 		}
 		else
-		{
-			searchList->GetHead()->visit = true;
-			cout << "Pos : " << searchList->GetHead()->pos << " / ";
-			stack.Push(searchList->GetHead());
-		}
-		
-		searchList = &adjList[searchList->SearchNoVisitNode()->pos];
-	}
-	
+		{ // 방문하지 않은 곳이면
+			node->check = true;
+			adjList[node->pos].SetVisit(true);
 
+			stack.Push(node);
 
-	/*startList->GetHead()->visit = true;
-	cout << "Pos : " << startList->GetHead()->pos << " / ";
-	stack.Push(startList->GetHead());
-	if (startList->SearchNoVisitNode() == NULL)
-	{// startList와 연결된 노드가 하나도 없으면
-		return false;
-	}
-
-	searchList = &adjList[startList->SearchNoVisitNode()->pos];
-	while (!(startList->GetTail()->visit == true && stack.IsEmpty() == true))
-	{ // startList의 꼬리에 방문했고, stack이 비어 있기 전까지
-		
-		if (searchList->GetHead()->visit == true) // 방문한 위치에 이미 방문했다면
-		{
-			//while (searchList->GetHead()->visit == false) //|| startList->GetTail()->visit == false) 
-			//{// 방문하지 않은 곳을 찾거나 startList의 꼬리에 방문하지 않았을때까지
-				if (stack.IsEmpty() == false)
-					searchList = &adjList[stack.Pop()->pos];
+			if (node->next != NULL) // node의 next가 NULL이 아니면
+			{
 				
-				if (searchList->SearchNoVisitNode() != NULL) // 빈 노드가 아니면
-					searchList = &adjList[searchList->SearchNoVisitNode()->pos];
-			//}
+				node = adjList[node->next->pos].GetHead();
+				cout << "/tPos : " << node->pos << ",     ";
+			}
+			/*else
+			{
+				if (stack.IsEmpty() == false)
+				{
+					node = stack.Pop();
+					cout << "/foPos : " << node->pos << ",     ";
+				}
+					
+			}*/
+				
 		}
+		//cout << "Pos : " << node->pos << ", ";
 		
-		if (searchList->GetHead()->visit == false)
-		{
-			searchList->GetHead()->visit = true;
-			cout << "Pos : " << startList->GetHead()->pos << " ";
-			stack.Push(searchList->GetHead());
-		}
-		
-		if (searchList->SearchNoVisitNode() != NULL)
-		{// searchList에 방문하지 않은 node가 있다면
-			searchList = &adjList[searchList->SearchNoVisitNode()->pos];
-		}
-	}*/
+	}
 
 	//ResetSearch();
 	return true;
