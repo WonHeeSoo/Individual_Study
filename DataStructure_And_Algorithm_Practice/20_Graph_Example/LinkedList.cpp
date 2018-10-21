@@ -88,14 +88,6 @@ Node * LinkedList::SearchNoVisitNode()
 		return head;
 
 	Node* node = head;
-	/*while (node->next != NULL)
-	{
-		if ( node->check == false)
-			return node;
-		else
-			node = node->next;
-	}
-	return NULL;*/
 	
 	while (node->check == true)
 	{ // node의 check가 false가 나올때까지

@@ -1,30 +1,47 @@
 #pragma once
-#include "LinkedList.h"
 
-enum {A, B, C, D, E, F};
+#include <list>
+
+/*struct Edge
+{
+	int		dest_id;
+	bool	edge_visited;
+
+	Edge(int dst = Vertex::INVALID_ID, bool visited = false)
+		: dest_id(dst), edge_visited(visited) {}
+};*/
+
+
+struct Vertex
+{
+	int				id;
+	bool			visited;
+	std::list<int>	edges;
+
+	static const int INVALID_ID;
+
+	Vertex(int id = INVALID_ID, bool visited = false) : id(id), visited(visited) {}
+};
+
 
 class Graph
 {
 public:
-	Graph(int size);
-	~Graph();
+	Graph(int numVertex);
+	virtual ~Graph();
 
 public:
-	bool Insert(int fromPos, int toPos);
-	bool DFS(int pos);
-	bool BFS();
+	bool InsertEdge(int fromVertex, int toVertex);
+	bool DFS(int startVertex);
+	bool BFS(int startVertex);
 	
 	void ShowGraph() const;
 
 protected:
-	//virtual bool AddEdge(int fromVertex, int toVertex) = 0;
-
-private:
-	void ResetSearch();
+	void HandleVertex(const Vertex &vertex);
+	void ResetVisited();
 
 protected:
-	int graphSize;
-	int	vertexCnt;
-	int edgeCnt;
-	LinkedList *adjList;
+	int			nVertex;
+	Vertex		*vertices;
 };

@@ -1,101 +1,108 @@
 #include "Graph.h"
-#include "include\MyStackTemplate.h"
+#include <stack>
+#include <queue>
 #include <iostream>
 
 using namespace std;
 
+const int Vertex::INVALID_ID = -1;
 
-
-Graph::Graph(int size) : graphSize(size), vertexCnt(0), edgeCnt(0), adjList(NULL)
+Graph::Graph(int numVertex) : nVertex(numVertex)
 {
-	adjList = new LinkedList[size];
-	for (int i = 0; i < size; i++)
+	vertices = new Vertex[numVertex];
+	for (int i = 0; i < numVertex; i++)
 	{
-		adjList[i].Insert(i);
+		vertices[i].id = i;
 	}
 }
 
 
 Graph::~Graph()
 {
-	delete[] adjList;
+	if (vertices != NULL)
+		delete[] vertices;
 }
 
-bool Graph::Insert(int fromPos, int toPos)
+bool Graph::InsertEdge(int fromVertex, int toVertex)
 {
-	if (adjList[fromPos].GetHead() == NULL || adjList[toPos].GetHead() == NULL)
-		// fromPos나 toPos에 위치한 정점이 없다면
+	if (fromVertex < 0 || fromVertex >= nVertex)
+		return false;
+	if (toVertex < 0 || toVertex >= nVertex)
 		return false;
 
-	adjList[fromPos].Insert(toPos);
+	vertices[fromVertex].edges.push_back(toVertex);
 	return true;
 }
 
-bool Graph::DFS(int pos)
+bool Graph::DFS(int startVertex)
 {
-	if (adjList[pos].GetHead() == NULL || adjList[pos].GetHead()->next == NULL)// 처음 위치가 존재하지 않고, 처음 위치에서 연결된 노드가 없으면
+	if (startVertex < 0 || startVertex >= nVertex)
 		return false;
-	
-	MyStackTemplate<Node*> stack;
-	Node *node = adjList[pos].GetHead();
 
-	cout << "/Pos : " << node->pos << ",      ";
+	if (vertices[startVertex].edges.empty())
+		return true;
 
-	while (!(adjList[pos].GetTail()->check == true && stack.IsEmpty() == true))
-	{ // startList의 꼬리에 방문했고 stack에 아무것도 없다면 
+	ResetVisited();
+
+	stack<int> vertexStack;
+	vertexStack.push(startVertex);
+
+	while (!vertexStack.empty())
+	{
+		Vertex &curVertex = vertices[vertexStack.top()];
+		vertexStack.pop();
+
+		if (curVertex.visited)
+			continue;
 		
-		if (node == NULL || adjList[node->pos].GetVisit() == true)
-		{ // node가 NULL 이거나 이미 해당 정점에 방문 했다면
-			if (node != NULL && node->check == false) // node가 NULL이 아니고 해당 정점에는 방문했지만 연결된 node의 check가 false면
-				node->check = true;
+		curVertex.visited = true;
+		HandleVertex(curVertex);
 
-			if (stack.IsEmpty() == false)
-			{ // stack이 비어있지 않다면
-				node = stack.Pop();
-				cout << "/fPos : " << node->pos << ",     ";
-				if (adjList[node->pos].SearchNoVisitNode() != NULL)
-				{ // 방문 
-					stack.Push(node);
-					node = adjList[node->pos].SearchNoVisitNode();
-					cout << "/sPos : " << node->pos << ",     ";
-				}
-			}
+		const list<int>	&edges = curVertex.edges;
+
+		list<int>::const_iterator it;
+		for (it = edges.begin(); it != edges.end(); it++)
+		{
+			if (!vertices[*it].visited)
+				vertexStack.push(*it);
 		}
-		else
-		{ // 방문하지 않은 곳이면
-			node->check = true;
-			adjList[node->pos].SetVisit(true);
-
-			stack.Push(node);
-
-			if (node->next != NULL) // node의 next가 NULL이 아니면
-			{
-				
-				node = adjList[node->next->pos].GetHead();
-				cout << "/tPos : " << node->pos << ",     ";
-			}
-			/*else
-			{
-				if (stack.IsEmpty() == false)
-				{
-					node = stack.Pop();
-					cout << "/foPos : " << node->pos << ",     ";
-				}
-					
-			}*/
-				
-		}
-		//cout << "Pos : " << node->pos << ", ";
-		
 	}
-
-	//ResetSearch();
 	return true;
 }
 
-bool Graph::BFS()
+bool Graph::BFS(int startVertex)
 {
-	ResetSearch();
+	if (startVertex < 0 || startVertex >= nVertex)
+		return false;
+
+	if (vertices[startVertex].edges.empty())
+		return true;
+
+	ResetVisited();
+
+	queue<int> vertexQueue;
+	vertexQueue.push(startVertex);
+
+	while (!vertexQueue.empty())
+	{
+		Vertex &curVertex = vertices[vertexQueue.front()];
+		vertexQueue.pop();
+
+		if (curVertex.visited)
+			continue;
+
+		curVertex.visited = true;
+		HandleVertex(curVertex);
+
+		const list<int>	&edges = curVertex.edges;
+
+		list<int>::const_iterator it;
+		for (it = edges.begin(); it != edges.end(); it++)
+		{
+			if (!vertices[*it].visited)
+				vertexQueue.push(*it);
+		}
+	}
 	return true;
 }
 
@@ -103,7 +110,14 @@ void Graph::ShowGraph() const
 {
 }
 
-void Graph::ResetSearch()
+void Graph::HandleVertex(const Vertex &vertex)
 {
+	cout << "  . Visited vertex number : " << vertex.id << endl;
+}
+
+void Graph::ResetVisited()
+{
+	for (int i = 0; i < nVertex; i++)
+		vertices[i].visited = false;
 }
 
