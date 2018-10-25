@@ -1,14 +1,29 @@
 ﻿  GraphKruskal.cpp
-f:\dev\programming_practice\datastructure_and_algorithm_practice\21_minimumspanningtree_kruskalalgorithm_example\graphkruskal.h(13): error C2653: 'Vertex': is not a class or namespace name
-f:\dev\programming_practice\datastructure_and_algorithm_practice\21_minimumspanningtree_kruskalalgorithm_example\graphkruskal.h(13): error C2065: 'INVALID_ID': undeclared identifier
-f:\dev\programming_practice\datastructure_and_algorithm_practice\21_minimumspanningtree_kruskalalgorithm_example\graphkruskal.cpp(63): error C2664: 'void std::stack<Edge,std::deque<_Ty,std::allocator<_Ty>>>::push(const Edge &)': cannot convert argument 1 from 'Vertex' to 'Edge &&'
+c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.15.26726\include\xstddef(141): error C2678: binary '<': no operator found which takes a left-hand operand of type 'const _Ty' (or there is no acceptable conversion)
           with
           [
               _Ty=Edge
           ]
-  f:\dev\programming_practice\datastructure_and_algorithm_practice\21_minimumspanningtree_kruskalalgorithm_example\graphkruskal.cpp(63): note: Reason: cannot convert from 'Vertex' to 'Edge'
-  f:\dev\programming_practice\datastructure_and_algorithm_practice\21_minimumspanningtree_kruskalalgorithm_example\graphkruskal.cpp(63): note: No user-defined-conversion operator available that can perform this conversion, or the operator cannot be called
-f:\dev\programming_practice\datastructure_and_algorithm_practice\21_minimumspanningtree_kruskalalgorithm_example\graphkruskal.cpp(67): error C2440: 'initializing': cannot convert from '_Ty' to 'Vertex &'
+  c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.15.26726\include\system_error(319): note: could be 'bool std::operator <(const std::error_condition &,const std::error_condition &) noexcept'
+  c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.15.26726\include\system_error(312): note: or       'bool std::operator <(const std::error_code &,const std::error_code &) noexcept'
+  c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.15.26726\include\xstddef(141): note: while trying to match the argument list '(const _Ty, const _Ty)'
+          with
+          [
+              _Ty=Edge
+          ]
+  c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.15.26726\include\xstddef(140): note: while compiling class template member function 'bool std::less<Edge>::operator ()(const _Ty &,const _Ty &) const'
+          with
+          [
+              _Ty=Edge
+          ]
+  c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.15.26726\include\xutility(1110): note: see reference to function template instantiation 'bool std::less<Edge>::operator ()(const _Ty &,const _Ty &) const' being compiled
+          with
+          [
+              _Ty=Edge
+          ]
+  c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.15.26726\include\type_traits(1049): note: see reference to class template instantiation 'std::less<Edge>' being compiled
+  c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.15.26726\include\queue(247): note: see reference to variable template 'const bool is_nothrow_default_constructible_v<std::less<Edge> >' being compiled
+  f:\dev\programming_practice\datastructure_and_algorithm_practice\21_minimumspanningtree_kruskalalgorithm_example\graphkruskal.h(50): note: see reference to class template instantiation 'std::priority_queue<Edge,std::vector<_Ty,std::allocator<_Ty>>,std::less<_Ty>>' being compiled
           with
           [
               _Ty=Edge

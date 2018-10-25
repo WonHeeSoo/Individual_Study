@@ -10,7 +10,7 @@ struct Edge
 	int		endVertex;
 	int		weight;
 
-	Edge(int startVertex = Vertex::INVALID_ID, int endVertex = Vertex::INVALID_ID, int weight = Vertex::INVALID_ID)
+	Edge(int startVertex, int endVertex, int weight)
 		: startVertex(startVertex), endVertex(endVertex), weight(weight) {}
 };
 
@@ -28,7 +28,7 @@ struct Vertex
 class GraphKruskal
 {
 public:
-	GraphKruskal(int numVertex, int numEdge);
+	GraphKruskal(int numVertex);
 	~GraphKruskal();
 
 public:
@@ -36,6 +36,7 @@ public:
 	bool RemoveEdge(int fromVertex, int toVertex, int weight);
 	bool ConnectVertices(int AVertex, int BVertex);
 	bool KruskalMST();
+	void PrintAllEdges();
 
 protected:
 	void HandleVertex(const Vertex &vertex);
