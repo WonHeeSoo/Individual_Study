@@ -35,11 +35,13 @@ Project language is C++.
 - Quick Sort
 - Radix Sort
 - Binary Search Tree
+- AVL Tree
+- Table and Hash
+- Graph DFS(Depth First Search)
+- Graph BFS(Breadth First Search)
 
 #### :ballot_box_with_check: To Do
-- [ ] AVL Tree
-- [ ] Table and Hash
-- [ ] Graph (DFS, BFS)
+- [ ] Graph Kruskal Algorithm - MST(Minimum Spainning Tree)
 
 ### :file_folder: Android_Studio
 

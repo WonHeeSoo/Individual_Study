@@ -49,6 +49,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "19_TableAndHash_Example", "
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "20_Graph_Example", "20_Graph_Example\20_Graph_Example.vcxproj", "{75806BB1-7536-4292-BD57-6124F90621DE}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "21_MinimumSpanningTree_KruskalAlgorithm_Example", "21_MinimumSpanningTree_KruskalAlgorithm_Example\21_MinimumSpanningTree_KruskalAlgorithm_Example.vcxproj", "{4F9C9C48-DB8E-4C06-ABCA-804AD4EE63AA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -241,6 +243,14 @@ Global
 		{75806BB1-7536-4292-BD57-6124F90621DE}.Release|x64.Build.0 = Release|x64
 		{75806BB1-7536-4292-BD57-6124F90621DE}.Release|x86.ActiveCfg = Release|Win32
 		{75806BB1-7536-4292-BD57-6124F90621DE}.Release|x86.Build.0 = Release|Win32
+		{4F9C9C48-DB8E-4C06-ABCA-804AD4EE63AA}.Debug|x64.ActiveCfg = Debug|x64
+		{4F9C9C48-DB8E-4C06-ABCA-804AD4EE63AA}.Debug|x64.Build.0 = Debug|x64
+		{4F9C9C48-DB8E-4C06-ABCA-804AD4EE63AA}.Debug|x86.ActiveCfg = Debug|Win32
+		{4F9C9C48-DB8E-4C06-ABCA-804AD4EE63AA}.Debug|x86.Build.0 = Debug|Win32
+		{4F9C9C48-DB8E-4C06-ABCA-804AD4EE63AA}.Release|x64.ActiveCfg = Release|x64
+		{4F9C9C48-DB8E-4C06-ABCA-804AD4EE63AA}.Release|x64.Build.0 = Release|x64
+		{4F9C9C48-DB8E-4C06-ABCA-804AD4EE63AA}.Release|x86.ActiveCfg = Release|Win32
+		{4F9C9C48-DB8E-4C06-ABCA-804AD4EE63AA}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

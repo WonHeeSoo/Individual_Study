@@ -1,0 +1,15 @@
+﻿  GraphKruskal.cpp
+f:\dev\programming_practice\datastructure_and_algorithm_practice\21_minimumspanningtree_kruskalalgorithm_example\graphkruskal.h(13): error C2653: 'Vertex': is not a class or namespace name
+f:\dev\programming_practice\datastructure_and_algorithm_practice\21_minimumspanningtree_kruskalalgorithm_example\graphkruskal.h(13): error C2065: 'INVALID_ID': undeclared identifier
+f:\dev\programming_practice\datastructure_and_algorithm_practice\21_minimumspanningtree_kruskalalgorithm_example\graphkruskal.cpp(63): error C2664: 'void std::stack<Edge,std::deque<_Ty,std::allocator<_Ty>>>::push(const Edge &)': cannot convert argument 1 from 'Vertex' to 'Edge &&'
+          with
+          [
+              _Ty=Edge
+          ]
+  f:\dev\programming_practice\datastructure_and_algorithm_practice\21_minimumspanningtree_kruskalalgorithm_example\graphkruskal.cpp(63): note: Reason: cannot convert from 'Vertex' to 'Edge'
+  f:\dev\programming_practice\datastructure_and_algorithm_practice\21_minimumspanningtree_kruskalalgorithm_example\graphkruskal.cpp(63): note: No user-defined-conversion operator available that can perform this conversion, or the operator cannot be called
+f:\dev\programming_practice\datastructure_and_algorithm_practice\21_minimumspanningtree_kruskalalgorithm_example\graphkruskal.cpp(67): error C2440: 'initializing': cannot convert from '_Ty' to 'Vertex &'
+          with
+          [
+              _Ty=Edge
+          ]
