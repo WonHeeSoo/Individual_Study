@@ -1,7 +1,5 @@
 #include "GraphKruskal.h"
 
-
-
 int main()
 {
 
@@ -13,6 +11,7 @@ int main()
 	graph->InsertEdge(1, 3, 1);
 	graph->InsertEdge(2, 4, 6);
 	graph->InsertEdge(3, 0, 8);
+	graph->InsertEdge(3, 4, 9); ////
 	graph->InsertEdge(4, 0, 7);
 	//graph->Insert(4, 3);
 

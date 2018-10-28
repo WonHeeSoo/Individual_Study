@@ -2,7 +2,18 @@
 #include <iostream>
 #include <stack>
 
-const int Vertex::INVALID_ID = -1;
+const int Edge::INVALID_ID = -1;
+
+const int Vertex::INVALID_ID = Edge::INVALID_ID;
+
+
+bool Edge::operator<(const Edge &r_val) const
+{
+	if (weight < r_val.weight)
+		return true;
+	else
+		return false;
+}
 
 GraphKruskal::GraphKruskal(int numVertex) : nVertex(numVertex)
 {
@@ -13,14 +24,13 @@ GraphKruskal::GraphKruskal(int numVertex) : nVertex(numVertex)
 	}
 }
 
-
 GraphKruskal::~GraphKruskal()
 {
 	if (vertices != NULL)
 		delete[] vertices;
 }
 
-bool GraphKruskal::InsertEdge(int fromVertex, int toVertex, int weight)
+bool GraphKruskal::InsertEdge(int fromVertex, int toVertex, double weight)
 {
 	if (fromVertex < 0 || fromVertex >= nVertex)
 		return false;
@@ -29,12 +39,12 @@ bool GraphKruskal::InsertEdge(int fromVertex, int toVertex, int weight)
 
 	Edge edge{ fromVertex, toVertex, weight };
 	vertices[fromVertex].edges.push_back(edge);
-	priorityEdges.push(edge);
+	//priorityEdges.push(edge);
 	nEdge++;
 	return true;
 }
 
-bool GraphKruskal::RemoveEdge(int fromVertex, int toVertex, int weight)
+bool GraphKruskal::RemoveEdge(int fromVertex, int toVertex, double weight)
 {
 	if (fromVertex < 0 || fromVertex >= nVertex)
 		return false;
@@ -83,10 +93,8 @@ bool GraphKruskal::ConnectVertices(int aVertex, int bVertex)
 		Vertex &curVertex = vertices[vertexStack.top()];
 		vertexStack.pop();
 
-		if (&curVertex == &vertices[bVertex])
+		if (curVertex.id == vertices[bVertex].id)
 			return true;
-
-		vertexStack.pop();
 
 		if (curVertex.visited)
 			continue;
@@ -110,43 +118,47 @@ bool GraphKruskal::ConnectVertices(int aVertex, int bVertex)
 
 bool GraphKruskal::KruskalMST()
 {
-	list<Edge> restoreEdge;
+	PrintAllEdges();
+
+	list<Edge> restoreEdges;
+	priority_queue<Edge> priorityEdges;
 	int vertexIndex = 0;
 
-	while (nEdge + 1 != nVertex) // Edge + 1 == Vertex가 성립할때까지
+	for (int i = 0; i < nVertex; i++) // weight 우선순위로 담기
 	{
-		if (nEdge - nVertex < -1) // Vertex가 하나라도 연결이 되어있지 않다면
-			return false;
-
-		// 우선순위 큐에서 가중치가 제일 높은 간선의 정보를 꺼낸다
-		Edge heavyEdge = priorityEdges.top();
-		restoreEdge.push_back(heavyEdge);
-		priorityEdges.pop();
-
-		// 우선순위 큐에서 꺼낸 간선을 실제로 그래프에서 삭제한다
-		RemoveEdge(heavyEdge.startVertex, heavyEdge.endVertex, heavyEdge.weight);
-		/*
-		const list<Edge> &edges = vertices[heavyEdge.startVertex].edges;
+		const list<Edge> &edges = vertices[i].edges;
 
 		list<Edge>::const_iterator it;
 		for (it = edges.begin(); it != edges.end(); it++)
 		{
-			if (it->endVertex == heavyEdge.endVertex && it->weight == heavyEdge.weight)
-			{ // 도착하는 Vertex가 같고 무게가 같으면
-				RemoveEdge(it->startVertex, it->endVertex, it->weight);
-				break;
-			}
-		}*/
-
-
-		// 간선을 삭제하고 두 정점을 연결하는 경로가 있는지 확인한다
-		if (!ConnectVertices(heavyEdge.startVertex, heavyEdge.endVertex)) // 연결하지 못했다면
-		{
-			InsertEdge(restoreEdge.back().startVertex, restoreEdge.back().endVertex, restoreEdge.back().weight);
-			restoreEdge.pop_back();
+			priorityEdges.push(*it);
 		}
 	}
+
+	while (!priorityEdges.empty())
+	{
+		if ((nVertex - nEdge) > 1) // Vertex가 하나라도 연결이 되어있지 않다면
+			return false;
+
+		// priorityEdges에서 가중치가 제일 높은 Edge의 정보를 꺼낸다
+		Edge heavyEdge = priorityEdges.top();
+		restoreEdges.push_back(heavyEdge);
+		priorityEdges.pop();
+
+		// priorityEdges에서 꺼낸 Edge를 실제로 그래프에서 삭제한다
+		RemoveEdge(heavyEdge.startVertex, heavyEdge.endVertex, heavyEdge.weight);
+
+		// Edge를 삭제하고 두 Vertex를 연결하는 경로가 있는지 확인한다
+		if (!ConnectVertices(heavyEdge.startVertex, heavyEdge.endVertex)) // 연결하지 못했다면
+		{
+			InsertEdge(restoreEdges.back().startVertex, restoreEdges.back().endVertex, restoreEdges.back().weight);
+			restoreEdges.pop_back();
+		}
+		//PrintAllEdges();
+	}
 	PrintAllEdges();
+
+	return true;
 }
 
 void GraphKruskal::PrintAllEdges()
@@ -163,7 +175,9 @@ void GraphKruskal::PrintAllEdges()
 				<< " / " << it->weight << endl;
 		}
 	}
+	cout << endl;
 }
+
 
 void GraphKruskal::HandleVertex(const Vertex & vertex)
 {
