@@ -29,24 +29,25 @@ struct Vertex
 
 	Vertex(int id = INVALID_ID, bool visited = false) : id(id), visited(visited) {}
 
-	bool operator==(const Vertex &r_vertex) const;
+	//bool operator==(const Vertex &r_vertex) const;
 };
 
+// GraphKruskal : Weighted, undirected acyclic graph with spanning tree
 class GraphKruskal
 {
 public:
 	GraphKruskal(int numVertex);
-	~GraphKruskal();
+	virtual ~GraphKruskal();
 
 public:
 	bool InsertEdge(int fromVertex, int toVertex, double weight);
 	bool RemoveEdge(int fromVertex, int toVertex, double weight);
-	bool ConnectVertices(int AVertex, int BVertex);
-	bool KruskalMST();
+	bool IsConnected(int aVertex, int bVertex);
+	bool BuildSpanningTree();
 	void PrintAllEdges();
 
 protected:
-	void HandleVertex(const Vertex &vertex);
+	static void HandleVertex(const Vertex &vertex);
 	
 	void ResetVisited();
 
